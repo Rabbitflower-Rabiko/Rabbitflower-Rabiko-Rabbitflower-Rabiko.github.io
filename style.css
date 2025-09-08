@@ -172,16 +172,21 @@ footer { text-align: center; font-size: 0.8em; color: #555; margin: 20px 0; }
 @keyframes blink { 0%,90%,100%{transform:scaleY(1);}95%{transform:scaleY(0.1);} }
 @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);} }
 
-/* ===== 背景デコ（ハート＆星＆雲） ===== */
+/* 背景デコ（ハート＆星＆雲） */
 .bg-deco { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0; }
-.bg-deco .heart, .bg-deco .star {
+.bg-deco .heart, .bg-deco .star, .bg-deco .cloud {
   position: absolute;
-  width: 24px; height:24px;
-  opacity:0.9;
-  border-radius: 50%;
+  opacity: 0.85;
   animation: float 10s linear infinite;
 }
-.bg-deco .heart { background:#FFB6C1; }
+
+/* ハート */
+.bg-deco .heart { background:#FFB6C1; border-radius: 50%; }
+.bg-deco .heart:nth-child(1){ left:5%; top:70%; width:20px; height:20px; animation-duration:12s; }
+.bg-deco .heart:nth-child(2){ left:20%; top:60%; width:24px; height:24px; animation-duration:14s; }
+.bg-deco .heart:nth-child(5){ left:50%; top:65%; width:22px; height:22px; animation-duration:16s; }
+
+/* 星 */
 .bg-deco .star {
   background:#FFFACD;
   clip-path: polygon(
@@ -189,11 +194,23 @@ footer { text-align: center; font-size: 0.8em; color: #555; margin: 20px 0; }
     21% 91%, 32% 57%, 2% 35%, 39% 35%
   );
 }
-.bg-deco .heart:nth-child(1){ left:10%; top:70%; animation-duration:12s; }
-.bg-deco .heart:nth-child(2){ left:50%; top:60%; animation-duration:15s; }
-.bg-deco .heart:nth-child(5){ left:80%; top:65%; animation-duration:10s; }
-.bg-deco .star:nth-child(3){ left:30%; top:75%; animation-duration:18s; }
-.bg-deco .star:nth-child(4){ left:70%; top:68%; animation-duration:14s; }
-.bg-deco .star:nth-child(6){ left:60%; top:72%; animation-duration:20s; }
+.bg-deco .star:nth-child(3){ left:30%; top:75%; width:18px; height:18px; animation-duration:18s; }
+.bg-deco .star:nth-child(4){ left:70%; top:68%; width:22px; height:22px; animation-duration:14s; }
+.bg-deco .star:nth-child(6){ left:80%; top:65%; width:20px; height:20px; animation-duration:10s; }
 
-@keyframes float { 0%{transform:translateY(0) scale(1); opacity:0.7;} 50%{opacity:0.9; transform:translateY(-35vh) scale(1.2);} 100%{transform:translateY(-70vh) scale(1); opacity:0;} }
+/* 雲 */
+.bg-deco .cloud {
+  width: 60px; height: 30px;
+  background: #F0F8FF;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.bg-deco .cloud:nth-child(7){ left:15%; top:30%; animation-duration:30s; }
+.bg-deco .cloud:nth-child(8){ left:55%; top:20%; animation-duration:35s; }
+.bg-deco .cloud:nth-child(9){ left:75%; top:25%; animation-duration:32s; }
+
+@keyframes float {
+  0%{transform:translateY(0) scale(1); opacity:0.7;}
+  50%{opacity:0.9; transform:translateY(-35vh) scale(1.2);}
+  100%{transform:translateY(-70vh) scale(1); opacity:0;}
+}
