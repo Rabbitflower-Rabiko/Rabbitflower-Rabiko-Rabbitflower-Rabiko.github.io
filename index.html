@@ -10,200 +10,7 @@
   <meta property="og:description" content="本日の主なイベントと東京の明日の天気をお届け。">
   <meta property="og:type" content="article">
 
-  <style>
-    /* ===== ページ全体 ===== */
-    body {
-      background: linear-gradient(135deg, #FFE4E1, #FFF8DC, #C1E1C1);
-      font-family: 'Arial', sans-serif;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-    .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* ===== ヘッダー ===== */
-    header {
-      padding: 20px 0;
-      text-align: center;
-    }
-    .logo-wrap svg { width: 60px; height: 60px; }
-    .brand { margin-top: 10px; }
-    .tagline { font-size: 1em; color: #b33955; margin-top: 5px; }
-    .date-stamp { margin-top: 8px; font-size: 0.9em; color: #555; }
-
-    /* ===== ナビゲーション ===== */
-    .nav-list {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      padding: 10px 0;
-      list-style: none;
-      margin: 0;
-    }
-    .nav-list li a {
-      text-decoration: none;
-      color: #b33955;
-      background-color: #FFE4E1;
-      padding: 6px 12px;
-      border-radius: 12px;
-      font-weight: bold;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .nav-list li a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .nav-list li a[aria-current="page"] {
-      background-color: #FFD1DC;
-      color: #fff;
-    }
-
-    /* ===== ブレイキングニュース ===== */
-    .ticker {
-      background-color: #FFF0F5;
-      border-radius: 15px;
-      margin: 15px 0;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .ticker-head {
-      background-color: #FFB6C1;
-      color: #fff;
-      font-weight: bold;
-      padding: 8px 12px;
-      font-size: 0.9em;
-    }
-    .ticker-body {
-      padding: 8px 12px;
-      font-size: 0.9em;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-    .ticker-body .scroll {
-      display: inline-block;
-      animation: ticker-scroll 20s linear infinite;
-    }
-    @keyframes ticker-scroll {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-
-    /* ===== カード ===== */
-    .card {
-      background-color: #FFFACD;
-      border-radius: 20px;
-      padding: 20px;
-      margin: 15px 0;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    .head .eyebrow { font-size: 0.9em; color: #b33955; margin-bottom: 5px; }
-    .head h1, .head h2, .head h3 { margin: 0.2em 0; color: #b33955; }
-    .sub { font-size: 0.85em; color: #555; }
-
-    .list { padding-left: 1.2em; }
-    .list li { margin: 0.5em 0; }
-
-    .wx-ico svg { width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    .wx-kv { display: flex; gap: 8px; font-weight: bold; }
-    .tmax { color: #ff6961; }
-    .tmin { color: #779ECB; }
-    .advisory { font-size: 0.85em; margin-top: 5px; }
-
-    footer { text-align: center; font-size: 0.8em; color: #555; margin: 20px 0; }
-    .content strong { background-color: #FFB6C1; color: #fff; padding: 2px 6px; border-radius: 8px; }
-
-    /* ===== うさぎ装飾 ===== */
-    .bunny-deco {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 80px;
-      height: 80px;
-      z-index: 1000;
-    }
-    .bunny-deco::before,
-    .bunny-deco::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 50px;
-      background: #FFD1DC;
-      border-radius: 50px 50px 0 0;
-      top: -20px;
-    }
-    .bunny-deco::before { left: 10px; transform: rotate(-15deg); animation: ear-wiggle 1.5s infinite ease-in-out; }
-    .bunny-deco::after { right: 10px; transform: rotate(15deg); animation: ear-wiggle-right 1.5s infinite ease-in-out; }
-
-    .bunny-deco-face {
-      width: 80px;
-      height: 80px;
-      background: #FFF8DC;
-      border-radius: 50%;
-      position: relative;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      animation: bounce 2s infinite ease-in-out;
-    }
-    .bunny-eye { width: 10px; height: 10px; background: #000; border-radius: 50%; position: absolute; top: 30px; transform-origin: center center; animation: blink 4s infinite; }
-    .bunny-eye.left { left: 20px; }
-    .bunny-eye.right { right: 20px; }
-    .bunny-cheek { width: 12px; height: 6px; background: #FFB6C1; border-radius: 50%; position: absolute; top: 50px; }
-    .bunny-cheek.left { left: 12px; }
-    .bunny-cheek.right { right: 12px; }
-    .bunny-cheek::after {
-      content: '';
-      position: absolute;
-      width: 6px;
-      height: 3px;
-      background: rgba(255,255,255,0.6);
-      border-radius: 50%;
-      top: 1px;
-      left: 1px;
-      animation: blink 4s infinite;
-    }
-    .bunny-nose { width: 8px; height: 6px; background: #FF69B4; border-radius: 50%; position: absolute; top: 40px; left: 50%; transform: translateX(-50%); }
-
-    @keyframes ear-wiggle { 0%,100%{transform:rotate(-15deg);}50%{transform:rotate(-5deg);} }
-    @keyframes ear-wiggle-right { 0%,100%{transform:rotate(15deg);}50%{transform:rotate(5deg);} }
-    @keyframes blink { 0%,90%,100%{transform:scaleY(1);}95%{transform:scaleY(0.1);} }
-    @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);} }
-
-    /* ===== 背景デコ ===== */
-    .bg-deco { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0; }
-    .bg-deco .heart, .bg-deco .star {
-      position: absolute;
-      width: 12px; height:12px;
-      opacity:0.7;
-      border-radius: 50%;
-      animation: float 10s linear infinite;
-    }
-    .bg-deco .heart { background:#FFB6C1; }
-    .bg-deco .star {
-      background:#FFFACD;
-      clip-path: polygon(
-        50% 0%, 61% 35%, 98% 35%,
-        68% 57%, 79% 91%, 50% 70%,
-        21% 91%, 32% 57%, 2% 35%, 39% 35%
-      );
-    }
-    .bg-deco .heart:nth-child(1){ left:10%; animation-duration:12s; top:90%; }
-    .bg-deco .heart:nth-child(2){ left:50%; animation-duration:15s; top:80%; }
-    .bg-deco .heart:nth-child(5){ left:80%; animation-duration:10s; top:85%; }
-    .bg-deco .star:nth-child(3){ left:30%; animation-duration:18s; top:95%; }
-    .bg-deco .star:nth-child(4){ left:70%; animation-duration:14s; top:88%; }
-    .bg-deco .star:nth-child(6){ left:60%; animation-duration:20s; top:92%; }
-
-    @keyframes float { 0%{transform:translateY(0) scale(1); opacity:0.7;} 50%{opacity:0.9; transform:translateY(-30vh) scale(1.2);} 100%{transform:translateY(-60vh) scale(1); opacity:0;} }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -228,8 +35,136 @@
     </div>
   </div>
 
-  <!-- 以下、元のHTML（ヘッダー、記事、天気、テロップ、フッター） -->
-  <!-- 省略: 先ほどまとめた内容をそのままここに入れる -->
+  <header>
+    <div class="container masthead">
+      <div class="logo-wrap" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="52" height="52" role="img" aria-label="うさTV">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+              <stop stop-color="#ffbcd0" offset="0"/>
+              <stop stop-color="#ffd7a6" offset="1"/>
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="40" fill="url(#g)"/>
+          <ellipse cx="35" cy="25" rx="8" ry="16" fill="#fff"/>
+          <ellipse cx="65" cy="25" rx="8" ry="16" fill="#fff"/>
+          <text x="50" y="60" text-anchor="middle" font-size="28" font-weight="900" fill="#b33955">TV</text>
+        </svg>
+      </div>
+      <div class="brand">
+        <svg viewBox="0 0 600 120" width="440" aria-label="うさTVニュース">
+          <text x="0" y="78" font-size="72" font-weight="900" fill="#b33955">うさTV</text>
+          <text x="210" y="82" font-size="52" font-weight="700" fill="#333">ニュース</text>
+        </svg>
+        <div class="tagline">毎日のイベントと明日の東京の天気を、やさしくお届け。</div>
+      </div>
+      <div class="date-stamp">2025年9月9日（火）</div>
+    </div>
+
+    <div class="container">
+      <nav aria-label="主要カテゴリ">
+        <ul class="nav-list">
+          <li><a href="#" aria-current="page">トップ</a></li>
+          <li><a href="#society">社会</a></li>
+          <li><a href="#world">国際</a></li>
+          <li><a href="#events">イベント</a></li>
+          <li><a href="#weather">天気</a></li>
+          <li><a href="#ent">エンタメ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ブレイキングニュース -->
+  <div class="container">
+    <section class="ticker" aria-label="ブレイキングニュース">
+      <div class="ticker-head">BREAKING&nbsp;NEWS</div>
+      <div class="ticker-body" role="marquee" aria-live="polite">
+        <div class="scroll">
+          <span>重陽の節句──長寿を願う日。菊酒で健康祈願を。&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <span>救急の日──救急医療や119番の正しい利用を考える日。&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <span>東京は日中30℃近く。残暑に注意。&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <main>
+      <!-- メイン記事 -->
+      <article class="card" id="society">
+        <div class="head">
+          <div class="eyebrow">うさTVニュース / 本日の主なイベント</div>
+          <h1>9月9日（火）「重陽の節句」「救急の日」ほか 記念日まとめ</h1>
+          <div class="sub">社会・文化／編集部</div>
+        </div>
+        <div class="content">
+          <h3 id="world">国際・社会</h3>
+          <ul class="list">
+            <li><strong>重陽の節句</strong>（菊の節句・五節句のひとつ）</li>
+            <li><strong>救急の日</strong>（9＝きゅう、9＝きゅう）</li>
+            <li>チョロQの日</li>
+            <li>手巻き寿司の日</li>
+            <li>ポップコーンの日</li>
+            <li>温泉の日</li>
+          </ul>
+
+          <h3 id="events" style="margin-top:1.2em;">開催中の注目イベント</h3>
+          <ul class="list">
+            <li>Dream Star Grand Prix 2025（全国巡回／東京・新宿ほか、8/2〜9/14）</li>
+          </ul>
+          <p class="cap">※ イベントは編集部調べ。最新情報は各主催者の公式発表をご確認ください。</p>
+        </div>
+      </article>
+
+      <!-- サイドバー：天気 -->
+      <aside class="card" id="weather" aria-labelledby="wx-title">
+        <div class="head">
+          <div class="eyebrow">明日の天気</div>
+          <h2 id="wx-title" style="margin:.2em 0;">東京（9月9日）</h2>
+          <div class="sub">晴れ時々くもり、残暑厳しい一日</div>
+        </div>
+        <div class="wx">
+          <div class="wx-ico" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="16" fill="#ffcc33"/>
+              <ellipse cx="42" cy="38" rx="14" ry="9" fill="#e9e9e9"/>
+              <ellipse cx="28" cy="40" rx="18" ry="10" fill="#dddddd"/>
+            </svg>
+          </div>
+          <div>
+            <div class="wx-kv">
+              <div class="tmax">最高 31℃</div>
+              <div class="tmin">／ 最低 23℃</div>
+            </div>
+            <div class="advisory">強い日差しと蒸し暑さ：熱中症に注意。水分・塩分補給を。</div>
+          </div>
+        </div>
+        <div class="content">
+          <ul class="list">
+            <li>午前：晴れ時々くもり</li>
+            <li>午後：雲が広がるが大きな崩れなし</li>
+            <li>体感：真夏並みの暑さ、残暑厳しい</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <section class="card" style="margin-top:18px">
+      <div class="head">
+        <div class="eyebrow">テロップ</div>
+        <h2 style="margin:.2em 0;">菊を眺めつつ、救急の備えも。</h2>
+        <div class="sub">うさTVニュース編集部</div>
+      </div>
+      <div class="content">
+        👉 <strong>重陽の節句</strong>に長寿を願い、<strong>救急の日</strong>に備えを見直す。お天気は残暑モードです！
+      </div>
+    </section>
+
+    <footer class="container">
+      <p>© 2025 うさTVニュース / Rabiko rabbitflowerdiary</p>
+    </footer>
+  </div>
 
 </body>
 </html>
