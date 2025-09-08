@@ -11,7 +11,170 @@
   <meta property="og:type" content="article">
 
   <style>
-    /* 先ほどのCSSと同じ（省略） */
+    /* ===== ページ全体 ===== */
+    body {
+      background: linear-gradient(135deg, #FFE4E1, #FFF8DC, #C1E1C1);
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* ===== ヘッダー ===== */
+    header {
+      padding: 20px 0;
+      text-align: center;
+    }
+    .logo-wrap svg {
+      width: 60px;
+      height: 60px;
+    }
+    .brand {
+      margin-top: 10px;
+    }
+    .tagline {
+      font-size: 1em;
+      color: #b33955;
+      margin-top: 5px;
+    }
+    .date-stamp {
+      margin-top: 8px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    /* ===== ナビゲーション ===== */
+    .nav-list {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 10px 0;
+      list-style: none;
+      margin: 0;
+    }
+    .nav-list li a {
+      text-decoration: none;
+      color: #b33955;
+      background-color: #FFE4E1;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-list li a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .nav-list li a[aria-current="page"] {
+      background-color: #FFD1DC;
+      color: #fff;
+    }
+
+    /* ===== ブレイキングニュース ===== */
+    .ticker {
+      background-color: #FFF0F5;
+      border-radius: 15px;
+      margin: 15px 0;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .ticker-head {
+      background-color: #FFB6C1;
+      color: #fff;
+      font-weight: bold;
+      padding: 8px 12px;
+      font-size: 0.9em;
+    }
+    .ticker-body {
+      padding: 8px 12px;
+      font-size: 0.9em;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .ticker-body .scroll {
+      display: inline-block;
+      animation: ticker-scroll 20s linear infinite;
+    }
+    @keyframes ticker-scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* ===== カード (記事・サイドバー) ===== */
+    .card {
+      background-color: #FFFACD;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .head .eyebrow {
+      font-size: 0.9em;
+      color: #b33955;
+      margin-bottom: 5px;
+    }
+    .head h1, .head h2, .head h3 {
+      margin: 0.2em 0;
+      color: #b33955;
+    }
+    .sub {
+      font-size: 0.85em;
+      color: #555;
+    }
+
+    /* ===== リスト ===== */
+    .list {
+      padding-left: 1.2em;
+    }
+    .list li {
+      margin: 0.5em 0;
+    }
+
+    /* ===== 天気アイコン ===== */
+    .wx-ico svg {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .wx-kv {
+      display: flex;
+      gap: 8px;
+      font-weight: bold;
+    }
+    .tmax { color: #ff6961; }
+    .tmin { color: #779ECB; }
+    .advisory {
+      font-size: 0.85em;
+      margin-top: 5px;
+    }
+
+    /* ===== フッター ===== */
+    footer {
+      text-align: center;
+      font-size: 0.8em;
+      color: #555;
+      margin: 20px 0;
+    }
+
+    /* ===== ボタン風リンク (例: テロップ) ===== */
+    .content strong {
+      background-color: #FFB6C1;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+
   </style>
 </head>
 <body>
