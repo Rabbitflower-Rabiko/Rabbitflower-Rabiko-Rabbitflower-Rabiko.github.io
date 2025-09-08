@@ -123,8 +123,8 @@ footer { text-align: center; font-size: 0.8em; color: #555; margin: 20px 0; }
   height: 80px;
   z-index: 1000;
 }
-.bunny-deco::before,
-.bunny-deco::after {
+.bunny-deco::before, /* 左耳 */
+.bunny-deco::after {  /* 右耳 */
   content: '';
   position: absolute;
   width: 20px;
@@ -133,8 +133,19 @@ footer { text-align: center; font-size: 0.8em; color: #555; margin: 20px 0; }
   border-radius: 50px 50px 0 0;
   top: -20px;
 }
-.bunny-deco::before { left: 10px; transform: rotate(-15deg); animation: ear-wiggle 1.5s infinite ease-in-out; }
-.bunny-deco::after { right: 10px; transform: rotate(15deg); animation: ear-wiggle-right 1.5s infinite ease-in-out; }
+
+.bunny-deco::before { 
+  left: 10px; 
+  transform: rotate(-15deg); 
+  animation: ear-wiggle 1.5s infinite ease-in-out; 
+  z-index: 1; /* 左耳は顔より後ろ */
+}
+.bunny-deco::after { 
+  right: 10px; 
+  transform: rotate(15deg); 
+  animation: ear-wiggle-right 1.5s infinite ease-in-out; 
+  z-index: 0; /* 右耳は左耳より後ろに */
+}
 
 .bunny-deco-face {
   width: 80px;
@@ -144,6 +155,8 @@ footer { text-align: center; font-size: 0.8em; color: #555; margin: 20px 0; }
   position: relative;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   animation: bounce 2s infinite ease-in-out;
+  z-index: 2; /* 顔が耳の前に来る */
+
 }
 .bunny-eye { width: 10px; height: 10px; background: #000; border-radius: 50%; position: absolute; top: 30px; transform-origin: center center; animation: blink 4s infinite; }
 .bunny-eye.left { left: 20px; }
