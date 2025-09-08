@@ -1,1 +1,115 @@
+/* ===== うさぎ装飾 ===== */
+.bunny-deco {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  z-index: 1000;
+}
 
+/* うさぎの耳 */
+.bunny-deco::before,
+.bunny-deco::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 50px;
+  background: #FFD1DC; /* パステルピンク */
+  border-radius: 50px 50px 0 0;
+  top: -20px;
+}
+.bunny-deco::before { left: 10px; transform: rotate(-15deg); }
+.bunny-deco::after { right: 10px; transform: rotate(15deg); }
+
+/* うさぎの顔 */
+.bunny-deco-face {
+  width: 80px;
+  height: 80px;
+  background: #FFF8DC; /* パステルイエロー */
+  border-radius: 50%;
+  position: relative;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 目 */
+.bunny-eye {
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+}
+.bunny-eye.left { left: 20px; }
+.bunny-eye.right { right: 20px; }
+
+/* ほっぺ */
+.bunny-cheek {
+  width: 12px;
+  height: 6px;
+  background: #FFB6C1; /* パステルピンク */
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+}
+.bunny-cheek.left { left: 12px; }
+.bunny-cheek.right { right: 12px; }
+
+/* 鼻 */
+.bunny-nose {
+  width: 8px;
+  height: 6px;
+  background: #FF69B4;
+  border-radius: 50%;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ===== アニメーション ===== */
+@keyframes ear-wiggle {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(-5deg); }
+}
+@keyframes ear-wiggle-right {
+  0%, 100% { transform: rotate(15deg); }
+  50% { transform: rotate(5deg); }
+}
+@keyframes blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* 耳アニメーション */
+.bunny-deco::before { animation: ear-wiggle 1.5s infinite ease-in-out; }
+.bunny-deco::after { animation: ear-wiggle-right 1.5s infinite ease-in-out; }
+
+/* 顔軽くジャンプ */
+.bunny-deco-face { animation: bounce 2s infinite ease-in-out; }
+
+/* 目まばたき */
+.bunny-eye {
+  transform-origin: center center;
+  animation: blink 4s infinite;
+}
+
+/* ほっぺ光 */
+.bunny-cheek::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  top: 1px;
+  left: 1px;
+  animation: blink 4s infinite;
+}
