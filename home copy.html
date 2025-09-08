@@ -10,12 +10,33 @@
   <meta property="og:description" content="本日の主なイベントと東京の明日の天気をお届け。">
   <meta property="og:type" content="article">
 
-  <style>
-    /* 先ほどのCSSと同じ（省略） */
-  </style>
+  <!-- CSS外部ファイル読み込み -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- 背景デコ -->
+  <div class="bg-deco">
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="heart"></div>
+    <div class="star"></div>
+  </div>
+
+  <!-- うさぎマスコット -->
+  <div class="bunny-deco">
+    <div class="bunny-deco-face">
+      <div class="bunny-eye left"></div>
+      <div class="bunny-eye right"></div>
+      <div class="bunny-cheek left"></div>
+      <div class="bunny-cheek right"></div>
+      <div class="bunny-nose"></div>
+    </div>
+  </div>
+
+  <!-- ヘッダー -->
   <header>
     <div class="container masthead">
       <div class="logo-wrap" aria-hidden="true">
@@ -35,8 +56,8 @@
 
       <div class="brand">
         <svg viewBox="0 0 600 120" width="440" aria-label="うさTVニュース">
-          <text x="0" y="78" font-size="72" font-weight="900" fill="#b33955">うさTV</text>
-          <text x="210" y="82" font-size="52" font-weight="700" fill="#333">ニュース</text>
+          <text x="0" y="72" font-size="72" font-weight="900" fill="#b33955">うさTV</text>
+          <text x="210" y="78" font-size="52" font-weight="700" fill="#333">ニュース</text>
         </svg>
         <div class="tagline">毎日のイベントと明日の東京の天気を、やさしくお届け。</div>
       </div>
@@ -64,10 +85,6 @@
       <div class="ticker-head">BREAKING&nbsp;NEWS</div>
       <div class="ticker-body" role="marquee" aria-live="polite">
         <div class="scroll">
-          <span>重陽の節句──長寿を願う日。菊酒で健康祈願を。&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-          <span>救急の日──救急医療や119番の正しい利用を考える日。&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-          <span>東京は日中30℃近く。残暑に注意。&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-
           <span>重陽の節句──長寿を願う日。菊酒で健康祈願を。&nbsp;&nbsp;|&nbsp;&nbsp;</span>
           <span>救急の日──救急医療や119番の正しい利用を考える日。&nbsp;&nbsp;|&nbsp;&nbsp;</span>
           <span>東京は日中30℃近く。残暑に注意。&nbsp;&nbsp;|&nbsp;&nbsp;</span>
@@ -101,7 +118,6 @@
           <ul class="list">
             <li>Dream Star Grand Prix 2025（全国巡回／東京・新宿ほか、8/2〜9/14）</li>
           </ul>
-
           <p class="cap">※ イベントは編集部調べ。最新情報は各主催者の公式発表をご確認ください。</p>
         </div>
       </article>
@@ -113,7 +129,6 @@
           <h2 id="wx-title" style="margin:.2em 0;">東京（9月9日）</h2>
           <div class="sub">晴れ時々くもり、残暑厳しい一日</div>
         </div>
-
         <div class="wx">
           <div class="wx-ico" aria-hidden="true">
             <svg viewBox="0 0 64 64">
@@ -122,7 +137,6 @@
               <ellipse cx="28" cy="40" rx="18" ry="10" fill="#dddddd"/>
             </svg>
           </div>
-
           <div>
             <div class="wx-kv">
               <div class="tmax">最高 31℃</div>
@@ -131,7 +145,6 @@
             <div class="advisory">強い日差しと蒸し暑さ：熱中症に注意。水分・塩分補給を。</div>
           </div>
         </div>
-
         <div class="content">
           <ul class="list">
             <li>午前：晴れ時々くもり</li>
@@ -142,6 +155,7 @@
       </aside>
     </main>
 
+    <!-- テロップ -->
     <section class="card" style="margin-top:18px">
       <div class="head">
         <div class="eyebrow">テロップ</div>
@@ -153,9 +167,9 @@
       </div>
     </section>
 
+    <!-- フッター -->
     <footer class="container">
       <p>© 2025 うさTVニュース / Rabiko rabbitflowerdiary</p>
-      <p class="muted">このページはテンプレートです。本文・天気・テロップを書き換えてご利用ください。</p>
     </footer>
   </div>
 
