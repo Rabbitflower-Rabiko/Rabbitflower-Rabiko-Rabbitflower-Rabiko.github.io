@@ -138,13 +138,13 @@ footer { text-align: center; font-size: 0.8em; color: #555; margin: 20px 0; }
   left: 10px; 
   transform: rotate(-15deg); 
   animation: ear-wiggle 1.5s infinite ease-in-out; 
-  z-index: 1; /* 左耳は顔より後ろ */
+  z-index: 0; /* 左耳は顔より後ろ */
 }
 .bunny-deco::after { 
   right: 10px; 
   transform: rotate(15deg); 
   animation: ear-wiggle-right 1.5s infinite ease-in-out; 
-  z-index: 0; /* 右耳は左耳より後ろに */
+  z-index: 1; /* 右耳は左耳より後ろに */
 }
 
 .bunny-deco-face {
