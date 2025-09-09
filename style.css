@@ -102,6 +102,14 @@ header {
 .list { padding-left: 1.4em; }
 .list li { margin: 0.6em 0; }
 
+.list li strong {
+  display: inline-block;   /* 行の高さを確保 */
+  line-height: 1.6;        /* 行間を広げる */
+  margin: 2px 0;           /* 上下の余白 */
+}
+
+
+
 /* ===== 天気 ===== */
 .wx-ico svg { width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .wx-kv { display: flex; gap: 8px; font-weight: bold; }
