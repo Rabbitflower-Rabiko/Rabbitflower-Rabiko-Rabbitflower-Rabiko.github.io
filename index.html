@@ -6,8 +6,9 @@
   <title>うさTVニュース | 2025年9月11日（木）</title>
   <meta property="og:title" content="うさTVニュース | 2025年9月11日（木）">
   <meta property="og:site_name" content="うさTVニュース">
-  <meta property="og:description" content="本日の主なイベントと、うさの国の明日の天気をお届け。">
+  <meta property="og:description" content="うさの国のフィクションニュースと、今日のうさぎ占い・お天気情報をお届け。">
   <meta property="og:type" content="article">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -59,7 +60,7 @@
         <text x="30" y="72" font-size="72" font-weight="900" fill="#b33955">うさTV</text>
         <text x="320" y="78" font-size="52" font-weight="700" fill="#333">ニュース</text>
       </svg>
-      <div class="tagline">毎日のイベントと、うさの国の天気を、やさしくお届け。</div>
+      <div class="tagline">うさの国の毎日を、やさしくお届け。</div>
     </div>
 
     <div class="date-stamp">2025年9月11日（木）</div>
@@ -72,8 +73,10 @@
         <li><a href="#society">社会</a></li>
         <li><a href="#world">国際</a></li>
         <li><a href="#events">イベント</a></li>
+        <li><a href="#traffic">交通</a></li>
         <li><a href="#weather">天気</a></li>
         <li><a href="#ent">エンタメ</a></li>
+        <li><a href="#uranai">占い</a></li>
       </ul>
     </nav>
   </div>
@@ -95,31 +98,59 @@
 
 <div class="container">
   <main>
-    <!-- メイン記事 -->
+    <!-- 社会記事 -->
     <article class="card" id="society">
       <div class="head">
-        <div class="eyebrow">うさTVニュース / 本日の主なイベント</div>
-        <h1>9月11日（木）「警察相談の日」ほか 記念日まとめ</h1>
-        <div class="sub">社会・文化／編集部</div>
+        <div class="eyebrow">社会・イベント</div>
+        <h1>9月11日（木）「警察相談の日」など話題まとめ</h1>
+        <div class="sub">編集部</div>
       </div>
-
       <div class="content">
-        <h3 id="world">国際・社会</h3>
         <ul class="list">
           <li><strong>警察相談の日</strong>（「#9110」にちなむ）</li>
           <li>公衆電話の日</li>
           <li>たんぱく質の日</li>
         </ul>
-
-        <h3 id="events" style="margin-top:1.2em;">開催中の注目イベント</h3>
-        <ul class="list">
-          <li>にんじん収穫祭2025（うさの国・中央広場／9/10〜9/15）</li>
-        </ul>
-        <p class="cap">※ イベントは編集部調べ。最新情報は各主催者の公式発表をご確認ください。</p>
       </div>
     </article>
 
-    <!-- サイドバー：天気 -->
+    <!-- 国際 -->
+    <article class="card" id="world">
+      <div class="head">
+        <div class="eyebrow">国際</div>
+        <h2>うさの国と森の国の交流会</h2>
+        <div class="sub">国際部</div>
+      </div>
+      <div class="content">
+        <p>うさの国と森の国が友好を深めるため、にんじんケーキを囲んだ交流会を開催。両国の若いうさぎたちが歌やダンスで友情を深めました。</p>
+      </div>
+    </article>
+
+    <!-- イベント -->
+    <article class="card" id="events">
+      <div class="head">
+        <div class="eyebrow">イベント</div>
+        <h2>にんじん収穫祭2025</h2>
+        <div class="sub">うさの国・中央広場（9/10〜9/15）</div>
+      </div>
+      <div class="content">
+        <p>大人気イベント「にんじん収穫祭」が今年も開催！会場ではにんじんスイーツやゲームが楽しめます。</p>
+      </div>
+    </article>
+
+    <!-- 交通 -->
+    <article class="card" id="traffic">
+      <div class="head">
+        <div class="eyebrow">交通情報</div>
+        <h2>ラビー道路でにんじん搬送ラッシュ</h2>
+        <div class="sub">交通センター発表</div>
+      </div>
+      <div class="content">
+        <p>ラビー道路（南区〜中央広場）で交通渋滞。にんじん収穫祭に向けた搬送がピークを迎えています。おでかけは早めの行動を。</p>
+      </div>
+    </article>
+
+    <!-- 天気 -->
     <aside class="card" id="weather" aria-labelledby="wx-title">
       <div class="head">
         <div class="eyebrow">明日の天気</div>
@@ -143,45 +174,58 @@
           <div class="advisory">洗濯指数：★★★☆☆（日中はよく乾くが、夕方は雲が広がりそう）</div>
         </div>
       </div>
-      <div class="content">
-        <ul class="list">
-          <li>午前：晴れ</li>
-          <li>午後：次第にくもり</li>
-          <li>体感：真夏のような暑さ続く</li>
-        </ul>
-      </div>
     </aside>
 
     <!-- エンタメ -->
     <section class="card" id="ent">
       <div class="head">
         <div class="eyebrow">エンタメ</div>
-        <h2 style="margin:.2em 0;">うさの国で話題のニュース</h2>
-        <div class="sub">エンタメ・文化</div>
+        <h2>話題のうさぎニュース</h2>
       </div>
       <div class="content">
         <ul class="list">
-          <li>うさロックフェス2025開催決定！にんじん畑ステージが人気に。</li>
+          <li>うさロックフェス2025開催！にんじん畑ステージに注目。</li>
           <li>絵本作家ラビコ氏の新作「星降る森のうさぎ」出版へ。</li>
           <li>映画「キャロット・ドリーム」が大ヒット上映中。</li>
         </ul>
       </div>
     </section>
+
+    <!-- 占い -->
+    <section class="card" id="uranai">
+      <div class="head">
+        <div class="eyebrow">今日の占い</div>
+        <h2>チモシー占い</h2>
+      </div>
+      <div class="content">
+        <p>今日は<strong>チモシーの香り</strong>が幸運を運んでくれる日。新しい出会いがあなたに「ぴょん！」と訪れそうです。ラッキーアイテムは小さなにんじん飴。</p>
+      </div>
+    </section>
+
+    <!-- うさぎの健康 -->
+    <section class="card" id="health">
+      <div class="head">
+        <div class="eyebrow">うさぎの健康アドバイス</div>
+        <h2>今日のひとこと</h2>
+      </div>
+      <div class="content">
+        <p>毛球症予防のために、毎日のブラッシングと繊維質の多い食事を心がけましょう。</p>
+      </div>
+    </section>
+
+    <!-- リンクまとめ -->
+    <section class="links-section">
+      <a href="https://rabbitworld.rabbitflowerdiary.com/" target="_blank">RabbitWorld</a>
+      <div class="link-desc">ルブラン美夜子のレッツウェザーはこちら</div>
+
+      <a href="https://newrabi.rabbitflowerdiary.com/index" target="_blank">うさぎの世話人のためのページ</a>
+      <div class="link-desc">はじめてのうさと家族になった人間たちへ</div>
+    </section>
+
   </main>
 
-  <!-- テロップ -->
-  <section class="card" style="margin-top:18px">
-    <div class="head">
-      <div class="eyebrow">テロップ</div>
-      <h2 style="margin:.2em 0;">備えを忘れず、心も安心。</h2>
-      <div class="sub">うさTVニュース編集部</div>
-    </div>
-    <div class="content">
-      👉 <strong>警察相談の日</strong>に安全を考え、<strong>にんじん収穫祭</strong>で元気に過ごしましょう！
-    </div>
-  </section>
-
   <footer class="container">
+    <p>お問い合わせ： <a href="https://x.com/RabiHouse" target="_blank">@RabiHouse</a></p>
     <p>© 2025 うさTVニュース / Rabiko rabbitflowerdiary</p>
   </footer>
 </div>
