@@ -1,17 +1,16 @@
 /* ===== ページ全体 ===== */
 body {
-  background: linear-gradient(160deg, #FFE4E1 0%, #FFF8DC 50%, #C1E1C1 100%);
+  background-image: url('image/#');
+  background-repeat: repeat;       /* 繰り返し */
+  background-size: auto;           /* 元サイズで繰り返す */
+  background-position: top left;   /* 左上から表示 */
   font-family: 'Comic Sans MS', 'Hiragino Maru Gothic', 'Rounded Mplus 1c', sans-serif;
   color: #333;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
-.container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+
 
 /* ===== ヘッダー ===== */
 header {
