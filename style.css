@@ -75,7 +75,7 @@ header {
 }
 .ticker-body .scroll {
   display: inline-block;
-  animation: ticker-scroll 25s linear infinite;
+  animation: ticker-scroll 50s linear infinite;
 }
 @keyframes ticker-scroll {
   0% { transform: translateX(100%); }
