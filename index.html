@@ -1,4 +1,4 @@
-<!doctype html>
+.=<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -10,13 +10,67 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- 背景デコ -->
+  <div class="bg-deco">
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="heart"></div>
+    <div class="star"></div>
+  </div>
+
+  <!-- うさぎマスコット -->
+  <div class="bunny-deco">
+    <div class="bunny-deco-face">
+      <div class="bunny-eye left"></div>
+      <div class="bunny-eye right"></div>
+      <div class="bunny-cheek left"></div>
+      <div class="bunny-cheek right"></div>
+      <div class="bunny-nose"></div>
+    </div>
+  </div>
+
+  <!-- ヘッダー -->
   <header>
-    <div class="container masthead">
+    <div class="container masthead">(#(
+      <div class="logo-wrap" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="52" height="52" role="img" aria-label="うさTV">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+              <stop stop-color="#ffbcd0" offset="0"/>
+              <stop stop-color="#ffd7a6" offset="1"/>
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="40" fill="url(#g)"/>
+          <ellipse cx="35" cy="25" rx="8" ry="16" fill="#fff"/>
+          <ellipse cx="65" cy="25" rx="8" ry="16" fill="#fff"/>
+          <text x="50" y="60" text-anchor="middle" font-size="28" font-weight="900" fill="#b33955">TV</text>
+        </svg>
+      </div>
+
       <div class="brand">
-        <h1>うさTVニュース</h1>
+        <svg viewBox="0 0 600 120" width="440" aria-label="うさTVニュース">
+          <text x="0" y="72" font-size="72" font-weight="900" fill="#b33955">うさTV</text>
+          <text x="210" y="78" font-size="52" font-weight="700" fill="#333">ニュース</text>
+        </svg>
         <div class="tagline">毎日のイベントと明日の東京の天気を、やさしくお届け。</div>
       </div>
-      <div class="date-stamp">2025年9月10日（水）</div>
+
+      <div class="date-stamp">2025年9月9日（火）</div>
+    </div>
+
+    <div class="container">
+      <nav aria-label="主要カテゴリ">
+        <ul class="nav-list">
+          <li><a href="#" aria-current="page">トップ</a></li>
+          <li><a href="#society">社会</a></li>
+          <li><a href="#world">国際</a></li>
+          <li><a href="#events">イベント</a></li>
+          <li><a href="#weather">天気</a></li>
+          <li><a href="#ent">エンタメ</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
