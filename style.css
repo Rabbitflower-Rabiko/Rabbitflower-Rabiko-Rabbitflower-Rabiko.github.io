@@ -74,7 +74,7 @@ header {
   overflow: hidden;
 }
 .ticker-body .scroll {
-  display: inline-block; 
+  display: infinite; 
   animation: ticker-scroll 30s linear infinite;
 }
 @keyframes ticker-scroll {
