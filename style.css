@@ -1,4 +1,4 @@
-/* ===== ページ全体 ===== */
+    ../* ===== ページ全体 ===== */
 body {
   background-image: url('/images/IMG_5815.jpeg');
   background-repeat: repeat;       /* 繰り返し */
@@ -74,7 +74,7 @@ header {
   overflow: hidden;
 }
 .ticker-body .scroll {
-  display: inline-block;
+  display: infinite; 
   animation: ticker-scroll 75s linear infinite;
 }
 @keyframes ticker-scroll {
