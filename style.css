@@ -253,3 +253,23 @@ footer { text-align: center; font-size: 0.8em; color: #555; margin: 20px 0; }
   color: #555;
   margin-bottom: 8px;
 }
+
+
+/* =====追加分 ==== */
+@media (max-width: 480px) {
+  .nav-list {
+    flex-wrap: wrap;        
+    justify-content: center;
+    gap: 8px 12px;          
+  }
+  .nav-list li {
+    flex: 1 1 45%;          
+    margin-bottom: 8px;     
+    text-align: center;
+  }
+  .nav-list li a {
+    display: block;         
+    padding: 10px 0;        
+    font-size: 0.9em;       
+  }
+}
