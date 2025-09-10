@@ -1,0 +1,40 @@
+name: Auto Archive Top Page
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 毎日0時に実行
+  workflow_dispatch:    # 手動トリガーも可能
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # 今日の日付を取得
+      - name: Set Date
+        id: date
+        run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+
+      # トップページをコピーして _posts に Markdown ファイルを作成
+      - name: Create Post
+        run: |
+          mkdir -p archive-site/_posts
+          cat <<EOT > archive-site/_posts/${DATE}-top-page.md
+---
+layout: post
+title: "\${DATE} トップページ"
+date: ${DATE}
+---
+
+$(cat index.html)
+EOT
+
+      # 変更をコミットしてプッシュ
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add archive-site/_posts/${DATE}-top-page.md
+          git commit -m "Auto archive ${DATE}"
+          git push
