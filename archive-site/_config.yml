@@ -1,5 +1,5 @@
-title: うさTV archive
-description: 毎日のページをアーカイブ
+title: "うさTV archive"
+description: "Jekyll + So Simple theme"
 plugins:
   - jekyll-remote-theme
 
