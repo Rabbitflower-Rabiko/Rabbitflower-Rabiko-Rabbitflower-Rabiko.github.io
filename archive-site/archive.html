@@ -2,18 +2,28 @@
 layout: default
 title: アーカイブ
 ---
-<!-- 既存のCSSの後に追加 -->
-<link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
-<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<h1>日々のアーカイブ</h1>
 
-<h2 class="archive-title">
-  <i class="fa-solid fa-heart"></i>うさTVニュースアーカイブ</h2>
+<div class="blog-container">
+  <!-- サイドバー -->
+  <aside class="sidebar">
+    <h2>アーカイブ</h2>
+    <ul>
+      {% for post in site.posts %}
+        <li><a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }}</a></li>
+      {% endfor %}
+    </ul>
+  </aside>
 
-<ul class="archive-list">
-  {% for post in site.posts %}
-    <li class="archive-item"><a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date | date: "%Y-%m-%d" }})</li>
-  {% endfor %}
-</ul>
-
+  <!-- メインコンテンツ -->
+  <main class="content">
+    {% for post in site.posts %}
+      <article>
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <p><small>{{ post.date | date: "%Y-%m-%d" }}</small></p>
+        <div>{{ post.excerpt }}</div>
+      </article>
+    {% endfor %}
+  </main>
+</div>
