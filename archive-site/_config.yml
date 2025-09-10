@@ -3,5 +3,3 @@ description: 毎日のトップページを自動アーカイブ
 theme: minima   # 👈 追加（Jekyll公式テーマ）
 
 
-sass:
-  style: compressed
