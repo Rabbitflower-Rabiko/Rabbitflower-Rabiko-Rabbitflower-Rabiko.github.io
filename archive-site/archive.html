@@ -4,6 +4,9 @@ title: アーカイブ
 ---
 <!-- 既存のCSSの後に追加 -->
 <link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
+<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 <h2 class="archive-title">
   <i class="fa-solid fa-heart"></i>うさTVニュースアーカイブ</h2>
@@ -13,3 +16,4 @@ title: アーカイブ
     <li class="archive-item"><a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date | date: "%Y-%m-%d" }})</li>
   {% endfor %}
 </ul>
+
