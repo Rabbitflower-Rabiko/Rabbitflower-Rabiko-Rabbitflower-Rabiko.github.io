@@ -1,0 +1,59 @@
+/* ===========================
+   Pastel & Cute Custom Style
+   For So Simple Jekyll Theme
+   =========================== */
+
+/* 背景と基本テキスト */
+body {
+  background-color: #fffafc; /* 薄いパステルピンク背景 */
+  color: #333;
+  font-family: 'Caveat', cursive, sans-serif; /* 手書き風フォント */
+  line-height: 1.7;
+}
+
+/* リンク色 */
+a {
+  color: #ff7eb9;
+  transition: all 0.2s ease-in-out;
+}
+a:hover {
+  color: #ff4fa5;
+}
+
+/* ヘッダー・フッター */
+.site-header, .site-footer {
+  background-color: #ffeef5; /* ベビーピンク */
+  border-radius: 0 0 20px 20px; /* 角を丸く */
+  padding: 15px;
+}
+
+/* 記事やアーカイブカード */
+.post, .archive-item, .page {
+  background: #ffffff;
+  border-radius: 15px;  /* 丸角 */
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* ふんわり影 */
+}
+
+/* 見出し */
+h1, h2, h3 {
+  border-left: 5px solid #ffb3d9; /* パステルピンクのライン */
+  padding-left: 10px;
+  border-radius: 6px;
+  background: #fff0f7;
+  font-weight: bold;
+}
+
+/* アーカイブタイトル */
+.archive-title {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #ff4fa5;
+}
+
+/* アイコン付きの見出しに余白 */
+h2 i, h3 i {
+  margin-right: 8px;
+  color: #ff7eb9;
+}
