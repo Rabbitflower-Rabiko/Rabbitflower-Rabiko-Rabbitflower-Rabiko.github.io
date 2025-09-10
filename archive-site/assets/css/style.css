@@ -140,3 +140,19 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+
+.blog-container {
+  display: flex !important;   /* ← 強制上書き */
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.sidebar {
+  flex: 0 0 25% !important;
+}
+
+.content {
+  flex: 1 !important;
+}
