@@ -1,7 +1,37 @@
-ul {
+.blog-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* サイドバー */
+.sidebar {
+  width: 25%;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.sidebar h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
   list-style: none;
   padding: 0;
 }
-li {
-  margin-bottom: 10px;
+
+.sidebar li {
+  margin-bottom: 8px;
+}
+
+/* メインコンテンツ */
+.content {
+  width: 75%;
+}
+
+.content article {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
 }
