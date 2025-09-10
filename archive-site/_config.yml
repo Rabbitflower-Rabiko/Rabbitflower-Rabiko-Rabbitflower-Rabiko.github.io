@@ -1,4 +1,8 @@
 title: うさTV archive
 description: 毎日のページをアーカイブ
-theme: minima
+plugins:
+  - jekyll-remote-theme
+
+remote_theme: mmistakes/so-simple-theme
+
 
