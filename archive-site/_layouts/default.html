@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    {% include head.html %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-    <!-- あなたのカスタム CSS -->
+    <title>{{ page.title }} | うさぎ日記</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
   <body>
-  {% include header.html %}
+    <header>
+      <h1><a href="{{ '/' | relative_url }}">うさぎ日記</a></h1>
+    </header>
+
     <main>
       {{ content }}
     </main>
 
     <footer>
-      <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+      <p>&copy; {{ site.time | date: "%Y" }} うさぎ日記</p>
     </footer>
   </body>
 </html>
