@@ -4,12 +4,12 @@ title: アーカイブ
 ---
 <link rel="stylesheet" href="{{ 'archive-site/assets/css/style.css' | relative_url }}">
 
-<h1>日々のアーカイブ</h1>
+<h1>うさTV archive</h1>
 
 <div class="blog-container">
   <!-- サイドバー -->
   <aside ="sidebar">
-    <h2>アーカイブ</h2>
+    <h2>DATE</h2>
     <ul>
       {% for post in site.posts %}
         <li><a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }}</a></li>
