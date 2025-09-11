@@ -3,19 +3,26 @@ layout: default
 title: アーカイブ
 ---
 
-<h1>うさTVシュース archive</h1>
+<h1>うさTVニュース archive</h1></h1>
 
 <div class="archive-list">
   {% for post in site.posts %}
     <article class="archive-item">
+      <!-- 記事タイトル（日付） -->
       <h2>{{ post.date | date: "%Y-%m-%d" }}</h2>
+
+      <!-- 抜粋（冒頭の数行だけ） -->
       <div class="excerpt">
         {{ post.excerpt }}
       </div>
+
+      <!-- 続きを読むボタン -->
       <a href="#" class="read-more"
          onclick="togglePost('{{ post.id | replace:'/','-' }}'); return false;">
          続きを読む
       </a>
+
+      <!-- 全文（最初は非表示） -->
       <div id="post-{{ post.id | replace:'/','-' }}" class="full-content" style="display:none;">
         {{ post.content }}
       </div>
