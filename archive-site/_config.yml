@@ -1,5 +1,6 @@
 title: うさTV
 description: 毎日のトップページをアーカイブ
 
-plugins:
-  - jekyll-seo-tag
+sass:
+  style: compressed
+plugins: []   # minima が勝手に読み込まれないようにする
