@@ -1,0 +1,39 @@
+/* 全体レイアウト */
+.blog-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* サイドバー */
+.sidebar {
+  width: 25%;
+  background: #f8f8f8;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+/* メインコンテンツ */
+.content {
+  flex: 1;
+}
+
+/* うさぎっぽい雰囲気 */
+body {
+  font-family: "Hiragino Maru Gothic Pro", "Yu Gothic", sans-serif;
+  background-color: #fffdf8;
+  color: #333;
+}
+
+header h1 {
+  color: #d488aa;
+  text-align: center;
+  padding: 1em 0;
+}
+
+a {
+  color: #bb6688;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
