@@ -37,3 +37,40 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.archive-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.archive-item {
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+}
+
+.archive-item h2 {
+  font-size: 1.4em;
+  margin-bottom: 0.3em;
+}
+
+.excerpt {
+  color: #555;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 0.5em;
+  color: #ff6699;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+.full-content {
+  margin-top: 1em;
+  background: #f9f9f9;
+  padding: 1em;
+  border-radius: 5px;
+}
