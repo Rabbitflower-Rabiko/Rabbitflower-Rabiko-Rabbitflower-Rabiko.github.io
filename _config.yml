@@ -1,0 +1,9 @@
+title: うさぎ日記
+description: 毎日のトップページをアーカイブ
+
+# Jekyllのビルド設定
+sass:
+  style: compressed
+
+# テーマは使わず自作レイアウトを優先
+plugins: []
