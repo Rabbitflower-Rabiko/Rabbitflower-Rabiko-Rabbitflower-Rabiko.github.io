@@ -3,27 +3,33 @@ layout: default
 title: アーカイブ
 ---
 
-<h1>デイリーアーカイブ</h1>
+<h1>うさTVシュース archive</h1>
 
-<div class="blog-container">
-  <!-- サイドバー -->
-  <aside class="sidebar">
-    <h2>アーカイブ</h2>
-    <ul>
-      {% for post in site.posts %}
-        <li><a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }}</a></li>
-      {% endfor %}
-    </ul>
-  </aside>
-
-  <!-- メインコンテンツ -->
-  <main class="content">
-    {% for post in site.posts %}
-      <article>
-        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <p><small>{{ post.date | date: "%Y-%m-%d" }}</small></p>
-        <div>{{ post.excerpt }}</div>
-      </article>
-    {% endfor %}
-  </main>
+<div class="archive-list">
+  {% for post in site.posts %}
+    <article class="archive-item">
+      <h2>{{ post.date | date: "%Y-%m-%d" }}</h2>
+      <div class="excerpt">
+        {{ post.excerpt }}
+      </div>
+      <a href="#" class="read-more"
+         onclick="togglePost('{{ post.id | replace:'/','-' }}'); return false;">
+         続きを読む
+      </a>
+      <div id="post-{{ post.id | replace:'/','-' }}" class="full-content" style="display:none;">
+        {{ post.content }}
+      </div>
+    </article>
+  {% endfor %}
 </div>
+
+<script>
+function togglePost(id) {
+  const el = document.getElementById("post-" + id);
+  if (el.style.display === "none") {
+    el.style.display = "block";
+  } else {
+    el.style.display = "none";
+  }
+}
+</script>
