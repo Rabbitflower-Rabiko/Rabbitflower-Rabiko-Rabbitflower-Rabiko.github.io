@@ -2,9 +2,28 @@
 layout: default
 title: アーカイブ
 ---
-<h1>アーカイブ</h1>
-<ul>
-  {% for post in site.posts %}
-  <li><a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date | date: "%Y-%m-%d" }})</li>
-  {% endfor %}
-</ul>
+
+<h1>日々のアーカイブ</h1>
+
+<div class="blog-container">
+  <!-- サイドバー -->
+  <aside class="sidebar">
+    <h2>アーカイブ</h2>
+    <ul>
+      {% for post in site.posts %}
+        <li><a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }}</a></li>
+      {% endfor %}
+    </ul>
+  </aside>
+
+  <!-- メインコンテンツ -->
+  <main class="content">
+    {% for post in site.posts %}
+      <article>
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <p><small>{{ post.date | date: "%Y-%m-%d" }}</small></p>
+        <div>{{ post.excerpt }}</div>
+      </article>
+    {% endfor %}
+  </main>
+</div>
