@@ -15,10 +15,11 @@
 <!-- 背景デコ -->
 <div class="bg-deco">
   <div class="heart"></div>
-  <div class="star"></div>
-  <div class="cloud"></div>
   <div class="heart"></div>
   <div class="star"></div>
+  <div class="star"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
 </div>
 
 <!-- うさぎマスコット -->
@@ -36,8 +37,14 @@
 <header>
   <div class="container masthead">
     <div class="logo-wrap" aria-hidden="true">
-      <svg viewBox="0 0 100 100" width="52" height="52">
-        <circle cx="50" cy="50" r="40" fill="#ffd7a6"/>
+      <svg viewBox="0 0 100 100" width="52" height="52" role="img" aria-label="うさTV">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+            <stop stop-color="#ffbcd0" offset="0"/>
+            <stop stop-color="#ffd7a6" offset="1"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="40" fill="url(#g)"/>
         <ellipse cx="35" cy="25" rx="8" ry="16" fill="#fff"/>
         <ellipse cx="65" cy="25" rx="8" ry="16" fill="#fff"/>
         <text x="50" y="60" text-anchor="middle" font-size="28" font-weight="900" fill="#b33955">TV</text>
@@ -58,14 +65,14 @@
   <div class="container">
     <nav aria-label="主要カテゴリ">
       <ul class="nav-list">
-        <li><a href="#">トップ</a></li>
-        <li><a href="#society">社会・記念日</a></li>
+        <li><a href="#" aria-current="page">トップ</a></li>
+        <li><a href="#society">社会</a></li>
         <li><a href="#world">国際</a></li>
         <li><a href="#events">イベント</a></li>
         <li><a href="#traffic">交通</a></li>
         <li><a href="#weather">天気</a></li>
-        <li><a href="#entertainment">エンタメ</a></li>
-        <li><a href="#fortune">占い</a></li>
+        <li><a href="#ent">エンタメ</a></li>
+        <li><a href="#uranai">占い</a></li>
         <li><a href="#cooking">クッキング</a></li>
         <li><a href="#health">健康</a></li>
       </ul>
@@ -73,155 +80,175 @@
   </div>
 </header>
 
-<main class="container">
+<div class="container">
+  <main>
 
-  <!-- 社会・記念日 -->
-  <section id="society">
-    <h2>社会・記念日</h2>
-    <article>
-      <h3>警察相談の日</h3>
-      <p>困りごとを気軽に相談できる日として、うさの国でも「警察相談の日」が設けられました。</p>
+    <!-- 社会・記念日 -->
+    <article class="card" id="society">
+      <div class="head">
+        <div class="eyebrow">社会・記念日</div>
+        <h1>9月12日（金）記念日の話題</h1>
+        <div class="sub">編集部</div>
+      </div>
+      <div class="content">
+        <ul class="list">
+          <li><strong>警察相談の日</strong>  
+            困りごとを気軽に相談できる日。うさぎ交番では安心サポートを実施中。
+          </li>
+          <li><strong>チョコの日</strong>  
+            うさの国のショコラ職人が新作を発表。甘い香りに包まれる一日。
+          </li>
+          <li><strong>もふもふ感謝の日</strong>  
+            毛並みを大切にする日。ブラッシングイベントが各地で開催。
+          </li>
+          <li><strong>お月見準備の日</strong>  
+            団子づくりや飾り付けで十五夜を迎える準備をする日。
+          </li>
+          <li><strong>森の安全点検の日</strong>  
+            倒木や小道の危険を点検し、安全な散歩道を整備する取り組み。
+          </li>
+        </ul>
+      </div>
     </article>
-    <article>
-      <h3>チョコの日</h3>
-      <p>うさの国のショコラ職人たちが集まり、新作チョコの発表会が開催されます。</p>
-    </article>
-    <article>
-      <h3>もふもふ感謝の日</h3>
-      <p>うさぎの毛並みを大切にする日。ブラッシングイベントが各地で開かれています。</p>
-    </article>
-    <article>
-      <h3>お月見準備の日</h3>
-      <p>十五夜を前に、団子づくりや飾り付けの準備をする日です。</p>
-    </article>
-    <article>
-      <h3>森の安全点検の日</h3>
-      <p>木々の倒木や小道の危険を点検し、安心して散歩できる環境を整える取り組みが行われています。</p>
-    </article>
-  </section>
 
-  <!-- 国際 -->
-  <section id="world">
-    <h2>国際</h2>
-    <article>
-      <h3>キャロット国際会議</h3>
-      <p>各国の代表が集まり、にんじんの栽培方法や品種改良について話し合いました。</p>
+    <!-- 国際 -->
+    <article class="card" id="world">
+      <div class="head">
+        <div class="eyebrow">国際</div>
+        <h2>キャロット国際会議</h2>
+        <div class="sub">国際部</div>
+      </div>
+      <div class="content">
+        <p>各国の代表が集まり、にんじん栽培や品種改良について意見を交わしました。</p>
+      </div>
     </article>
-  </section>
 
-  <!-- イベント -->
-  <section id="events">
-    <h2>イベント</h2>
-    <article>
-      <h3>うさマラソン大会</h3>
-      <p>草原を駆け抜けるうさぎたちのマラソン大会。沿道の応援も盛り上がっています。</p>
+    <!-- イベント -->
+    <article class="card" id="events">
+      <div class="head">
+        <div class="eyebrow">イベント</div>
+        <h2>うさマラソン大会 & にんじんフェア</h2>
+        <div class="sub">中央草原</div>
+      </div>
+      <div class="content">
+        <p>草原を駆け抜けるマラソン大会が盛り上がり、にんじんフェアではスイーツや料理が人気を集めています。</p>
+      </div>
     </article>
-    <article>
-      <h3>にんじんフェア</h3>
-      <p>新鮮なにんじんを使ったスイーツや料理が並ぶイベント。</p>
-    </article>
-    <article>
-      <h3>もふもふフェス</h3>
-      <p>ふわふわな毛並み自慢のうさぎたちが集う、抱っこ体験コーナーが人気。</p>
-    </article>
-  </section>
 
-  <!-- 交通 -->
-  <section id="traffic">
-    <h2>ラビー道路 交通情報</h2>
-    <p>本日朝は、にんじん市場周辺で軽い渋滞が発生。午後には解消される見込みです。</p>
-  </section>
-
-  <!-- 天気 -->
-  <section id="weather">
-    <h2>天気予報（うさの国＝東京）</h2>
-    <p><strong>2025年9月12日（金）の天気：</strong> 晴れのちくもり</p>
-    <ul>
-      <li>最高気温：28℃</li>
-      <li>最低気温：21℃</li>
-      <li>降水確率：20%</li>
-      <li>洗濯指数：乾きやすいけど夕方の曇りに注意</li>
-    </ul>
-  </section>
-
-  <!-- エンタメ -->
-  <section id="entertainment">
-    <h2>エンタメ</h2>
-    <article>
-      <h3>うさドル新曲発表</h3>
-      <p>人気うさドルグループが新曲を発表し、草原ステージでライブを開催しました。</p>
+    <!-- 交通 -->
+    <article class="card" id="traffic">
+      <div class="head">
+        <div class="eyebrow">交通情報</div>
+        <h2>ラビー道路の渋滞状況</h2>
+        <div class="sub">交通センター発表</div>
+      </div>
+      <div class="content">
+        <p>にんじん市場周辺で朝は渋滞が発生しましたが、午後には解消見込みです。</p>
+      </div>
     </article>
-    <article>
-      <h3>もぐもぐシネマ上映会</h3>
-      <p>うさぎ向け短編アニメが上映され、にんじんポップコーンが大人気です。</p>
-    </article>
-    <article>
-      <h3>森のアート展</h3>
-      <p>木の枝や落ち葉を使った作品が展示され、訪れたうさぎたちを楽しませています。</p>
-    </article>
-    <article>
-      <h3>しっぽダンス大会</h3>
-      <p>小さなしっぽをリズミカルに振る競技。優勝者にはにんじんクラウンが贈られます。</p>
-    </article>
-    <article>
-      <h3>チモシー演劇祭</h3>
-      <p>若手うさぎ劇団がチモシーを題材にした演劇を披露しました。</p>
-    </article>
-  </section>
 
-  <!-- 占い -->
-  <section id="fortune">
-    <h2>今日のチモシー占い</h2>
-    <p>ラッキーカラーは「もふもふホワイト」。今日は仲間と一緒に過ごすと楽しい発見がありそう！</p>
-  </section>
+    <!-- 天気 -->
+    <aside class="card" id="weather" aria-labelledby="wx-title">
+      <div class="head">
+        <div class="eyebrow">明日の天気</div>
+        <h2 id="wx-title">うさの国（9月13日）</h2>
+        <div class="sub">晴れのちくもり</div>
+      </div>
+      <div class="wx">
+        <div class="wx-ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="16" fill="#ffcc33"/>
+            <ellipse cx="42" cy="38" rx="14" ry="9" fill="#e9e9e9"/>
+            <ellipse cx="28" cy="40" rx="18" ry="10" fill="#dddddd"/>
+          </svg>
+        </div>
+        <div>
+          <div class="wx-kv">
+            <div class="tmax">最高 28℃</div>
+            <div class="tmin">／ 最低 21℃</div>
+          </div>
+          <div class="advisory">昼は暑く、こまめな水分補給を。</div>
+          <div class="advisory">洗濯指数：★★★★☆（日中は乾きやすいが夕方はくもり）</div>
+        </div>
+      </div>
+    </aside>
 
-  <!-- クッキング -->
-  <section id="cooking">
-    <h2>今日のうさぎクッキング</h2>
-    <article>
-      <h3>にんじんケーキ</h3>
-      <p>しっとり甘いケーキ。紅茶と合わせてティータイムにぴったり。</p>
-    </article>
-    <article>
-      <h3>クローバーサラダ</h3>
-      <p>新鮮なクローバーと野菜を合わせた爽やかなサラダ。</p>
-    </article>
-    <article>
-      <h3>りんごのひんやりスープ</h3>
-      <p>甘酸っぱいりんごを使った冷製スープ。暑い日におすすめです。</p>
-    </article>
-  </section>
+    <!-- エンタメ -->
+    <section class="card" id="ent">
+      <div class="head">
+        <div class="eyebrow">エンタメ</div>
+        <h2>今日の話題エンタメ</h2>
+      </div>
+      <div class="content">
+        <ul class="list">
+          <li>うさドルグループが新曲発表、草原ライブで大盛況。</li>
+          <li>「もぐもぐシネマ」上映会ににんじんポップコーン登場。</li>
+          <li>森のアート展で自然を活かした作品が話題。</li>
+          <li>しっぽダンス大会、優勝者ににんじんクラウン授与。</li>
+          <li>チモシー演劇祭、若手劇団の演目に拍手喝采。</li>
+        </ul>
+      </div>
+    </section>
 
-  <!-- 健康 -->
-  <section id="health">
-    <h2>今日の健康ひとこと</h2>
-    <p>換毛期は毛球症に注意。こまめなブラッシングと十分な水分補給を心がけましょう。</p>
-  </section>
+    <!-- 占い -->
+    <section class="card" id="uranai">
+      <div class="head">
+        <div class="eyebrow">今日の占い</div>
+        <h2>チモシー占い</h2>
+      </div>
+      <div class="content">
+        <p>ラッキーカラーは<strong>もふもふホワイト</strong>。仲間と過ごすことで楽しい発見がありそう。</p>
+      </div>
+    </section>
 
-  <!-- リンク集 -->
-  <section id="links">
-    <h2>おすすめリンク</h2>
-    <ul>
-      <li>
-        <a href="https://rabbitworld.rabbitflowerdiary.com/" target="_blank">RabbitWorld</a>
-        <div class="link-desc">ルブラン美夜子のレッツウェザーはこちら</div>
-      </li>
-      <li>
-        <a href="https://newrabi.rabbitflowerdiary.com/index" target="_blank">うさぎの世話人のためのページ</a>
-        <div class="link-desc">はじめてのうさと家族になった人間たちへ</div>
-      </li>
-    </ul>
-  </section>
+    <!-- クッキング -->
+    <section class="card" id="cooking">
+      <div class="head">
+        <div class="eyebrow">今日のうさぎクッキング</div>
+        <h2>おすすめレシピ</h2>
+      </div>
+      <div class="content">
+        <ul class="list">
+          <li><strong>にんじんケーキ</strong>  
+            しっとり甘く、紅茶と相性抜群。
+          </li>
+          <li><strong>クローバーサラダ</strong>  
+            爽やかな香りでランチに最適。
+          </li>
+          <li><strong>りんごのひんやりスープ</strong>  
+            暑い日にぴったりの冷製スープ。
+          </li>
+        </ul>
+      </div>
+    </section>
 
-</main>
+    <!-- 健康 -->
+    <section class="card" id="health">
+      <div class="head">
+        <div class="eyebrow">うさぎの健康アドバイス</div>
+        <h2>今日のひとこと</h2>
+      </div>
+      <div class="content">
+        <p>換毛期は毛球症に注意。こまめなブラッシングと十分な水分補給を心がけましょう。</p>
+      </div>
+    </section>
 
-<!-- フッター -->
-<footer>
-  <div class="container">
-    <p>お問い合わせ： <a href="https://x.com/RabiHouse" target="_blank">x.com/RabiHouse</a></p>
-    <p>&copy; 2025 うさTVニュース</p>
-  </div>
-</footer>
+    <!-- リンクまとめ -->
+    <section class="links-section">
+      <a href="https://rabbitworld.rabbitflowerdiary.com/" target="_blank">RabbitWorld</a>
+      <div class="link-desc">ルブラン美夜子のレッツウェザーはこちら</div>
+
+      <a href="https://newrabi.rabbitflowerdiary.com/index" target="_blank">うさぎの世話人のためのページ</a>
+      <div class="link-desc">はじめてのうさと家族になった人間たちへ</div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <p>お問い合わせ： <a href="https://x.com/RabiHouse" target="_blank">@RabiHouse</a></p>
+    <p>© 2025 うさTVニュース / Rabiko rabbitflowerdiary</p>
+  </footer>
+</div>
 
 </body>
 </html>
