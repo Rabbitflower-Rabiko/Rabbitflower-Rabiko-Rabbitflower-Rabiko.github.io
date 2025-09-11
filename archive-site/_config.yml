@@ -1,5 +1,5 @@
-title: うさぎ日記
-description: 毎日のトップページをアーカイブ
+title: うさTV
+description: 毎日のページをアーカイブ
 sass:
   style: compressed
 plugins: []   # minima が勝手に読み込まれないようにする
