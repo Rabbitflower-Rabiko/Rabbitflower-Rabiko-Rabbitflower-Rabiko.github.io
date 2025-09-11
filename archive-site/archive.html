@@ -3,7 +3,7 @@ layout: default
 title: アーカイブ
 ---
 
-<h1>うさTVニュース archive</h1></h1>
+<h1>うさTVニュース  archive</h1>
 
 <div class="archive-list">
   {% for post in site.posts %}
@@ -18,6 +18,7 @@ title: アーカイブ
 
       <!-- 続きを読むボタン -->
       <a href="#" class="read-more"
+         id="more-{{ post.id | replace:'/','-' }}"
          onclick="togglePost('{{ post.id | replace:'/','-' }}'); return false;">
          続きを読む
       </a>
@@ -25,6 +26,13 @@ title: アーカイブ
       <!-- 全文（最初は非表示） -->
       <div id="post-{{ post.id | replace:'/','-' }}" class="full-content" style="display:none;">
         {{ post.content }}
+        <!-- 閉じるボタン -->
+        <p>
+          <a href="#" class="close-btn"
+             onclick="togglePost('{{ post.id | replace:'/','-' }}'); return false;">
+             閉じる
+          </a>
+        </p>
       </div>
     </article>
   {% endfor %}
@@ -32,11 +40,15 @@ title: アーカイブ
 
 <script>
 function togglePost(id) {
-  const el = document.getElementById("post-" + id);
-  if (el.style.display === "none") {
-    el.style.display = "block";
+  const content = document.getElementById("post-" + id);
+  const moreBtn = document.getElementById("more-" + id);
+
+  if (content.style.display === "none") {
+    content.style.display = "block";
+    moreBtn.style.display = "none";   // 続きを読むを隠す
   } else {
-    el.style.display = "none";
+    content.style.display = "none";
+    moreBtn.style.display = "inline"; // 続きを読むを戻す
   }
 }
 </script>
