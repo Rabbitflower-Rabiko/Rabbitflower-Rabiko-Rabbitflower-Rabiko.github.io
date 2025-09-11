@@ -7,3 +7,5 @@ sass:
 
 # テーマは使わず自作レイアウトを優先
 plugins: []
+
+timezone: Asia/Tokyo
