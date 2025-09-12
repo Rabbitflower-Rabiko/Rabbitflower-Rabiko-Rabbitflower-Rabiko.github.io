@@ -1,51 +1,38 @@
-/* ===========================
-   全体・共通デザイン
-   =========================== */
+/* ==========================
+   Archive Blog Style
+   ========================== */
+
+/* 全体 */
 body {
   font-family: "Hiragino Maru Gothic Pro", "Yu Gothic", sans-serif;
-  background-color: #fffdf8; /* ほんのりアイボリー */
+  background-color: #fffdf8;
   color: #333;
   margin: 0;
   padding: 0;
 }
 
-a {
-  color: #bb6688;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
+/* ヘッダー */
 header h1, .site-title {
   color: #d488aa;
   text-align: center;
   padding: 1em 0;
+  margin: 0;
 }
 
-/* ===========================
-   アーカイブ一覧ページ
-   =========================== */
-.blog-container {
-  display: flex;
-  gap: 20px;
+/* リンク */
+a {
+  color: #bb6688;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
-.sidebar {
-  width: 25%;
-  background: #f8f8f8;
-  padding: 1em;
-  border-radius: 8px;
-}
-
-.content {
-  flex: 1;
-}
-
+/* アーカイブ一覧 */
 .archive-list {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 2em auto;
+  padding: 0 1em;
 }
 
 .archive-item {
@@ -56,18 +43,26 @@ header h1, .site-title {
 .archive-item h2 {
   font-size: 1.4em;
   margin-bottom: 0.3em;
+  color: #d3558f;
 }
 
+/* 抜粋 */
 .excerpt {
   color: #555;
+  font-size: 0.95em;
 }
 
+/* 続きを読むボタン */
 .read-more {
   display: inline-block;
   margin-top: 0.5em;
   color: #ff6699;
 }
+.read-more:hover {
+  text-decoration: underline;
+}
 
+/* 全文表示 */
 .full-content {
   margin-top: 1em;
   background: #f9f9f9;
@@ -75,60 +70,31 @@ header h1, .site-title {
   border-radius: 5px;
 }
 
-/* ===========================
-   各投稿ページ（ブログ風）
-   =========================== */
-body.post-page {
-  padding: 20px;
-}
-
+/* 投稿ページ */
 .post-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 1em;
 }
 
 .post-card {
   background: #fff;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.post-header {
-  text-align: center;
-  margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 2em;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .post-title {
   font-size: 1.8em;
-  color: #d63384;
-  margin: 0;
+  color: #bb4466;
+  margin-bottom: 0.5em;
 }
 
 .post-date {
-  font-size: 0.9em;
   color: #888;
-}
-
-.post-content {
-  line-height: 1.8;
-  color: #444;
+  font-size: 0.9em;
 }
 
 .post-footer {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.post-footer a {
-  text-decoration: none;
-  color: #fff;
-  background: #ff6fae;
-  padding: 10px 20px;
-  border-radius: 20px;
-  transition: background 0.3s;
-}
-
-.post-footer a:hover {
-  background: #ff4c91;
+  margin-top: 2em;
 }
