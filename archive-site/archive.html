@@ -1,71 +1,22 @@
-name: Auto Archive Top Page
+---
+layout: default
+title: アーカイブ
+---
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 16 * * *'  # 毎日0時に実行（必要なら調整）
+<h1>うさTVニュース アーカイブ</h1>
 
-permissions:
-  contents: write
+<div class="archive-list">
+  {% for post in site.posts %}
+    <article class="archive-item">
+      <!-- 日付リンク -->
+      <h2>
+        <a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }} トップページ</a>
+      </h2>
 
-jobs:
-  archive:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set Date
-        run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
-
-      - name: Create Archive Markdown
-        run: |
-          # 保存先ディレクトリ
-          mkdir -p _posts
-
-          # 出力ファイルパス
-          dest="_posts/${DATE}-top-page.md"
-
-          # front matter を書く
-          echo '---' > "$dest"
-          echo 'layout: post' >> "$dest"
-          echo "title: \"${DATE} トップページ\"" >> "$dest"
-          echo "date: ${DATE}" >> "$dest"
-          echo '---' >> "$dest"
-          echo '' >> "$dest"
-
-          # index.html を include_relative で取り込むように記述（Jekyll ビルド時に展開されます）
-          echo '{% include_relative ../index.html %}' >> "$dest"
-          echo '' >> "$dest"
-
-          # --- デバッグ出力（作成確認用）
-          echo "Created file: $dest"
-          ls -la _posts || true
-          echo "---- head of $dest ----"
-          sed -n '1,120p' "$dest" || true
-          echo "---- file size (bytes) ----"
-          wc -c "$dest" || true
-
-      - name: Show git status before add (debug)
-        run: |
-          echo "git status:"
-          git status --porcelain
-          echo "git ls-files (some):"
-          git ls-files | sed -n '1,200p' || true
-
-      - name: Commit and Push
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add _posts/${DATE}-top-page.md
-          echo "Staged (cached) files:"
-          git diff --name-only --cached || true
-          git commit -m "Auto archive ${DATE}" || echo "No changes to commit"
-          git push
-
-      - name: Post-commit log (debug)
-        run: |
-          echo "Last commit:"
-          git --no-pager log -1 --name-status || true
+      <!-- 抜粋 -->
+      <div class="excerpt">
+        {{ post.excerpt }}
+      </div>
+    </article>
+  {% endfor %}
+</div>
