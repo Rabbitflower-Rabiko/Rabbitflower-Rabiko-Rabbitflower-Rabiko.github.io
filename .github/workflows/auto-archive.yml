@@ -43,5 +43,3 @@ jobs:
           git add archive-site/_posts/${DATE}-top-page.html
           git commit -m "Auto archive ${DATE}" || echo "No changes to commit"
           git push
-
-このコードに必要なものを組み込んで
