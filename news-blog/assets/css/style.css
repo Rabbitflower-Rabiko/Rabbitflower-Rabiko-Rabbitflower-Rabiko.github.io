@@ -1,13 +1,16 @@
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
+/* 全体スタイル */
 body {
     font-family: 'Noto Sans JP', sans-serif;
     background: linear-gradient(135deg, #ffeef8 0%, #f0f9ff 100%);
     margin: 0;
     padding: 1rem;
+    color: #333;
 }
 
-/* カード一覧 */
+/* ニュース一覧カード */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -15,7 +18,7 @@ body {
     margin: 1rem 0;
 }
 
-/* ブログカード */
+/* ブログカード（一覧用） */
 .blog-card {
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.9);
@@ -63,7 +66,7 @@ body {
     font-weight: 500;
 }
 
-/* ハート浮遊アニメーション */
+/* アニメーション */
 .heart-float {
     animation: float 3s ease-in-out infinite;
 }
@@ -72,7 +75,6 @@ body {
     50% { transform: translateY(-10px); }
 }
 
-/* きらめきアニメーション */
 .sparkle {
     animation: sparkle 2s linear infinite;
 }
