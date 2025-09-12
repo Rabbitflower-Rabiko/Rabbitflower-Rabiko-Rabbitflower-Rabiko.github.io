@@ -25,20 +25,25 @@ jobs:
       - name: Create Post
         run: |
           mkdir -p archive-site/_posts
-          {
-            echo '---'
-            echo 'layout: post'
-            echo "title: \"${DATE} トップページ\""
-            echo "date: ${DATE}"
-            echo '---'
-            cat index.html
-          } > archive-site/_posts/${DATE}-top-page.md
+{
+    echo '<!DOCTYPE html>'
+    echo '<html lang="ja">'
+    echo '<head>'
+    echo '  <meta charset="UTF-8">'
+    echo "  <title>アーカイブ ${DATE}</title>"
+    echo '</head>'
+    echo '<body>'
+    echo "  <h1>${DATE} トップページ</h1>"
+    cat index.html
+    echo '</body>'
+    echo '</html>'
+} > archive-site/archives/${DATE}.html
 
       # 変更をコミットしてプッシュ
       - name: Commit and Push
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add archive-site/_posts/${DATE}-top-page.md
+          git add archive-site/_posts/${DATE}-top-page.html
           git commit -m "Auto archive ${DATE}" || echo "No changes to commit"
           git push
