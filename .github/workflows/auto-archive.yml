@@ -26,29 +26,29 @@ jobs:
         run: |
           mkdir -p archive-site/_posts
           
-      - name: Create Archive HTML
+        - name: Create Archive HTML
         run: |
-          mkdir -p archive-site/archives
-          echo '<!DOCTYPE html>' > archive-site/archives/${DATE}.html
-          echo '<html lang="ja">' >> archive-site/archives/${DATE}.html
-          echo '<head>' >> archive-site/archives/${DATE}.html
-          echo '  <meta charset="UTF-8">' >> archive-site/archives/${DATE}.html
-          echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/archives/${DATE}.html
-          echo '</head>' >> archive-site/archives/${DATE}.html
-          echo '<body>' >> archive-site/archives/${DATE}.html
-          echo "  <h1>${DATE} トップページ</h1>" >> archive-site/archives/${DATE}.html
-          cat index.html >> archive-site/archives/${DATE}.html
-          echo '</body>' >> archive-site/archives/${DATE}.html
-          echo '</html>' >> archive-site/archives/${DATE}.html
+          mkdir -p archive-site/_posts
+          echo '<!DOCTYPE html>' > archive-site/_posts/${DATE}-top-page.html
+          echo '<html lang="ja">' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<head>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '  <meta charset="UTF-8">' >> archive-site/_posts/${DATE}-top-page.html
+          echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/_posts/${DATE}-top-page.html
+          echo '</head>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<body>' >> archive-site/_posts/${DATE}-top-page.html
+          echo "  <h1>${DATE} トップページ</h1>" >> archive-site/_posts/${DATE}-top-page.html
+          cat index.html >> archive-site/_posts/${DATE}-top-page.html
+          echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
 
 
 
-      # 変更をコミットしてプッシュ
-      - name: Commit and Push
+
+      # 変更をコミットしてプッシュ      - name: Commit and Push
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add archive-site/archives/${DATE}.html
+          git add archive-site/_posts/${DATE}-top-page.html
           git commit -m "Auto archive ${DATE}" || echo "No changes to commit"
           git push
 
