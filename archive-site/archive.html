@@ -8,10 +8,13 @@ title: アーカイブ
 <div class="archive-list">
   {% for post in site.posts %}
     <article class="archive-item">
-      <!-- 日付リンク -->
+      <!-- 記事タイトル（ポスト名） -->
       <h2>
-        <a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }} トップページ</a>
+        <a href="{{ post.url }}">{{ post.title }}</a>
       </h2>
+
+      <!-- 日付を表示したい場合は追加で -->
+      <p class="post-date">{{ post.date | date: "%Y-%m-%d" }}</p>
 
       <!-- 抜粋 -->
       <div class="excerpt">
