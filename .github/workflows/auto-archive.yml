@@ -2,8 +2,8 @@ name: Auto Archive Top Page
 
 on:
   schedule:
-    - cron: '0 16 * * *'  # 毎日0時に実行
-  workflow_dispatch:    # 手動トリガーも可能
+    - cron: '0 16 * * *'  # 毎日0時に実行（日本時間の午前1時）
+  workflow_dispatch:      # 手動トリガーも可能
 
 permissions:
   contents: write
@@ -21,8 +21,8 @@ jobs:
         id: date
         run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
 
-      # トップページをコピーして _posts に Markdown ファイルを作成
-           - name: Create Archive HTML
+      # トップページをコピーして _posts に html ファイルを作成
+      - name: Create Archive HTML
         run: |
           mkdir -p archive-site/_posts
           echo '<!DOCTYPE html>' > archive-site/_posts/${DATE}-top-page.html
@@ -36,11 +36,6 @@ jobs:
           cat index.html >> archive-site/_posts/${DATE}-top-page.html
           echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
           echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
-
-
-
-
-
 
       # 変更をコミットしてプッシュ      
       - name: Commit and Push
