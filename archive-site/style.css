@@ -281,3 +281,23 @@ footer { text-align: center; font-size: 0.8em; color: #555; margin: 20px 0; }
     font-size: 0.9em;       
   }
 }
+
+.archive-list h2 {
+  font-size: 1.6em;
+  margin: 0.4em 0 0.2em;
+}
+
+.archive-list h2 a {
+  color: #333;   /* タイトルを黒っぽく */
+  text-decoration: none;
+}
+
+.archive-list h2 a:hover {
+  text-decoration: underline;
+}
+
+.post-date {
+  font-size: 0.9em;
+  color: #666;   /* 薄いグレー */
+  margin-bottom: 0.5em;
+}
