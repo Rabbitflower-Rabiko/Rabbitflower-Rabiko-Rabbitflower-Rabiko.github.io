@@ -12,6 +12,7 @@ title: アーカイブ
       <h2>
         <a href="{{ post.url }}">{{ post.title }}</a>
       </h2>
+<link rel="stylesheet" href="{{ '/archive-site/assets/css/style.css' | relative_url }}">
 
       <!-- 日付を表示したい場合は追加で -->
       <p class="post-date">{{ post.date | date: "%Y-%m-%d" }}</p>
