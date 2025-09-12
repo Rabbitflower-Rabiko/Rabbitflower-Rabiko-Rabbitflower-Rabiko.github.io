@@ -34,6 +34,13 @@ jobs:
           cat index.html >> archive-site/_posts/${DATE}-top-page.html
           echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
           echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
+        
+  ---
+layout: post
+title: "${DATE} うさTV"
+date: ${DATE}
+---
+
 
       # 変更をコミットしてプッシュ
       - name: Commit and Push
