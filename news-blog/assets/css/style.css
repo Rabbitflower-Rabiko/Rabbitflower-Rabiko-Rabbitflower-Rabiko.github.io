@@ -4,7 +4,7 @@
 /* 全体スタイル */
 body {
     font-family: 'Noto Sans JP', sans-serif;
-    background: linear-gradient(135deg, #ffeef8 0%, #f0f9ff 100%);
+    background: linear-gradient(135deg, #ffeef8 0%, #f0f9ff 100%)!important;
     margin: 0;
     padding: 1rem;
     color: #333;
