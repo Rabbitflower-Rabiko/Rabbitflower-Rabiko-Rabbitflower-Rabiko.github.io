@@ -1,0 +1,35 @@
+name: Auto Archive Index
+
+on:
+  schedule:
+    - cron: '0 15 * * *'  # 日本時間0時に実行
+  workflow_dispatch:
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create daily post from root index.html
+        working-directory: news-blog
+        run: |
+          TODAY=$(date -d '9 hours' +%Y-%m-%d)   # JSTの日付
+          POST_FILE="_posts/${TODAY}-index.html"
+
+          echo "---" > $POST_FILE
+          echo "layout: post" >> $POST_FILE
+          echo "title: \"ニュース $TODAY\"" >> $POST_FILE
+          echo "date: $TODAY" >> $POST_FILE
+          echo "---" >> $POST_FILE
+
+          # 1階層上の index.html をコピー
+          cat ../index.html >> $POST_FILE
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add news-blog/_posts/
+          git commit -m "Auto post for $(date -d '9 hours' +%Y-%m-%d)" || echo "No changes"
+          git push
