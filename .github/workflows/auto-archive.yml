@@ -36,7 +36,9 @@ jobs:
           echo '</head>' >> archive-site/_posts/${DATE}-top-page.html
           echo '<body>' >> archive-site/_posts/${DATE}-top-page.html
           echo "  <h1></h1>" >> archive-site/_posts/${DATE}-top-page.html
-          cat index.html >> archive-site/_posts/${DATE}-top-page.html
+        # index.html の <body> 内だけを抽出
+          sed -n '/<body>/,/<\/body>/p' index.html | sed '1d;$d' >> archive-site/_posts/${DATE}-top-page.html
+
           echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
           echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
 
