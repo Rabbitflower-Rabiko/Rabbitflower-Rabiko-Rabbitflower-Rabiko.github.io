@@ -22,11 +22,7 @@ jobs:
         run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
 
       # トップページをコピーして _posts に Markdown ファイルを作成
-      - name: Create Post
-        run: |
-          mkdir -p archive-site/_posts
-          
-             - name: Create Archive HTML
+           - name: Create Archive HTML
         run: |
           mkdir -p archive-site/_posts
           echo '<!DOCTYPE html>' > archive-site/_posts/${DATE}-top-page.html
