@@ -26,20 +26,21 @@ jobs:
         run: |
           mkdir -p archive-site/_posts
           
-- name: Create Archive HTML
-  run: |
-    mkdir -p archive-site/archives
-    echo '<!DOCTYPE html>' > archive-site/archives/${DATE}.html
-    echo '<html lang="ja">' >> archive-site/archives/${DATE}.html
-    echo '<head>' >> archive-site/archives/${DATE}.html
-    echo '  <meta charset="UTF-8">' >> archive-site/archives/${DATE}.html
-    echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/archives/${DATE}.html
-    echo '</head>' >> archive-site/archives/${DATE}.html
-    echo '<body>' >> archive-site/archives/${DATE}.html
-    echo "  <h1>${DATE} トップページ</h1>" >> archive-site/archives/${DATE}.html
-    cat index.html >> archive-site/archives/${DATE}.html
-    echo '</body>' >> archive-site/archives/${DATE}.html
-    echo '</html>' >> archive-site/archives/${DATE}.html
+      - name: Create Archive HTML
+        run: |
+          mkdir -p archive-site/archives
+          echo '<!DOCTYPE html>' > archive-site/archives/${DATE}.html
+          echo '<html lang="ja">' >> archive-site/archives/${DATE}.html
+          echo '<head>' >> archive-site/archives/${DATE}.html
+          echo '  <meta charset="UTF-8">' >> archive-site/archives/${DATE}.html
+          echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/archives/${DATE}.html
+          echo '</head>' >> archive-site/archives/${DATE}.html
+          echo '<body>' >> archive-site/archives/${DATE}.html
+          echo "  <h1>${DATE} トップページ</h1>" >> archive-site/archives/${DATE}.html
+          cat index.html >> archive-site/archives/${DATE}.html
+          echo '</body>' >> archive-site/archives/${DATE}.html
+          echo '</html>' >> archive-site/archives/${DATE}.html
+
 
 
       # 変更をコミットしてプッシュ
