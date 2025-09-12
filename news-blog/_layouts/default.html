@@ -6,11 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | {{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS を先に読み込む -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 自作CSSを後に読み込んで上書きできるようにする -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
+
 <body class="bg-pink-50 text-gray-800 font-sans">
   <!-- ヘッダー -->
   <header class="bg-pink-200 p-4 shadow">
