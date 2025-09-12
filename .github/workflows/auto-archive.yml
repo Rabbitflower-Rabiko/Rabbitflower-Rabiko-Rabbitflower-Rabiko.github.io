@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  
 
 jobs:
   archive:
@@ -18,10 +17,9 @@ jobs:
 
       # 今日の日付を取得
       - name: Set Date
-        id: date
         run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
 
-      # トップページをコピーして _posts に html ファイルを作成
+      # トップページをコピーして _posts に HTML ファイルを作成
       - name: Create Archive HTML
         run: |
           mkdir -p archive-site/_posts
@@ -37,7 +35,7 @@ jobs:
           echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
           echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
 
-      # 変更をコミットしてプッシュ      
+      # 変更をコミットしてプッシュ
       - name: Commit and Push
         run: |
           git config user.name "github-actions"
@@ -45,4 +43,3 @@ jobs:
           git add archive-site/_posts/${DATE}-top-page.html
           git commit -m "Auto archive ${DATE}" || echo "No changes to commit"
           git push
-
