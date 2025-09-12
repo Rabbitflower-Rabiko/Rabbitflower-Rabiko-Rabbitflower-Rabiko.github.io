@@ -1,1 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>にんじんケーキ作り - うさぎのふわふわブログ 🐰</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #f0f9ff 100%);
+        }
+        
+        .article-content {
+            line-height: 1.8;
+        }
+        
+        .article-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            color: #374151;
+        }
+        
+        .article-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: #4B5563;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+            color: #6B7280;
+        }
+        
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+            color: #6B7280;
+        }
+        
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .heart-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .sparkle {
+            animation: sparkle 2s linear infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .related-card {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .related-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- ヘッダー -->
+    <header class="bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl heart-float">🐰</div>
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+                        うさぎのふわふわブログ
+                    </h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-pink-500 transition-colors font-medium">ホーム</a>
+                    <a href="#" class="text-gray-700 hover:text-pink-500 transition-colors font-medium">記事</a>
+                    <a href="#" class="text-gray-700 hover:text-pink-500 transition-colors font-medium">プロフィール</a>
+                    <a href="#" class="text-gray-700 hover:text-pink-500 transition-colors font-medium">お問い合わせ</a>
+                </nav>
+                <button class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
 
+    <!-- メインコンテンツ -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <!-- パンくずリスト -->
+        <nav class="mb-8">
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <a href="#" class="hover:text-pink-500 transition-colors">🏠 ホーム</a>
+                <span>></span>
+                <a href="#" class="hover:text-pink-500 transition-colors">記事一覧</a>
+                <span>></span>
+                <span class="text-gray-800">にんじんケーキ作り</span>
+            </div>
+        </nav>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- 記事メインコンテンツ -->
+            <article class="flex-1">
+                <!-- 記事ヘッダー -->
+                <header class="bg-white/60 rounded-3xl p-8 shadow-xl backdrop-blur-sm mb-8">
+                    <div class="text-center mb-6">
+                        <div class="text-8xl mb-4 sparkle">🥕</div>
+                        <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                            にんじんケーキ作り
+                        </h1>
+                        <div class="flex items-center justify-center space-x-6 text-gray-600">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-lg">📅</span>
+                                <span>2024年1月15日</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-lg">👤</span>
+                                <span>ももか</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <button class="flex items-center space-x-1 text-pink-500 hover:text-pink-600 transition-colors">
+                                    <span>🐰</span>
+                                    <span id="likeCount">24</span>
+                                </button>
+                                <div class="flex items-center space-x-1 text-gray-500">
+                                    <span>💬</span>
+                                    <span>8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- タグ -->
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">#にんじん</span>
+                        <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">#手作り</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">#ケーキ</span>
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">#ふわふわ</span>
+                    </div>
+                </header>
+
+                <!-- 記事本文 -->
+                <div class="bg-white/60 rounded-2xl p-8 shadow-lg backdrop-blur-sm mb-8">
+                    <div class="article-content">
+                        <p class="text-lg text-gray-700 mb-6 font-medium">
+                            こんにちは、ももかです！🐰 今日はうさぎさんの大好物、にんじんを使ったふわふわケーキを作りました。オレンジ色がとってもきれいで、見た目も味も最高のケーキができあがりました♪
+                        </p>
+
+                        <h2>🥕 材料（18cmホール型1台分）</h2>
+                        <ul>
+                            <li>にんじん 200g（すりおろし）</li>
+                            <li>薄力粉 150g</li>
+                            <li>ベーキングパウダー 小さじ1</li>
+                            <li>卵 3個</li>
+                            <li>砂糖 100g</li>
+                            <li>バター 80g</li>
+                            <li>牛乳 50ml</li>
+                            <li>バニラエッセンス 少々</li>
+                            <li>シナモンパウダー 小さじ1/2</li>
+                        </ul>
+
+                        <h2>🧑‍🍳 作り方</h2>
+                        
+                        <h3>1. 下準備</h3>
+                        <p>
+                            オーブンを170℃に予熱します。にんじんは皮をむいて細かくすりおろし、バターは室温に戻しておきます。型にバターを塗って薄力粉をはたいておくと、きれいに焼き上がりますよ！
+                        </p>
+
+                        <h3>2. 生地作り</h3>
+                        <p>
+                            ボウルにバターと砂糖を入れて、白っぽくなるまでよく混ぜます。卵を1個ずつ加えて、その都度よく混ぜてください。ここでバニラエッセンスも加えます。ふわふわの秘訣は空気をたっぷり含ませることです！
+                        </p>
+
+                        <h3>3. 粉類を加える</h3>
+                        <p>
+                            薄力粉、ベーキングパウダー、シナモンパウダーを合わせてふるい、2のボウルに加えます。ゴムベラでさっくりと混ぜ合わせ、牛乳とすりおろしたにんじんも加えて均一になるまで混ぜます。
+                        </p>
+
+                        <h3>4. 焼成</h3>
+                        <p>
+                            型に生地を流し入れ、170℃のオーブンで約40分焼きます。竹串を刺して何もついてこなければ完成！焼いている間、キッチンがにんじんとシナモンの甘い香りに包まれて、とっても幸せな気分になります🥰
+                        </p>
+
+                        <h2>✨ ポイント</h2>
+                        <p>
+                            にんじんの甘みを活かすため、砂糖は控えめにしました。シナモンを加えることで、より深い味わいになります。冷めてからクリームチーズフロスティングを塗ると、さらに美味しくなりますよ！
+                        </p>
+
+                        <p>
+                            うさぎさんたちも喜んでくれそうな、優しい甘さのケーキです。みなさんもぜひ作ってみてくださいね💕
+                        </p>
+
+                        <div class="bg-orange-50 border-l-4 border-orange-300 p-4 my-6 rounded-r-lg">
+                            <p class="text-orange-800 font-medium">
+                                🐰 ももかのひとこと：にんじんが苦手な方でも、ケーキにすると不思議と美味しく食べられます。野菜を使ったスイーツで、体にも優しいのが嬉しいですね！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- シェアボタン -->
+                <div class="bg-white/60 rounded-2xl p-6 shadow-lg backdrop-blur-sm mb-8">
+                    <h3 class="font-bold text-gray-800 mb-4 text-center">この記事をシェア 🐰</h3>
+                    <div class="flex justify-center space-x-4">
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors flex items-center space-x-2">
+                            <span>📘</span>
+                            <span>Facebook</span>
+                        </button>
+                        <button class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-full transition-colors flex items-center space-x-2">
+                            <span>🐦</span>
+                            <span>Twitter</span>
+                        </button>
+                        <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition-colors flex items-center space-x-2">
+                            <span>📱</span>
+                            <span>LINE</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- コメント欄 -->
+                <div class="bg-white/60 rounded-2xl p-6 shadow-lg backdrop-blur-sm">
+                    <h3 class="font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="text-xl mr-2">💬</span>
+                        コメント (8)
+                    </h3>
+                    
+                    <!-- コメント投稿フォーム -->
+                    <div class="mb-6 p-4 bg-pink-50 rounded-xl">
+                        <textarea 
+                            placeholder="コメントを書く..." 
+                            class="w-full p-3 border border-pink-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-pink-300"
+                            rows="3"
+                        ></textarea>
+                        <div class="flex justify-end mt-3">
+                            <button class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full transition-colors">
+                                投稿する 🐰
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- コメント一覧 -->
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-200 pb-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-pink-300 to-purple-300 rounded-full flex items-center justify-center text-lg">
+                                    🐰
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="font-medium text-gray-800">みかんさん</span>
+                                        <span class="text-sm text-gray-500">2時間前</span>
+                                    </div>
+                                    <p class="text-gray-600">にんじんケーキ美味しそう！今度作ってみます🥕✨</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-b border-gray-200 pb-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-blue-300 to-green-300 rounded-full flex items-center justify-center text-lg">
+                                    🌸
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="font-medium text-gray-800">さくらさん</span>
+                                        <span class="text-sm text-gray-500">5時間前</span>
+                                    </div>
+                                    <p class="text-gray-600">シナモンを入れるのがポイントなんですね！参考になりました♪</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- サイドバー -->
+            <aside class="w-full lg:w-80 flex-shrink-0">
+                <div class="space-y-6 sticky top-24">
+                    <!-- プロフィール -->
+                    <div class="bg-white/60 rounded-2xl p-6 shadow-lg backdrop-blur-sm">
+                        <div class="text-center mb-4">
+                            <div class="w-20 h-20 bg-gradient-to-br from-pink-300 to-purple-300 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl">
+                                🐰
+                            </div>
+                            <h3 class="font-bold text-gray-800">ももか</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm text-center leading-relaxed">
+                            うさぎのようにふわふわで優しい毎日を過ごしています。にんじん、手作り、絵本が大好き🥕💕
+                        </p>
+                    </div>
+
+                    <!-- 関連記事 -->
+                    <div class="bg-white/60 rounded-2xl p-6 shadow-lg backdrop-blur-sm">
+                        <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="text-xl mr-2">📖</span>
+                            関連記事
+                        </h3>
+                        <div class="space-y-4">
+                            <a href="#" class="related-card block p-3 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🧶</span>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-800">うさぎのあみぐるみ</h4>
+                                        <p class="text-xs text-gray-500">手作り・DIY</p>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="related-card block p-3 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🥛</span>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-800">朝のミルクタイム</h4>
+                                        <p class="text-xs text-gray-500">日常・ライフスタイル</p>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="related-card block p-3 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🌸</span>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-800">うさぎと桜散歩</h4>
+                                        <p class="text-xs text-gray-500">お出かけ・散歩</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- タグクラウド -->
+                    <div class="bg-white/60 rounded-2xl p-6 shadow-lg backdrop-blur-sm">
+                        <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="text-xl mr-2">🏷️</span>
+                            タグ
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs">#うさぎ</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">#にんじん</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs">#ふわふわ</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">#手作り</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs">#絵本</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-xs">#ケーキ</span>
+                        </div>
+                    </div>
+
+                    <!-- アーカイブ -->
+                    <div class="bg-white/60 rounded-2xl p-6 shadow-lg backdrop-blur-sm">
+                        <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="text-xl mr-2">📅</span>
+                            アーカイブ
+                        </h3>
+                        <div class="space-y-2">
+                            <a href="#" class="block text-sm text-gray-600 hover:text-pink-500 transition-colors">2024年1月 (6)</a>
+                            <a href="#" class="block text-sm text-gray-600 hover:text-pink-500 transition-colors">2023年12月 (8)</a>
+                            <a href="#" class="block text-sm text-gray-600 hover:text-pink-500 transition-colors">2023年11月 (5)</a>
+                            <a href="#" class="block text-sm text-gray-600 hover:text-pink-500 transition-colors">2023年10月 (7)</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-white/80 backdrop-blur-md mt-16 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-gray-600 hover:text-pink-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-pink-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.221.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-pink-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-gray-600 text-sm">
+                © 2024 うさぎのふわふわブログ. すべての記事にふわふわな愛を込めて 🐰💕
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ハートの浮遊アニメーション
+        document.addEventListener('DOMContentLoaded', function() {
+            const hearts = document.querySelectorAll('.heart-float');
+            hearts.forEach((heart, index) => {
+                heart.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+
+        // いいねボタンの機能
+        document.querySelector('#likeCount').parentElement.addEventListener('click', function() {
+            const countElement = document.querySelector('#likeCount');
+            const currentCount = parseInt(countElement.textContent);
+            countElement.textContent = currentCount + 1;
+            
+            // アニメーション
+            this.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+        });
+
+        // シェアボタンの機能
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Facebook') || 
+                button.textContent.includes('Twitter') || 
+                button.textContent.includes('LINE')) {
+                button.addEventListener('click', function() {
+                    // 実際のシェア機能はここに実装
+                    alert('シェア機能は実装中です 🐰');
+                });
+            }
+        });
+
+        // コメント投稿機能
+        document.querySelector('button').addEventListener('click', function() {
+            const textarea = document.querySelector('textarea');
+            if (textarea.value.trim()) {
+                alert('コメントを投稿しました！🐰');
+                textarea.value = '';
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dc85c15657e379',t:'MTc1NzY0OTg4NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
