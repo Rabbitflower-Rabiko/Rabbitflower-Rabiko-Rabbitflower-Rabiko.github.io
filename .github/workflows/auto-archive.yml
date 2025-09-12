@@ -20,24 +20,21 @@ jobs:
         run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
 
       # トップページをコピーして _posts に HTML ファイルを作成
-      - name: Create Archive HTML
-        run: |
-          mkdir -p _posts
-          cat <<EOT > _posts/${DATE}-top-page.html
+- name: Create Archive Markdown
+  run: |
+    mkdir -p _posts
+    cat <<EOT > _posts/${DATE}-top-page.md
 ---
 layout: post
 title: "${DATE} トップページ"
 date: ${DATE}
 ---
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>アーカイブ ${DATE}</title>
-</head>
-<body>
-  <h1>${DATE} トップページ</h1>
+
+{% raw %}
+{% include_relative ../index.html %}
+{% endraw %}
 EOT
+
           cat index.html >> _posts/${DATE}-top-page.html
           echo "</body></html>" >> _posts/${DATE}-top-page.html
 
