@@ -1,54 +1,71 @@
----
-layout: default
-title: アーカイブ
----
+name: Auto Archive Top Page
 
-<h1>うさTVニュース  archive</h1>
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 16 * * *'  # 毎日0時に実行（必要なら調整）
 
-<div class="archive-list">
-  {% for post in site.posts %}
-    <article class="archive-item">
-      <!-- 記事タイトル（日付） -->
-      <h2>{{ post.date | date: "%Y-%m-%d" }}</h2>
+permissions:
+  contents: write
 
-      <!-- 抜粋（冒頭の数行だけ） -->
-      <div class="excerpt">
-        {{ post.excerpt }}
-      </div>
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      <!-- 続きを読むボタン -->
-      <a href="#" class="read-more"
-         id="more-{{ post.id | replace:'/','-' }}"
-         onclick="togglePost('{{ post.id | replace:'/','-' }}'); return false;">
-         続きを読む
-      </a>
+      - name: Set Date
+        run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
 
-      <!-- 全文（最初は非表示） -->
-      <div id="post-{{ post.id | replace:'/','-' }}" class="full-content" style="display:none;">
-        {{ post.content }}
-        <!-- 閉じるボタン -->
-        <p>
-          <a href="#" class="close-btn"
-             onclick="togglePost('{{ post.id | replace:'/','-' }}'); return false;">
-             閉じる
-          </a>
-        </p>
-      </div>
-    </article>
-  {% endfor %}
-</div>
+      - name: Create Archive Markdown
+        run: |
+          # 保存先ディレクトリ
+          mkdir -p _posts
 
-<script>
-function togglePost(id) {
-  const content = document.getElementById("post-" + id);
-  const moreBtn = document.getElementById("more-" + id);
+          # 出力ファイルパス
+          dest="_posts/${DATE}-top-page.md"
 
-  if (content.style.display === "none") {
-    content.style.display = "block";
-    moreBtn.style.display = "none";   // 続きを読むを隠す
-  } else {
-    content.style.display = "none";
-    moreBtn.style.display = "inline"; // 続きを読むを戻す
-  }
-}
-</script>
+          # front matter を書く
+          echo '---' > "$dest"
+          echo 'layout: post' >> "$dest"
+          echo "title: \"${DATE} トップページ\"" >> "$dest"
+          echo "date: ${DATE}" >> "$dest"
+          echo '---' >> "$dest"
+          echo '' >> "$dest"
+
+          # index.html を include_relative で取り込むように記述（Jekyll ビルド時に展開されます）
+          echo '{% include_relative ../index.html %}' >> "$dest"
+          echo '' >> "$dest"
+
+          # --- デバッグ出力（作成確認用）
+          echo "Created file: $dest"
+          ls -la _posts || true
+          echo "---- head of $dest ----"
+          sed -n '1,120p' "$dest" || true
+          echo "---- file size (bytes) ----"
+          wc -c "$dest" || true
+
+      - name: Show git status before add (debug)
+        run: |
+          echo "git status:"
+          git status --porcelain
+          echo "git ls-files (some):"
+          git ls-files | sed -n '1,200p' || true
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add _posts/${DATE}-top-page.md
+          echo "Staged (cached) files:"
+          git diff --name-only --cached || true
+          git commit -m "Auto archive ${DATE}" || echo "No changes to commit"
+          git push
+
+      - name: Post-commit log (debug)
+        run: |
+          echo "Last commit:"
+          git --no-pager log -1 --name-status || true
