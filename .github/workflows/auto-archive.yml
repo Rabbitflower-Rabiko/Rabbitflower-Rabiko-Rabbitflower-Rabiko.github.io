@@ -26,22 +26,21 @@ jobs:
         run: |
           mkdir -p archive-site/_posts
           
-        - name: Create Archive HTML
+             - name: Create Archive HTML
         run: |
           mkdir -p archive-site/_posts
-          {
-            echo '<!DOCTYPE html>'
-            echo '<html lang="ja">'
-            echo '<head>'
-            echo '  <meta charset="UTF-8">'
-            echo "  <title>アーカイブ ${DATE}</title>"
-            echo '</head>'
-            echo '<body>'
-            echo "  <h1>${DATE} トップページ</h1>"
-            cat index.html
-            echo '</body>'
-            echo '</html>'
-          } > archive-site/_posts/${DATE}-top-page.html
+          echo '<!DOCTYPE html>' > archive-site/_posts/${DATE}-top-page.html
+          echo '<html lang="ja">' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<head>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '  <meta charset="UTF-8">' >> archive-site/_posts/${DATE}-top-page.html
+          echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/_posts/${DATE}-top-page.html
+          echo '</head>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<body>' >> archive-site/_posts/${DATE}-top-page.html
+          echo "  <h1>${DATE} トップページ</h1>" >> archive-site/_posts/${DATE}-top-page.html
+          cat index.html >> archive-site/_posts/${DATE}-top-page.html
+          echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
+
 
 
 
