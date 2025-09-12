@@ -19,29 +19,26 @@ jobs:
       - name: Set Date
         run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
 
-      # トップページをコピーして _posts に HTML ファイルを作成（フロントマター付き）
+      # トップページをコピーして _posts に HTML ファイルを作成
       - name: Create Archive HTML
         run: |
           mkdir -p archive-site/_posts
-          cat <<EOT > archive-site/_posts/${DATE}-top-page.html
----
-layout: post
-title: "${DATE} うさTV"
-date: ${DATE}
----
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>アーカイブ ${DATE}</title>
-</head>
-<body>
-  <h1>${DATE} トップページ</h1>
-$(cat index.html)
-</body>
-</html>
-EOT
+          echo '---' > archive-site/_posts/${DATE}-top-page.html
+          echo 'layout: post' >> archive-site/_posts/${DATE}-top-page.html
+          echo "title: \"${DATE} うさTV\"" >> archive-site/_posts/${DATE}-top-page.html
+          echo "date: ${DATE}" >> archive-site/_posts/${DATE}-top-page.html
+          echo '---' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<!DOCTYPE html>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<html lang="ja">' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<head>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '  <meta charset="UTF-8">' >> archive-site/_posts/${DATE}-top-page.html
+          echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/_posts/${DATE}-top-page.html
+          echo '</head>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<body>' >> archive-site/_posts/${DATE}-top-page.html
+          echo "  <h1>${DATE} トップページ</h1>" >> archive-site/_posts/${DATE}-top-page.html
+          cat index.html >> archive-site/_posts/${DATE}-top-page.html
+          echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
 
       # 変更をコミットしてプッシュ
       - name: Commit and Push
