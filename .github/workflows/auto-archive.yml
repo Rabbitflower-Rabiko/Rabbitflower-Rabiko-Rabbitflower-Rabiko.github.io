@@ -5,6 +5,10 @@ on:
     - cron: '0 16 * * *'  # 毎日0時に実行
   workflow_dispatch:    # 手動トリガーも可能
 
+permissions:
+  contents: write
+  
+
 jobs:
   archive:
     runs-on: ubuntu-latest
