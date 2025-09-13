@@ -28,7 +28,7 @@ jobs:
     echo "title: \"${DATE} うさTV\"" >> archive-site/_posts/${DATE}-top-page.html
     echo "date: ${DATE}" >> archive-site/_posts/${DATE}-top-page.html
     echo '---' >> archive-site/_posts/${DATE}-top-page.html
-    echo "<!-- Generated at $(date -u +"%Y-%m-%d %H:%M:%S UTC") -->" >> archive-site/_posts/${DATE}-top-page.html
+    echo "<!-- Generated at $(date -u '+%Y-%m-%d %H:%M:%S UTC') -->" >> archive-site/_posts/${DATE}-top-page.html
     echo '<!DOCTYPE html>' >> archive-site/_posts/${DATE}-top-page.html
     echo '<html lang="ja">' >> archive-site/_posts/${DATE}-top-page.html
     echo '<head>' >> archive-site/_posts/${DATE}-top-page.html
