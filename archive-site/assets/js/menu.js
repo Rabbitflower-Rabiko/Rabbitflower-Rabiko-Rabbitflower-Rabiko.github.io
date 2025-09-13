@@ -1,4 +1,3 @@
-<script>
 document.addEventListener("DOMContentLoaded", function() {
   const btn = document.querySelector(".menu-toggle");
   const sidebar = document.querySelector(".sidebar");
@@ -7,4 +6,3 @@ document.addEventListener("DOMContentLoaded", function() {
     sidebar.classList.toggle("active");
   });
 });
-</script>
