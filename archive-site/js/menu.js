@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (btn && sidebar) {
     btn.addEventListener("click", () => {
       console.log("ボタンが押されました！");
-      sidebar.classList.toggle("active");
+      sidebar.classList.toggle("open");
     });
   } else {
     console.log("btn または sidebar が見つかりません");
