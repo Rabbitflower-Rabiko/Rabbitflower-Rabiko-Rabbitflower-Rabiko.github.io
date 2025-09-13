@@ -151,14 +151,13 @@ footer {
   }
 }
 
-/* PCではボタンを隠す */
+/* PCではボタン非表示 */
 .menu-toggle {
   display: none;
 }
 
-/* スマホ表示用 */
+/* スマホ表示用（768px以下） */
 @media (max-width: 768px) {
-  /* ハンバーガーボタン */
   .menu-toggle {
     display: block;
     background: #ffb6c1;
@@ -167,18 +166,30 @@ footer {
     font-size: 1.5rem;
     padding: 0.5rem 1rem;
     border-radius: 8px;
-    margin: 1rem auto;
+    margin: 1rem;
     cursor: pointer;
+    z-index: 1001;
+    position: relative;
   }
 
-  /* サイドバーを隠す */
   .sidebar {
-    display: none;
+    position: fixed;
+    top: 0;
+    right: -300px; /* 初期状態は画面外 */
+    width: 250px;
+    height: 100%;
+    background: #fff0f6;
+    padding: 1rem;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
   }
 
-  /* active クラスがついたら表示 */
   .sidebar.active {
-    display: block;
-    margin-top: 1rem;
+    right: 0; /* ボタンで開いたとき */
+  }
+
+  .blog-container {
+    flex-direction: column; /* スマホでは縦並びに戻す */
   }
 }
