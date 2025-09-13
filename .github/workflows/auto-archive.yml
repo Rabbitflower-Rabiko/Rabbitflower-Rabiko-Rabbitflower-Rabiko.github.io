@@ -18,9 +18,7 @@ jobs:
       # 今日の日付を取得
       - name: Set Date
         run: echo "DATE=$(date -d '+9 hours' +%Y-%m-%d)" >> $GITHUB_ENV
-
-# トップページをコピーして _posts に HTML ファイルを作成
-- name: Create Archive HTML
+# トップページをコピーして _posts に HTML ファイルを作成- name: Create Archive HTML
   run: |
     mkdir -p archive-site/_posts
     echo '---' > archive-site/_posts/${DATE}-top-page.html
@@ -28,7 +26,7 @@ jobs:
     echo "title: \"${DATE} うさTV\"" >> archive-site/_posts/${DATE}-top-page.html
     echo "date: ${DATE}" >> archive-site/_posts/${DATE}-top-page.html
     echo '---' >> archive-site/_posts/${DATE}-top-page.html
-    echo "<!-- Generated at $(date -u '+%Y-%m-%d %H:%M:%S UTC') -->" >> archive-site/_posts/${DATE}-top-page.html
+    echo '<!-- Generated at '"$(date -u '+%Y-%m-%d %H:%M:%S UTC')" '-->' >> archive-site/_posts/${DATE}-top-page.html
     echo '<!DOCTYPE html>' >> archive-site/_posts/${DATE}-top-page.html
     echo '<html lang="ja">' >> archive-site/_posts/${DATE}-top-page.html
     echo '<head>' >> archive-site/_posts/${DATE}-top-page.html
