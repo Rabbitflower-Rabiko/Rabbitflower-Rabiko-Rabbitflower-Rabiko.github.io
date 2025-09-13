@@ -156,8 +156,28 @@ footer {
   display: none;
 }
 
-/* スマホ表示用（768px以下） */
 @media (max-width: 768px) {
+  .sidebar {
+    flex: none;          /* ← 追加：PC用flexを無効化 */
+    position: fixed;
+    top: 0;
+    right: -250px;       /* ← 幅と同じ値にする */
+    width: 250px;
+    height: 100%;
+    background: #fff0f6;
+    padding: 1rem;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+}
+
+
+
   /* ハンバーガーボタン */
   .menu-toggle {
     display: block;
