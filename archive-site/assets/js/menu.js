@@ -1,3 +1,5 @@
+alert("menu.js が読み込まれました！");
+
 document.addEventListener("DOMContentLoaded", function() {
   const btn = document.querySelector(".menu-toggle");
   const sidebar = document.querySelector(".sidebar");
