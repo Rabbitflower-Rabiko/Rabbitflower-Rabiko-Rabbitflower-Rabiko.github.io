@@ -83,3 +83,12 @@ footer {
   background: #ffe4ec;
   margin-top: 3rem;
 }
+
+.sidebar-section ul li a {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.sidebar-section ul li a:hover {
+  color: #e75480;
+}
