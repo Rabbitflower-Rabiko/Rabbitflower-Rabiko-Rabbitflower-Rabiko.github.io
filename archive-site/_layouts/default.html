@@ -1,31 +1,30 @@
-<!DOCTYPE html>
-<!-- custom layout -->
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+  <header>
+    <h1><a href="/">うさTVニュース</a></h1>
+  </header>
 
-    <!-- SEOタグ（必要なら） -->
-    {%- seo -%}
+  <!-- ハンバーガーボタン -->
+  <button class="menu-toggle">☰</button>
 
-    <!-- カスタムCSS -->
-    <link rel="stylesheet" href="{{ '/archive-site/assets/css/style.css' | relative_url }}">
-  </head>
-  <body>
-    <header>
-      <h1>うさぎ日記</h1>
-      <button class="menu-toggle">☰</button>
-    </header>
-
-    <main>
+  <div class="blog-container">
+    <!-- 記事エリア -->
+    <main class="archive-list">
       {{ content }}
     </main>
 
-    <footer>
-      <p>&copy; {{ site.time | date: "%Y" }} うさぎ日記</p>
-    </footer>
+    <!-- サイドバー -->
+    <aside class="sidebar">
+      <h2>アーカイブ</h2>
+      <ul>
+        <li><a href="#">2025-09-13</a></li>
+        <li><a href="#">2025-09-12</a></li>
+      </ul>
+    </aside>
+  </div>
 
-    <!-- ハンバーガーメニュー用JS -->
-    <script src="/archive-site/assets/js/menu.js"></script>
-  </body>
-</html>
+  <footer>
+    <p>&copy; うさTVニュース</p>
+  </footer>
+
+  <script src="/archive-site/assets/js/menu.js"></script>
+</body>
