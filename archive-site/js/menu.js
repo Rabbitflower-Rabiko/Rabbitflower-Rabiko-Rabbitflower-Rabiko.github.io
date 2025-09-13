@@ -4,13 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (btn && sidebar) {
     btn.addEventListener("click", () => {
-      
       sidebar.classList.toggle("open");
     });
-  } else {
   }
 });
-
-.sidebar.open {
-  right: 0 !important;
-}
