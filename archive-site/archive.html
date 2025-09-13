@@ -11,21 +11,53 @@ title: アーカイブ
 
 <h1>うさTVニュース アーカイブ</h1>
 
-<div class="archive-list">
-  {% for post in site.posts %}
-    <article class="archive-item">
-      <!-- 記事タイトル（ポスト名） -->
-      <h2>
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </h2>
+<!-- 👇 コンテナを作る -->
+<div class="blog-container">
 
-      <!-- 日付を表示したい場合は追加で -->
-      <p class="post-date">{{ post.date | date: "%Y-%m-%d" }}</p>
+  <!-- メイン記事一覧 -->
+  <div class="archive-list">
+    {% for post in site.posts %}
+      <article class="archive-item">
+        <!-- 記事タイトル -->
+        <h2>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </h2>
 
-      <!-- 抜粋 -->
-      <div class="excerpt">
-        {{ post.excerpt }}
-      </div>
-    </article>
-  {% endfor %}
+        <!-- 日付 -->
+        <p class="post-date">{{ post.date | date: "%Y-%m-%d" }}</p>
+
+        <!-- 抜粋 -->
+        <div class="excerpt">
+          {{ post.excerpt }}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+
+  <!-- 👇 サイドバーを追加 -->
+  <aside class="sidebar">
+    <div class="profile-card">
+      <img src="/images/usagi-icon.png" alt="うさぎアイコン">
+      <h3>らびこ</h3>
+      <p>うさぎが好きな日記サイトです🐇🌸</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>リンク</h4>
+      <ul>
+        <li><a href="/">トップページ</a></li>
+        <li><a href="/archive.html">アーカイブ</a></li>
+        <li><a href="https://github.com/">GitHub</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>最新記事</h4>
+      <ul>
+        {% for post in site.posts limit:10 %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
 </div>
