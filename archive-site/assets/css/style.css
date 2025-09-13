@@ -1,123 +1,85 @@
-/* ==========================
-   Archive Blog Style
-   ========================== */
-
-/* 全体 */
+/* 全体の背景とフォント */
 body {
-  font-family: "Hiragino Maru Gothic Pro", "Yu Gothic", sans-serif;
-  background-color: #fffdf8;
+  font-family: "Noto Sans JP", sans-serif;
+  background: #fffafc; /* ほんのりピンク系 */
   color: #333;
+  line-height: 1.8;
   margin: 0;
   padding: 0;
 }
 
 /* ヘッダー */
-header h1, .site-title {
-  color: #d488aa;
+header {
+  background: #ffd6e8; /* うさぎっぽいピンク */
+  padding: 1rem;
   text-align: center;
-  padding: 1em 0;
-  margin: 0;
+  border-bottom: 3px solid #ffb6c1;
 }
 
-/* リンク */
-a {
-  color: #bb6688;
+header h1 a {
+  color: #d63384;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* メインコンテンツ */
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* 記事 */
+article {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px dashed #ffc0cb;
+}
+
+article h2 a {
+  color: #e75480;
   text-decoration: none;
 }
-a:hover {
+
+article h2 a:hover {
   text-decoration: underline;
 }
 
-/* アーカイブ一覧 */
-.archive-list {
-  max-width: 800px;
-  margin: 2em auto;
-  padding: 0 1em;
+/* 日付 */
+article small {
+  color: #999;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.archive-item {
-  border-bottom: 1px solid #ddd;
-  padding: 1em 0;
-}
-
-.archive-item h2 {
-  font-size: 1.4em;
-  margin-bottom: 0.3em;
-  color: #d3558f;
-}
-
-/* 抜粋 */
+/* 抜粋と続きを読む */
 .excerpt {
-  color: #555;
-  font-size: 0.95em;
+  margin-bottom: 1rem;
 }
 
-/* 続きを読むボタン */
 .read-more {
   display: inline-block;
-  margin-top: 0.5em;
-  color: #ff6699;
+  padding: 0.5rem 1rem;
+  background: #ffb6c1;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
 }
+
 .read-more:hover {
-  text-decoration: underline;
+  background: #ff80aa;
 }
 
-/* 全文表示 */
-.full-content {
-  margin-top: 1em;
-  background: #f9f9f9;
-  padding: 1em;
-  border-radius: 5px;
-}
-
-/* 投稿ページ */
-.post-wrapper {
-  max-width: 800px;
-  margin: 2em auto;
-  padding: 1em;
-}
-
-.post-card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 2em;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.post-title {
-  font-size: 1.8em;
-  color: #bb4466;
-  margin-bottom: 0.5em;
-}
-
-.post-date {
-  color: #888;
-  font-size: 0.9em;
-}
-
-.post-footer {
-  margin-top: 2em;
-}
-
-
-
-/* カードデザインを少し強めに */
-.post-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 2em;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border: 1px solid #f2cce0;
-}
-
-.post-title {
-  font-size: 2em;
-  color: #bb4466;
-  margin-bottom: 0.5em;
-}
-
-.post-date {
-  color: #999;
-  font-size: 0.9em;
-  margin-bottom: 1.5em;
+/* フッター */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  background: #ffe4ec;
+  margin-top: 3rem;
 }
