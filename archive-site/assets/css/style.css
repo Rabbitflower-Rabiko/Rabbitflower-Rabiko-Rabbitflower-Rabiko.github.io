@@ -121,3 +121,32 @@ footer {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+
+/* デフォルト: PC向け（横並び） */
+.blog-container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.archive-list {
+  flex: 2;
+  min-width: 0;
+}
+
+.sidebar {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* スマホ時: 縦並び */
+@media (max-width: 768px) {
+  .blog-container {
+    flex-direction: column; /* 縦並びにする */
+  }
+  .sidebar {
+    min-width: 100%;
+  }
+}
