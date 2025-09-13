@@ -193,8 +193,10 @@ footer {
     z-index: 1000;
   }
 
-  /* 開いたとき */
-  .sidebar.open {
-    right: 0;
+  //* 開いたとき */
+.sidebar.active {
+  right: 0;
+}
+
   }
 }
