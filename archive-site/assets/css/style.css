@@ -28,6 +28,21 @@ header h1 a {
   font-weight: bold;
 }
 
+/* メインコンテンツの不要な余白を消す */
+.main-container {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+/* h1 と記事一覧の間の余白を調整 */
+.main-container h1 {
+  margin-bottom: 1rem;  /* 下の余白だけ少し残す */
+}
+
+
+
+
 /* ===========================
    メインコンテンツ
    =========================== */
