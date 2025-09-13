@@ -1,4 +1,4 @@
-alert("menu.js が読み込まれました！");
+console.log("menu.js が読み込まれました！");
 
 document.addEventListener("DOMContentLoaded", function() {
   const btn = document.querySelector(".menu-toggle");
@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (btn && sidebar) {
     btn.addEventListener("click", () => {
-      alert("ボタンが押されました！"); // ← 動作確認用
+      console.log("ボタンが押されました！");
       sidebar.classList.toggle("active");
     });
   } else {
-    alert("btn または sidebar が見つかりません");
+    console.log("btn または sidebar が見つかりません");
   }
 });
