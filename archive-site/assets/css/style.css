@@ -178,7 +178,7 @@ footer {
   .sidebar {
     position: fixed;
     top: 0;
-    right: -300px;      /* ← ここ重要！初期状態で隠す */
+    right: -250px;      /* ← ここ重要！初期状態で隠す */
     width: 250px;
     height: 100%;
     background: #fff0f6;
