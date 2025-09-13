@@ -158,24 +158,27 @@ footer {
 
 /* スマホ表示用（768px以下） */
 @media (max-width: 768px) {
+  /* ハンバーガーボタン */
   .menu-toggle {
     display: block;
+    position: fixed;   /* ← 固定する */
+    top: 10px;         /* 画面上から10px */
+    right: 10px;       /* 画面右から10px */
     background: #ffb6c1;
     border: none;
     color: white;
     font-size: 1.5rem;
     padding: 0.5rem 1rem;
     border-radius: 8px;
-    margin: 1rem;
     cursor: pointer;
-    z-index: 1001;
-    position: relative;
+    z-index: 1001;     /* サイドバーより前に表示 */
   }
 
+  /* サイドバー（初期は右に隠す） */
   .sidebar {
     position: fixed;
     top: 0;
-    right: -300px; /* 初期状態は画面外 */
+    right: -300px;      /* ← ここ重要！初期状態で隠す */
     width: 250px;
     height: 100%;
     background: #fff0f6;
@@ -185,11 +188,13 @@ footer {
     z-index: 1000;
   }
 
+  /* 開いたとき */
   .sidebar.active {
-    right: 0; /* ボタンで開いたとき */
+    right: 0;
   }
 
+  /* 記事は縦並び */
   .blog-container {
-    flex-direction: column; /* スマホでは縦並びに戻す */
+    flex-direction: column;
   }
 }
