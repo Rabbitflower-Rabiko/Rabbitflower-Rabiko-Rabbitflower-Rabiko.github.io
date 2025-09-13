@@ -133,13 +133,20 @@ footer {
    サイドバー部分（右側） PC用
    =========================== */
 .sidebar {
-  flex: 1;
-  min-width: 250px;
+  flex: none !important;       /* ← PCのflexを打ち消す */
+  min-width: auto !important;  /* ← PCのmin-widthを打ち消す */
+  position: fixed;
+  top: 0;
+  right: -250px;       /* ← 初期状態で隠す */
+  width: 250px;
+  height: 100%;
   background: #fff0f6;
   padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: -4px 0 10px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1000;
 }
+
 
 /* ===========================
    スマホ用（768px以下）
