@@ -13,9 +13,22 @@
     <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
   </header>
 
+  <!-- ★ ハンバーガーメニューのボタン -->
+  <button class="menu-toggle">☰</button>
+
   <main class="main-container">
-  {{ content }}
-</main>
+    {{ content }}
+  </main>
+
+  <!-- ★ サイドバー -->
+  <aside class="sidebar">
+    <h2>アーカイブ</h2>
+    <ul>
+      <li><a href="#">2025-09-13</a></li>
+      <li><a href="#">2025-09-12</a></li>
+    </ul>
+  </aside>
+
 
   <footer>
     <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
