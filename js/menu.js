@@ -1,1 +1,1 @@
-<script src="{{ '/archive-site/js/menu.js' | relative_url }}"></script>
+<script src="{{ 'js/menu.js' | relative_url }}"></script>
