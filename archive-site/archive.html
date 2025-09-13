@@ -64,12 +64,20 @@ title: アーカイブ
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const menuButton = document.querySelector(".menu-toggle");
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.querySelector(".menu-toggle");
     const sidebar = document.querySelector(".sidebar");
 
-    menuButton.addEventListener("click", function() {
-      sidebar.classList.toggle("open");
-    });
+    if (toggleBtn && sidebar) {
+      // ハンバーガーボタンで開閉
+      toggleBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("active");
+      });
+
+      // サイドバーをクリックしたら閉じる
+      sidebar.addEventListener("click", function () {
+        sidebar.classList.remove("active");
+      });
+    }
   });
 </script>
