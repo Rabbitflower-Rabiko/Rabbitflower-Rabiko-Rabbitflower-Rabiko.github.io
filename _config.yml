@@ -1,6 +1,6 @@
 title: うさTVニュース
 description:  archive
-baseurl: "/archive-site"
+baseurl: "/archive-site/assets"
 url: "https://mofu.rabbitflowerdiary.com"
 
 # Jekyllのビルド設定
