@@ -1,15 +1,18 @@
-console.log("menu.js が読み込まれました！");
+// menu.js
 
-document.addEventListener("DOMContentLoaded", function() {
+// 読み込み確認用
+alert("✅ menu.js が読み込まれました！");
+
+document.addEventListener("DOMContentLoaded", function () {
   const btn = document.querySelector(".menu-toggle");
   const sidebar = document.querySelector(".sidebar");
 
   if (btn && sidebar) {
     btn.addEventListener("click", () => {
-      console.log("ボタンが押されました！");
+      alert("👉 ハンバーガーボタンが押されました！");
       sidebar.classList.toggle("active");
     });
   } else {
-    console.log("btn または sidebar が見つかりません");
+    alert("⚠️ menu.js: ボタンまたはサイドバーが見つかりません");
   }
 });
