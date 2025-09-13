@@ -16,3 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     alert("⚠️ menu.js: ボタンまたはサイドバーが見つかりません");
   }
 });
+
+.sidebar.open {
+  right: 0 !important;
+}
