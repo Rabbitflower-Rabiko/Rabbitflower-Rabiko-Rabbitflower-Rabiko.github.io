@@ -6,28 +6,45 @@
   <link rel="stylesheet" href="{{ '/archive-site/assets/css/style.css' | relative_url }}">
 </head>
 <body class="post-page">
-  <header class="site-header">
-    <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+  <!-- ヘッダー -->
+  <header>
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
   </header>
 
-  <main class="post-wrapper">
-    <article class="post-card">
-      <header class="post-header">
-        <h1 class="post-title">{{ page.title }}</h1>
-        <p class="post-date">{{ page.date | date: "%Y年%m月%d日" }}</p>
-      </header>
+  <!-- メインコンテナ（記事 + サイドバー） -->
+  <div class="blog-container">
+    <!-- 記事部分 -->
+    <div class="archive-list">
+      <article>
+        <h1>{{ page.title }}</h1>
+        <p><small>{{ page.date | date: "%Y年%m月%d日" }}</small></p>
 
-      <div class="post-content">
-        {{ content }}
+        <div class="post-content">
+          {{ content }}
+        </div>
+
+        <footer class="post-footer">
+          <a href="{{ '/archive-site/archive.html' | relative_url }}">← アーカイブ一覧へ</a>
+        </footer>
+      </article>
+    </div>
+
+    <!-- サイドバー -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <h2>アーカイブ</h2>
+        <ul>
+          {% assign posts = site.posts | sort: "date" | reverse %}
+          {% for post in posts %}
+            <li><a href="{{ post.url | relative_url }}">{{ post.date | date: "%Y-%m-%d" }}</a></li>
+          {% endfor %}
+        </ul>
       </div>
+    </aside>
+  </div>
 
-      <footer class="post-footer">
-        <a href="{{ '/archive-site/archive.html' | relative_url }}">← アーカイブ一覧へ</a>
-      </footer>
-    </article>
-  </main>
-
-  <footer class="site-footer">
+  <!-- フッター -->
+  <footer>
     <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
   </footer>
 </body>
