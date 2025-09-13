@@ -1,6 +1,6 @@
 title: うさTVニュース
 description:  archive
-
+baseurl: "/archive-site"
 # Jekyllのビルド設定
 sass:
   style: compressed
