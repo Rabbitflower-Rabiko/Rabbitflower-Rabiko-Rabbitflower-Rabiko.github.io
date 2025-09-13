@@ -10,3 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
   } else {
   }
 });
+
+.sidebar.open {
+  right: 0 !important;
+}
