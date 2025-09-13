@@ -92,3 +92,32 @@ footer {
 .sidebar-section ul li a:hover {
   color: #e75480;
 }
+
+/* コンテナ全体を横並び */
+.blog-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* メイン記事部分（左側） */
+.archive-list {
+  flex: 3;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* サイドバー部分（右側） */
+.sidebar {
+  flex: 1;
+  background: #fff0f6;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
