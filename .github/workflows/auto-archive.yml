@@ -19,27 +19,26 @@ jobs:
       - name: Set Date
         run: echo "DATE=$(date -d '+9 hours' +%Y-%m-%d)" >> $GITHUB_ENV
 # トップページをコピーして _posts に HTML ファイルを作成
-
-- name: Create Archive HTML
-  run: |
-    mkdir -p archive-site/_posts
-    echo '---' > archive-site/_posts/${DATE}-top-page.html
-    echo 'layout: post' >> archive-site/_posts/${DATE}-top-page.html
-    echo "title: \"${DATE} うさTV\"" >> archive-site/_posts/${DATE}-top-page.html
-    echo "date: ${DATE}" >> archive-site/_posts/${DATE}-top-page.html
-    echo '---' >> archive-site/_posts/${DATE}-top-page.html
-    echo '<!-- Generated at '"$(date -u '+%Y-%m-%d %H:%M:%S UTC')" '-->' >> archive-site/_posts/${DATE}-top-page.html
-    echo '<!DOCTYPE html>' >> archive-site/_posts/${DATE}-top-page.html
-    echo '<html lang="ja">' >> archive-site/_posts/${DATE}-top-page.html
-    echo '<head>' >> archive-site/_posts/${DATE}-top-page.html
-    echo '  <meta charset="UTF-8">' >> archive-site/_posts/${DATE}-top-page.html
-    echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/_posts/${DATE}-top-page.html
-    echo '</head>' >> archive-site/_posts/${DATE}-top-page.html
-    echo '<body>' >> archive-site/_posts/${DATE}-top-page.html
-    echo "  <h1></h1>" >> archive-site/_posts/${DATE}-top-page.html
-    cat index.html >> archive-site/_posts/${DATE}-top-page.html
-    echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
-    echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
+      - name: Create Archive HTML
+        run: |
+          mkdir -p archive-site/_posts
+          echo '---' > archive-site/_posts/${DATE}-top-page.html
+          echo 'layout: post' >> archive-site/_posts/${DATE}-top-page.html
+          echo "title: \"${DATE} うさTV\"" >> archive-site/_posts/${DATE}-top-page.html
+          echo "date: ${DATE}" >> archive-site/_posts/${DATE}-top-page.html
+          echo '---' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<!-- Generated at '"$(date -u '+%Y-%m-%d %H:%M:%S UTC')" '-->' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<!DOCTYPE html>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<html lang="ja">' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<head>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '  <meta charset="UTF-8">' >> archive-site/_posts/${DATE}-top-page.html
+          echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/_posts/${DATE}-top-page.html
+          echo '</head>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '<body>' >> archive-site/_posts/${DATE}-top-page.html
+          echo "  <h1></h1>" >> archive-site/_posts/${DATE}-top-page.html
+          cat index.html >> archive-site/_posts/${DATE}-top-page.html
+          echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
+          echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
 
 
 
