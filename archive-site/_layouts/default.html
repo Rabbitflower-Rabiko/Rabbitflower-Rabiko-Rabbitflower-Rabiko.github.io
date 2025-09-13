@@ -15,7 +15,6 @@
     <header>
       <h1>うさぎ日記</h1>
       <button class="menu-toggle">☰</button>
-
     </header>
 
     <main>
@@ -25,6 +24,8 @@
     <footer>
       <p>&copy; {{ site.time | date: "%Y" }} うさぎ日記</p>
     </footer>
-    <script src="{{ '/assets/js/menu.js' | relative_url }}"></script>
+
+    <!-- ハンバーガーメニュー用JS -->
+    <script src="{{ '/archive-site/assets/js/menu.js' | relative_url }}"></script>
   </body>
 </html>
