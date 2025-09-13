@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (btn && sidebar) {
     btn.addEventListener("click", () => {
+      alert("ボタンが押されました！"); // ← 動作確認用
       sidebar.classList.toggle("active");
     });
+  } else {
+    alert("btn または sidebar が見つかりません");
   }
 });
