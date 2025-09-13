@@ -194,7 +194,7 @@ footer {
   }
 
   //* 開いたとき */
-.sidebar.active {
+.sidebar.open {
   right: 0;
 }
 
