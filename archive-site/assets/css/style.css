@@ -1,4 +1,6 @@
-/* 全体の背景とフォント */
+/* ===========================
+   全体の背景とフォント
+   =========================== */
 body {
   font-family: "Noto Sans JP", sans-serif;
   background: #fffafc; /* ほんのりピンク系 */
@@ -8,7 +10,9 @@ body {
   padding: 0;
 }
 
-/* ヘッダー */
+/* ===========================
+   ヘッダー
+   =========================== */
 header {
   background: #ffd6e8; /* うさぎっぽいピンク */
   padding: 1rem;
@@ -23,7 +27,9 @@ header h1 a {
   font-weight: bold;
 }
 
-/* メインコンテンツ */
+/* ===========================
+   メインコンテンツ
+   =========================== */
 main {
   max-width: 800px;
   margin: 2rem auto;
@@ -33,7 +39,9 @@ main {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* 記事 */
+/* ===========================
+   記事
+   =========================== */
 article {
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
@@ -75,7 +83,9 @@ article small {
   background: #ff80aa;
 }
 
-/* フッター */
+/* ===========================
+   フッター
+   =========================== */
 footer {
   text-align: center;
   padding: 1rem;
@@ -84,6 +94,9 @@ footer {
   margin-top: 3rem;
 }
 
+/* ===========================
+   サイドバー共通
+   =========================== */
 .sidebar-section ul li a {
   font-size: 0.9rem;
   color: #444;
@@ -93,7 +106,9 @@ footer {
   color: #e75480;
 }
 
-/* コンテナ全体を横並び */
+/* ===========================
+   コンテナ全体（記事 + サイドバー）
+   =========================== */
 .blog-container {
   display: flex;
   justify-content: space-between;
@@ -106,84 +121,46 @@ footer {
 
 /* メイン記事部分（左側） */
 .archive-list {
-  flex: 3;
+  flex: 2;
+  min-width: 0;
   background: #fff;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* サイドバー部分（右側） */
+/* サイドバー部分（右側） PC用 */
 .sidebar {
   flex: 1;
+  min-width: 250px;
   background: #fff0f6;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* デフォルト: PC向け（横並び） */
-.blog-container {
-  display: flex;
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.archive-list {
-  flex: 2;
-  min-width: 0;
-}
-
-.sidebar {
-  flex: 1;
-  min-width: 250px;
-}
-
-/* スマホ時: 縦並び */
-@media (max-width: 768px) {
-  .blog-container {
-    flex-direction: column; /* 縦並びにする */
-  }
-  .sidebar {
-    min-width: 100%;
-  }
-}
-
-/* PCではボタン非表示 */
+/* ===========================
+   ハンバーガーボタン（デフォルト非表示）
+   =========================== */
 .menu-toggle {
   display: none;
 }
 
+/* ===========================
+   スマホ用（768px以下）
+   =========================== */
 @media (max-width: 768px) {
-  .sidebar {
-    flex: none;          /* ← 追加：PC用flexを無効化 */
-    position: fixed;
-    top: 0;
-    right: -250px;       /* ← 幅と同じ値にする */
-    width: 250px;
-    height: 100%;
-    background: #fff0f6;
-    padding: 1rem;
-    box-shadow: -4px 0 10px rgba(0,0,0,0.2);
-    transition: right 0.3s ease;
-    z-index: 1000;
+  /* 記事は縦並び */
+  .blog-container {
+    flex-direction: column;
   }
-
-  .sidebar.active {
-    right: 0;
-  }
-}
-
-
 
   /* ハンバーガーボタン */
   .menu-toggle {
     display: block;
-    position: fixed;   /* ← 固定する */
-    top: 10px;         /* 画面上から10px */
-    right: 10px;       /* 画面右から10px */
+    position: fixed;
+    top: 10px;
+    right: 10px;
     background: #ffb6c1;
     border: none;
     color: white;
@@ -191,14 +168,15 @@ footer {
     padding: 0.5rem 1rem;
     border-radius: 8px;
     cursor: pointer;
-    z-index: 1001;     /* サイドバーより前に表示 */
+    z-index: 1100; /* サイドバーより上 */
   }
 
-  /* サイドバー（初期は右に隠す） */
+  /* サイドバー（スライドイン用に初期は隠す） */
   .sidebar {
+    flex: none;          /* ← PC用flexを無効化 */
     position: fixed;
     top: 0;
-    right: -250px;      /* ← ここ重要！初期状態で隠す */
+    right: -250px;       /* ← 初期状態で隠す */
     width: 250px;
     height: 100%;
     background: #fff0f6;
@@ -208,13 +186,8 @@ footer {
     z-index: 1000;
   }
 
-  /* 開いたとき */
+  /* サイドバーを開いたとき */
   .sidebar.active {
     right: 0;
-  }
-
-  /* 記事は縦並び */
-  .blog-container {
-    flex-direction: column;
   }
 }
