@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (btn && sidebar) {
     btn.addEventListener("click", () => {
       alert("👉 ハンバーガーボタンが押されました！");
-      sidebar.classList.toggle("active");
+      sidebar.classList.toggle("open");
     });
   } else {
     alert("⚠️ menu.js: ボタンまたはサイドバーが見つかりません");
