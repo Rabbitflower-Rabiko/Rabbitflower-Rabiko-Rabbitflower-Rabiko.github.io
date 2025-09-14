@@ -1,13 +1,20 @@
 title: うさTVニュース
-description:  archive
-baseurl: "/archive-site"
-url: "https://mofu.rabbitflowerdiary.com"
+description: "毎日のトップページをアーカイブ"
+url: "https://mofu.rabbitflowerdiary.com"  # 公開URL
+baseurl: "/archive-site"                     # サブディレクトリに配置する場合
 
 # Jekyllのビルド設定
 sass:
   style: compressed
 
-# テーマは使わず自作レイアウトを優先
+# プラグインは使用しない（自作レイアウトを優先）
 plugins: []
 
+# タイムゾーン
 timezone: Asia/Tokyo
+
+# Markdown / Excerpt の設定（抜粋を自動生成できるように）
+markdown: kramdown
+kramdown:
+  input: GFM
+excerpt_separator: "<!-- more -->"
