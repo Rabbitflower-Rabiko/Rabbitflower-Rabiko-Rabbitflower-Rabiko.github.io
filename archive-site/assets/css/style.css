@@ -180,10 +180,11 @@ footer {
   }
 
   /* サイドバー（スマホ用スライドイン） */
+@media (max-width: 768px) {
   .sidebar {
     position: fixed;
     top: 0;
-    right: -260px; /* ← 初期は隠す */
+    right: -260px; /* 初期は隠す */
     width: 250px;
     height: 100%;
     background: #fff0f6;
@@ -193,14 +194,11 @@ footer {
     z-index: 1000;
   }
 
-/* 開いたとき */
+  /* 開いたとき */
   .sidebar.open {
     right: 0;
   }
 }
-
-
-
 
 /* ===========================
    記事ページ専用デザイン
