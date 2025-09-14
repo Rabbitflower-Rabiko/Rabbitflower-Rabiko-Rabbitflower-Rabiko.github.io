@@ -11,10 +11,12 @@
 <body>
   <header>
     <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+
+      <!-- ★ ハンバーガーメニューのボタン -->
+  <button class="menu-toggle">☰</button>
   </header>
 
-  <!-- ★ ハンバーガーメニューのボタン -->
-  <button class="menu-toggle">☰</button>
+
 
   <main class="main-container">
     {{ content }}
