@@ -3,42 +3,22 @@ layout: default
 title: アーカイブ
 ---
 
-<head>
-  <meta charset="UTF-8">
-  <title>アーカイブ | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <button class="menu-toggle">☰</button>
-</head>
-
-<h1>うさTVニュース アーカイブ</h1>
-
-<!-- 👇 コンテナを作る -->
 <div class="blog-container">
-
-  <!-- メイン記事一覧 -->
+  <!-- 記事一覧 -->
   <div class="archive-list">
     {% for post in site.posts %}
       <article class="archive-item">
-        <!-- 記事タイトル -->
-        <h2>
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </h2>
-
-        <!-- 日付 -->
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
         <p class="post-date">{{ post.date | date: "%Y-%m-%d" }}</p>
-
-        <!-- 抜粋 -->
-        <div class="excerpt">
-          {{ post.excerpt }}
-        </div>
+        <div class="excerpt">{{ post.excerpt }}</div>
       </article>
     {% endfor %}
   </div>
 
-  <!-- 👇 サイドバーを追加 -->
+  <!-- サイドバー -->
   <aside class="sidebar">
     <div class="profile-card">
-      <img src="/archive-site/image/USATV-logo.png" alt="うさぎアイコン" width="100%" height="100%">
+      <img src="/archive-site/image/USATV-logo.png" alt="うさぎアイコン" width="100%">
       <h3>うさTVニュース</h3>
       <p>うさの国のニュースです🐇🌸</p>
     </div>
@@ -47,7 +27,7 @@ title: アーカイブ
       <h4>リンク</h4>
       <ul>
         <li><a href="/">今日のニュース</a></li>
-        <li><a href="/archive.html">アーカイブ</a></li>
+        <li><a href="/archive-site/archive.html">アーカイブ</a></li>
         <li><a href="https://github.com/">GitHub</a></li>
       </ul>
     </div>
@@ -60,25 +40,5 @@ title: アーカイブ
         {% endfor %}
       </ul>
     </div>
-    <script src="https://mofu.rabbitflowerdiary.com/archive-site/assets/js/menu.js?v=3"></script>
   </aside>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggleBtn = document.querySelector(".menu-toggle");
-    const sidebar = document.querySelector(".sidebar");
-
-    if (toggleBtn && sidebar) {
-      // ハンバーガーボタンで開閉
-      toggleBtn.addEventListener("click", function () {
-        sidebar.classList.toggle("active");
-      });
-
-      // サイドバーをクリックしたら閉じる
-      sidebar.addEventListener("click", function () {
-        sidebar.classList.remove("active");
-      });
-    }
-  });
-</script>
