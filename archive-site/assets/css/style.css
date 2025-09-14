@@ -148,7 +148,7 @@ footer {
 .sidebar-section ul li a:hover {
   color: #e75480;
 }
-/* PC では非表示 */
+/* PCでは非表示 */
 .menu-toggle {
   display: none;
 }
@@ -171,10 +171,9 @@ footer {
     padding: 0.5rem 1rem;
     border-radius: 8px;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 1100;
   }
 
-  /* サイドバー（スマホ用スライドイン） */
   .sidebar {
     position: fixed;
     top: 0;
@@ -188,11 +187,11 @@ footer {
     z-index: 1000;
   }
 
-  /* 開いたとき */
   .sidebar.open {
     right: 0;
   }
 }
+
 
 
 /* ===========================
