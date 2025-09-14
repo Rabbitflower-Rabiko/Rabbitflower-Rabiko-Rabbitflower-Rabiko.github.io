@@ -148,17 +148,12 @@ footer {
 .sidebar-section ul li a:hover {
   color: #e75480;
 }
-
-/* ===========================
-   ハンバーガーボタン（PCでは非表示）
-   =========================== */
+/* PC では非表示 */
 .menu-toggle {
   display: none;
 }
 
-/* ===========================
-   スマホ用（768px以下）
-   =========================== */
+/* スマホ用（768px以下） */
 @media (max-width: 768px) {
   .blog-container {
     flex-direction: column;
@@ -180,7 +175,6 @@ footer {
   }
 
   /* サイドバー（スマホ用スライドイン） */
-@media (max-width: 768px) {
   .sidebar {
     position: fixed;
     top: 0;
