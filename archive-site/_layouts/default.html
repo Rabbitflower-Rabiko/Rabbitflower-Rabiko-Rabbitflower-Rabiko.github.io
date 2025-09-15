@@ -10,7 +10,9 @@
   <header>
     <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
     <button class="menu-toggle">☰</button>
-  </header>
+  <!-- スマホ用ハンバーガーボタン -->
+  <button class="menu-toggle" aria-label="メニューを開く">☰</button>
+</header>
 
   <main class="main-container">
     {{ content }}
