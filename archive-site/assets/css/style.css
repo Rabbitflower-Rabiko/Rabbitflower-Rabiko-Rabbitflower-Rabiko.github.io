@@ -50,15 +50,8 @@ body.archive h1:first-of-type {
   display: none;
 }
 
-body > ul {
-  display: none !important;
-}
-
 header a,
-h1:first-of-type.site-title {
-  display: none !important;
-}
-
+header h1,
 header .site-title {
   display: none !important;
 }
