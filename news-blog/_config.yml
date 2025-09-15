@@ -1,8 +1,0 @@
-
-title: うさTVニュース
-description: うさぎのニュースを毎日お届け
-baseurl: ""
-url: ""
-paginate: 10
-paginate_path: "/page:num/"
-theme: null
