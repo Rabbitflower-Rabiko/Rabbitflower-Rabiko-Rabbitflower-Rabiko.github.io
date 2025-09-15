@@ -41,3 +41,17 @@ permalink: /archive-site/archive.html
     </div>
   </aside>
 </div>
+
+<!-- スマホ用のハンバーガーボタン -->
+<button class="menu-toggle" aria-label="メニューを開く">☰</button>
+
+<script>
+  // ハンバーガーメニュー開閉処理
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
+    toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+  });
+</script>
