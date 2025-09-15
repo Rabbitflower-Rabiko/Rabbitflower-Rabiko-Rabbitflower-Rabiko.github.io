@@ -21,5 +21,3 @@ kramdown:
 # 抜粋の区切り（archive.htmlで {{ post.excerpt }} を使うとここまで表示される）
 excerpt_separator: "<!-- more -->"
 
-
-theme: null
