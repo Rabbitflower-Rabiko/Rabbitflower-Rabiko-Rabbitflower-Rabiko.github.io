@@ -1,71 +1,40 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-</head>
-<body class="post-page">
-  <!-- ヘッダー -->
-  <header>
-    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-    <!-- ハンバーガーメニュー -->
-    <button class="menu-toggle">☰</button>
-  </header>
-
-  <!-- メインコンテナ -->
-  <div class="blog-container">
-    <!-- 記事部分 -->
-    <div class="archive-list">
-      <article>
-        <h1>{{ page.title }}</h1>
-        <p><small>{{ page.date | date: "%Y年%m月%d日" }}</small></p>
-
-        <div class="post-content">
-          {{ content }}
-        </div>
-
-        <footer class="post-footer">
-          <a href="{{ '/archive-site/archive.html' | relative_url }}">← アーカイブ一覧へ</a>
-        </footer>
-      </article>
-    </div>
-
-    <!-- サイドバー -->
-    <aside class="sidebar">
-      <div class="profile-card">
-        <img src="/archive-site/image/USATV-logo.png" alt="うさぎアイコン" width="100%">
-        <h3>うさTVニュース</h3>
-        <p>うさの国のニュースです🐇🌸</p>
-      </div>
-
-      <div class="sidebar-section">
-        <h4>リンク</h4>
-        <ul>
-          <li><a href="/">今日のニュース</a></li>
-          <li><a href="/archive-site/archive.html">アーカイブ</a></li>
-          <li><a href="https://github.com/">GitHub</a></li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <h4>最新記事</h4>
-        <ul>
-          {% for post in site.posts limit:10 %}
-            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-    </aside>
+---
+layout: default
+---
+<div class="blog-container">
+  <div class="archive-list">
+    <article>
+      <h1>{{ page.title }}</h1>
+      <p><small>{{ page.date | date: "%Y年%m月%d日" }}</small></p>
+      <div class="post-content">{{ content }}</div>
+      <footer class="post-footer">
+        <a href="{{ '/archive-site/archive.html' | relative_url }}">← アーカイブ一覧へ</a>
+      </footer>
+    </article>
   </div>
 
-  <!-- フッター -->
-  <footer>
-    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
-  </footer>
+  <aside class="sidebar">
+    <div class="profile-card">
+      <img src="/archive-site/image/USATV-logo.png" alt="うさぎアイコン" width="100%">
+      <h3>うさTVニュース</h3>
+      <p>うさの国のニュースです🐇🌸</p>
+    </div>
 
-  <!-- ハンバーガーメニュー用JS -->
-  <script src="{{ '/archive-site/assets/js/menu.js' | relative_url }}"></script>
-</body>
-</html>
+    <div class="sidebar-section">
+      <h4>リンク</h4>
+      <ul>
+        <li><a href="/">今日のニュース</a></li>
+        <li><a href="/archive-site/archive.html">アーカイブ</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>最新記事</h4>
+      <ul>
+        {% for post in site.posts limit:10 %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+</div>
