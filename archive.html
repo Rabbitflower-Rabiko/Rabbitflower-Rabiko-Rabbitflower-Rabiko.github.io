@@ -5,6 +5,11 @@ permalink: /archive-site/archive.html
 ---
 
 <div class="blog-container">
+
+      <a href="{{ '/' | relative_url }}">
+    <img src="{{ '/archive-site/image/usatv-moji-LOGO.png' | relative_url }}" 
+         alt="うさTVロゴ" class="site-logo">
+  </a>
   <div class="archive-list">
     {% assign posts = site.posts | sort: "date" | reverse %}
     {% for post in posts %}
