@@ -59,6 +59,10 @@ h1:first-of-type.site-title {
   display: none !important;
 }
 
+header .site-title {
+  display: none !important;
+}
+
 
 /* ===========================
    メインコンテナ
