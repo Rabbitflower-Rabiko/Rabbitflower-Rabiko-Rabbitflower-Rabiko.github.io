@@ -1,6 +1,6 @@
-title: うさTVニュース
+title: "うさTVニュース"
 description: "毎日のトップページをアーカイブ"
-url: "https://mofu.rabbitflowerdiary.com"  # ドメイン直下のトップ
+url: "https://mofu.rabbitflowerdiary.com"   # ドメイン直下のトップ
 baseurl: "/archive-site"                     # アーカイブ専用ディレクトリ
 
 # Jekyllのビルド設定
@@ -13,8 +13,10 @@ plugins: []
 # タイムゾーン
 timezone: Asia/Tokyo
 
-# Markdown / Excerpt の設定（抜粋を自動生成できるように）
+# Markdown / Excerpt の設定
 markdown: kramdown
 kramdown:
   input: GFM
+
+# 抜粋の区切り（archive.htmlで {{ post.excerpt }} を使うとここまで表示される）
 excerpt_separator: "<!-- more -->"
