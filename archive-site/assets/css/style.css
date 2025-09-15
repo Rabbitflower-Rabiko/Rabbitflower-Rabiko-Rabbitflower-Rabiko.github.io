@@ -45,6 +45,12 @@ header h1 a {
   display: none !important;
 }
 
+/* アーカイブページだけでサイトタイトルを非表示にする */
+body.archive h1:first-of-type {
+  display: none;
+}
+
+
 /* ===========================
    メインコンテナ
    =========================== */
