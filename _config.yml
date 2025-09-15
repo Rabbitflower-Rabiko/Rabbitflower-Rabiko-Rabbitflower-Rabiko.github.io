@@ -1,7 +1,7 @@
 title: "うさTVニュース"
 description: "毎日のトップページをアーカイブ"
 url: "https://mofu.rabbitflowerdiary.com"   # ドメイン直下のトップ
-baseurl: "/archive-site/archive.html"                     # アーカイブ専用ディレクトリ
+baseurl: "/archive-site"                     # アーカイブ専用ディレクトリ
 
 # Jekyllのビルド設定
 sass:
