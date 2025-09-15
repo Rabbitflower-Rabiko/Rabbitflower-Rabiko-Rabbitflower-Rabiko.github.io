@@ -18,7 +18,7 @@ header {
   padding: 1rem;
   text-align: center;
   border-bottom: 3px solid #ffb6c1;
-  position: relative; /* ボタンを載せられるように */
+  position: relative;
 }
 
 header h1 a {
@@ -44,15 +44,6 @@ header h1 a {
 /* ===========================
    記事部分
    =========================== */
-main {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
 article {
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
@@ -76,20 +67,6 @@ article small {
 
 .excerpt {
   margin-bottom: 1rem;
-}
-
-.read-more {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: #ffb6c1;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.read-more:hover {
-  background: #ff80aa;
 }
 
 /* ===========================
@@ -148,12 +125,17 @@ footer {
 .sidebar-section ul li a:hover {
   color: #e75480;
 }
-/* PCでは非表示 */
+
+/* ===========================
+   ハンバーガーボタン（PCでは非表示）
+   =========================== */
 .menu-toggle {
   display: none;
 }
 
-/* スマホ用（768px以下） */
+/* ===========================
+   スマホ用（768px以下）
+   =========================== */
 @media (max-width: 768px) {
   .blog-container {
     flex-direction: column;
@@ -171,13 +153,13 @@ footer {
     padding: 0.5rem 1rem;
     border-radius: 8px;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 1100;
   }
 
   .sidebar {
     position: fixed;
     top: 0;
-    right: -260px; /* 初期は隠す */
+    right: -260px;
     width: 250px;
     height: 100%;
     background: #fff0f6;
@@ -190,60 +172,4 @@ footer {
   .sidebar.open {
     right: 0;
   }
-}
-
-
-
-/* ===========================
-   記事ページ専用デザイン
-   =========================== */
-.post-page .site-header {
-  background: #ffcce0;
-  padding: 1rem;
-  text-align: center;
-  border-bottom: 3px solid #ff99c8;
-}
-
-.post-page .site-header h1 a {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #d63384;
-  text-decoration: none;
-}
-
-/* 記事ページ専用ナビリンク（サイドバー代替） */
-.post-page .sidebar {
-  display: block !important;   /* 記事ページでも表示する */
-  background: #fff0f6;
-  padding: 1rem;
-  margin: 1.5rem auto;
-  max-width: 800px;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-
-.post-page .sidebar ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.8rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.post-page .sidebar li a {
-  background: #ffb6c1;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
-}
-
-.post-page .sidebar li a:hover {
-  background: #ff80aa;
-  transform: translateY(-2px);
 }
