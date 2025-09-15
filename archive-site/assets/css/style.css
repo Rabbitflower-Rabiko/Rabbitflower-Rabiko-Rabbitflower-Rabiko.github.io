@@ -39,6 +39,12 @@ header h1 a {
   text-decoration: underline; /* ホバー時だけ下線を出す（任意） */
 }
 
+/* ヘッダーのタイトル消去 */
+header h1, 
+header .site-title {
+  display: none;
+}
+
 
 /* ===========================
    メインコンテナ
