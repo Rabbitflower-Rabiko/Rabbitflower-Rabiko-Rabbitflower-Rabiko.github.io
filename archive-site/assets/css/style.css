@@ -50,6 +50,10 @@ body.archive h1:first-of-type {
   display: none;
 }
 
+h1 > a[href="https://mofu.rabbitflowerdiary.com/archive-site/"] {
+  display: none !important;
+}
+
 
 /* ===========================
    メインコンテナ
