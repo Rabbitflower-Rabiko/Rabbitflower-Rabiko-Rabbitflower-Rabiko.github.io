@@ -8,8 +8,10 @@
 </head>
 <body>
   <header>
-  <img src="/archive-site/image/usatv-moji-LOGO.png" alt="うさTVロゴ" class="site-logo">
-    <button class="menu-toggle">☰</button>
+    <a href="{{ '/' | relative_url }}">
+    <img src="{{ '/archive-site/image/usatv-moji-LOGO.png' | relative_url }}" 
+         alt="うさTVロゴ" class="site-logo">
+  </a>
   <!-- スマホ用ハンバーガーボタン -->
   <button class="menu-toggle" aria-label="メニューを開く">☰</button>
 </header>
