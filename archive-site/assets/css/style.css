@@ -40,11 +40,10 @@ header h1 a {
 }
 
 /* ヘッダーのタイトル消去 */
-header h1, 
-header .site-title {
-  display: none;
+header h1,
+header h1 a {
+  display: none !important;
 }
-
 
 /* ===========================
    メインコンテナ
