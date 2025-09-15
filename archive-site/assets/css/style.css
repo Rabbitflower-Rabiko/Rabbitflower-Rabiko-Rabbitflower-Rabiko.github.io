@@ -54,6 +54,11 @@ body > ul {
   display: none !important;
 }
 
+header a,
+h1:first-of-type.site-title {
+  display: none !important;
+}
+
 
 /* ===========================
    メインコンテナ
