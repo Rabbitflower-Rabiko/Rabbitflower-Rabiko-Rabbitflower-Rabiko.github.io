@@ -1,0 +1,24 @@
+---
+layout: null
+permalink: /archive-site/feed.xml
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>うさTVニュース アーカイブ</title>
+    <link>{{ site.url }}{{ site.baseurl }}/archive.html</link>
+    <description>毎日のアーカイブ記事更新RSS</description>
+    <language>ja</language>
+
+    {% assign posts = site.posts | sort: "date" | reverse %}
+    {% for post in posts %}
+    <item>
+      <title>{{ post.title | xml_escape }}</title>
+      <link>{{ site.url }}{{ post.url }}</link>
+      <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+      <guid>{{ site.url }}{{ post.url }}</guid>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
