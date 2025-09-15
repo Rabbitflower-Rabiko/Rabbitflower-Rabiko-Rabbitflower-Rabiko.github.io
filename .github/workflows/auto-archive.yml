@@ -12,57 +12,56 @@ jobs:
   archive:
     runs-on: ubuntu-latest
     steps:
-      # リポジトリをチェックアウト
       - uses: actions/checkout@v4
 
-      # 今日の日付を取得
       - name: Set Date
         run: echo "DATE=$(date -d '+9 hours' +%Y-%m-%d)" >> $GITHUB_ENV
-# トップページをコピーして _posts に HTML ファイルを作成
+
       - name: Create Archive HTML
         run: |
           mkdir -p archive-site/_posts
-# 最新記事リストを作成（5件）
-        latest_posts=""
-        count=0
-        for f in $(ls -t archive-site/_posts/*.html); do
-  title=$(grep -m1 -oP '(?<=title: ).*' "$f" | sed 's/"//g')
-        url="/archive-site/$(basename $f)"
-        latest_posts="$latest_posts<li><a href=\"$url\">$title</a></li>"
-        count=$((count+1))
-         [ $count -ge 5 ] && break
-        done
-          
-          echo '---' > archive-site/_posts/${DATE}-top-page.html
-          echo 'layout: post' >> archive-site/_posts/${DATE}-top-page.html
-          echo "title: \"${DATE} うさTV\"" >> archive-site/_posts/${DATE}-top-page.html
-          echo "date: ${DATE}" >> archive-site/_posts/${DATE}-top-page.html
-          echo '---' >> archive-site/_posts/${DATE}-top-page.html
-          echo '<!-- Generated at '"$(date -u '+%Y-%m-%d %H:%M:%S UTC')" '-->' >> archive-site/_posts/${DATE}-top-page.html
-          echo '<!DOCTYPE html>' >> archive-site/_posts/${DATE}-top-page.html
-          echo '<html lang="ja">' >> archive-site/_posts/${DATE}-top-page.html
-          echo '<head>' >> archive-site/_posts/${DATE}-top-page.html
-          echo '  <meta charset="UTF-8">' >> archive-site/_posts/${DATE}-top-page.html
-          echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/_posts/${DATE}-top-page.html
-          echo '</head>' >> archive-site/_posts/${DATE}-top-page.html
-          echo '<body>' >> archive-site/_posts/${DATE}-top-page.html
-          echo "  <h1>うさTV</h1>" >> archive-site/_posts/${DATE}-top-page.html
-          cat index.html >> archive-site/_posts/${DATE}-top-page.html
-          echo '  <footer class="post-footer">'
-          echo '    <p><a href="/archive-site/archive.html">← アーカイブ一覧へ</a></p>'
-          echo '    <div class="latest-posts">'
-          echo '      <h4>最新記事</h4>'
-          echo '      <ul>'
-          echo "        ${latest_posts}"
-          echo '      </ul>'
-          echo '    </div>'
-          echo '  </footer>'
-          
-          echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
-          echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
 
+          # ==== 最新記事リストを作成（5件） ====
+          latest_posts=""
+          count=0
+          for f in $(ls -t archive-site/_posts/*.html 2>/dev/null); do
+            title=$(grep -m1 -oP '(?<=title: ).*' "$f" | sed 's/"//g')
+            url="/archive-site/$(basename $f)"
+            latest_posts="$latest_posts<li><a href=\"$url\">$title</a></li>"
+            count=$((count+1))
+            [ $count -ge 5 ] && break
+          done
 
-      # 変更をコミットしてプッシュ
+          # ==== アーカイブ HTML を生成 ====
+          {
+            echo '---'
+            echo 'layout: post'
+            echo "title: \"${DATE} うさTV\""
+            echo "date: ${DATE}"
+            echo '---'
+            echo '<!-- Generated at '"$(date -u '+%Y-%m-%d %H:%M:%S UTC')" '-->'
+            echo '<!DOCTYPE html>'
+            echo '<html lang="ja">'
+            echo '<head>'
+            echo '  <meta charset="UTF-8">'
+            echo "  <title>アーカイブ ${DATE}</title>"
+            echo '</head>'
+            echo '<body>'
+            echo "  <h1>うさTV</h1>"
+            cat index.html
+            echo '  <footer class="post-footer">'
+            echo '    <p><a href="/archive-site/archive.html">← アーカイブ一覧へ</a></p>'
+            echo '    <div class="latest-posts">'
+            echo '      <h4>最新記事</h4>'
+            echo '      <ul>'
+            echo "        ${latest_posts}"
+            echo '      </ul>'
+            echo '    </div>'
+            echo '  </footer>'
+            echo '</body>'
+            echo '</html>'
+          } > archive-site/_posts/${DATE}-top-page.html
+
       - name: Commit and Push
         run: |
           git config user.name "github-actions"
