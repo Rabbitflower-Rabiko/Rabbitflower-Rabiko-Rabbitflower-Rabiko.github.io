@@ -22,6 +22,17 @@ jobs:
       - name: Create Archive HTML
         run: |
           mkdir -p archive-site/_posts
+# 最新記事リストを作成（5件）
+        latest_posts=""
+        count=0
+        for f in $(ls -t archive-site/_posts/*.html); do
+  title=$(grep -m1 -oP '(?<=title: ).*' "$f" | sed 's/"//g')
+        url="/archive-site/$(basename $f)"
+        latest_posts="$latest_posts<li><a href=\"$url\">$title</a></li>"
+        count=$((count+1))
+         [ $count -ge 5 ] && break
+        done
+          
           echo '---' > archive-site/_posts/${DATE}-top-page.html
           echo 'layout: post' >> archive-site/_posts/${DATE}-top-page.html
           echo "title: \"${DATE} うさTV\"" >> archive-site/_posts/${DATE}-top-page.html
@@ -35,11 +46,20 @@ jobs:
           echo "  <title>アーカイブ ${DATE}</title>" >> archive-site/_posts/${DATE}-top-page.html
           echo '</head>' >> archive-site/_posts/${DATE}-top-page.html
           echo '<body>' >> archive-site/_posts/${DATE}-top-page.html
-          echo "  <h1></h1>" >> archive-site/_posts/${DATE}-top-page.html
+          echo "  <h1>うさTV</h1>" >> archive-site/_posts/${DATE}-top-page.html
           cat index.html >> archive-site/_posts/${DATE}-top-page.html
+          echo '  <footer class="post-footer">'
+          echo '    <p><a href="/archive-site/archive.html">← アーカイブ一覧へ</a></p>'
+          echo '    <div class="latest-posts">'
+          echo '      <h4>最新記事</h4>'
+          echo '      <ul>'
+          echo "        ${latest_posts}"
+          echo '      </ul>'
+          echo '    </div>'
+          echo '  </footer>'
+          
           echo '</body>' >> archive-site/_posts/${DATE}-top-page.html
           echo '</html>' >> archive-site/_posts/${DATE}-top-page.html
-
 
 
       # 変更をコミットしてプッシュ
