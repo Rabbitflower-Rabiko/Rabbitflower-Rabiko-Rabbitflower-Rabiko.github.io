@@ -1,1 +1,43 @@
-test
+---
+layout: default
+title: アーカイブ
+permalink: /archive-site/archive.html
+---
+
+<div class="blog-container">
+  <div class="archive-list">
+    {% for post in site.posts %}
+      <article class="archive-item">
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <p class="post-date">{{ post.date | date: "%Y-%m-%d" }}</p>
+        <div class="excerpt">{{ post.excerpt }}</div>
+        <p><a href="{{ post.url }}">続きを読む</a></p>
+      </article>
+    {% endfor %}
+  </div>
+
+  <aside class="sidebar">
+    <div class="profile-card">
+      <img src="/archive-site/image/USATV-logo.png" alt="うさぎアイコン" width="100%">
+      <h3>うさTVニュース</h3>
+      <p>うさの国のニュースです🐇🌸</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>リンク</h4>
+      <ul>
+        <li><a href="/">今日のニュース</a></li>
+        <li><a href="/archive-site/archive.html">アーカイブ</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>最新記事</h4>
+      <ul>
+        {% for post in site.posts limit:10 %}
+          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+</div>
