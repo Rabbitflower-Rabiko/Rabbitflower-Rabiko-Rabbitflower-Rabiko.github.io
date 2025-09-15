@@ -4,18 +4,17 @@ title: アーカイブ
 ---
 
 <div class="blog-container">
-  <!-- 記事一覧 -->
   <div class="archive-list">
     {% for post in site.posts %}
       <article class="archive-item">
         <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
         <p class="post-date">{{ post.date | date: "%Y-%m-%d" }}</p>
         <div class="excerpt">{{ post.excerpt }}</div>
+        <p><a href="{{ post.url }}">続きを読む</a></p>
       </article>
     {% endfor %}
   </div>
 
-  <!-- サイドバー -->
   <aside class="sidebar">
     <div class="profile-card">
       <img src="/archive-site/image/USATV-logo.png" alt="うさぎアイコン" width="100%">
@@ -28,7 +27,6 @@ title: アーカイブ
       <ul>
         <li><a href="/">今日のニュース</a></li>
         <li><a href="/archive-site/archive.html">アーカイブ</a></li>
-        <li><a href="https://github.com/">GitHub</a></li>
       </ul>
     </div>
 
