@@ -50,12 +50,6 @@ body.archive h1:first-of-type {
   display: none;
 }
 
-header a,
-header h1,
-header .site-title {
-  display: none !important;
-}
-
 
 /* ===========================
    メインコンテナ
