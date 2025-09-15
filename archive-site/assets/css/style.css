@@ -28,6 +28,18 @@ header h1 a {
   font-weight: bold;
 }
 
+/* ヘッダーのタイトルリンク調整 */
+.site-title-link {
+  font-size: 16px;   /* 小さい文字 */
+  text-decoration: none;  /* 下線を消す */
+  color: #333;       /* 好きな色に変えられる */
+}
+
+.site-title-link:hover {
+  text-decoration: underline; /* ホバー時だけ下線を出す（任意） */
+}
+
+
 /* ===========================
    メインコンテナ
    =========================== */
