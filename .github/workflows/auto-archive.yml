@@ -62,11 +62,11 @@ jobs:
             echo '</html>'
           } > archive-site/_posts/${DATE}-top-page.html
 
-           ==== 記事の抜粋 ====
+          # ==== 記事の抜粋 ==== 
       - name: Extract excerpt block
         run: |
-          sed -n '/<!-- excerpt:start -->/,/<!-- excerpt:end -->/p' top.html \
-            | sed '1d;$d' > archive/$(date +'%Y-%m-%d')-top-page.html
+          sed -n '/<!-- excerpt:start -->/,/<!-- excerpt:end -->/p' indx.html \
+            | sed '1d;$d' > archive-site/_posts/$(date +'%Y-%m-%d')-top-page.html
 
 
       - name: Commit and Push
