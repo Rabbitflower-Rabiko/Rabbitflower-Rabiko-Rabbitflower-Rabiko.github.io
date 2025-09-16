@@ -33,34 +33,34 @@ jobs:
           done
 
           # ==== アーカイブ HTML を生成 ====
-              {
-                echo '---'
-                echo 'layout: post'
-                echo "title: \"${DATE} うさTV\""
-                echo "date: ${DATE}"
-                echo '---'
-                echo '<!-- Generated at '"$(date -u '+%Y-%m-%d %H:%M:%S UTC')" '-->'
-                echo '<!DOCTYPE html>'
-                echo '<html lang="ja">'
-                echo '<head>'
-                echo '  <meta charset="UTF-8">'
-                echo "  <title>アーカイブ ${DATE}</title>"
-                echo '</head>'
-                echo '<body>'
-                echo "  <h1>うさTV</h1>"
-                sed -e '/<!-- remove:start -->/,/<!-- remove:end -->/d' index.html
-                echo '  <footer class="post-footer">'
-                echo '    <p><a href="/archive-site/archive.html">← アーカイブ一覧へ</a></p>'
-                echo '    <div class="latest-posts">'
-                echo '      <h4>最新記事</h4>'
-                echo '      <ul>'
-                echo "        ${latest_posts}"
-                echo '      </ul>'
-                echo '    </div>'
-                echo '  </footer>'
-                echo '</body>'
-                echo '</html>'
-              } > archive-site/_posts/${DATE}-top-page.html
+          {
+            echo '---'
+            echo 'layout: post'
+            echo "title: \"${DATE} うさTV\""
+            echo "date: ${DATE}"
+            echo '---'
+            echo '<!-- Generated at '"$(date -u '+%Y-%m-%d %H:%M:%S UTC')" '-->'
+            echo '<!DOCTYPE html>'
+            echo '<html lang="ja">'
+            echo '<head>'
+            echo '  <meta charset="UTF-8">'
+            echo "  <title>アーカイブ ${DATE}</title>"
+            echo '</head>'
+            echo '<body>'
+            echo "  <h1>うさTV</h1>"
+            sed -e '/<!-- remove:start -->/,/<!-- remove:end -->/d' index.html
+            echo '  <footer class="post-footer">'
+            echo '    <p><a href="/archive-site/archive.html">← アーカイブ一覧へ</a></p>'
+            echo '    <div class="latest-posts">'
+            echo '      <h4>最新記事</h4>'
+            echo '      <ul>'
+            echo "        ${latest_posts}"
+            echo '      </ul>'
+            echo '    </div>'
+            echo '  </footer>'
+            echo '</body>'
+            echo '</html>'
+          } > archive-site/_posts/${DATE}-top-page.html
 
       - name: Commit and Push
         run: |
