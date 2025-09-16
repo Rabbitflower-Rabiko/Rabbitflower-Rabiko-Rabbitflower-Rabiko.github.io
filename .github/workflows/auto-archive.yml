@@ -32,7 +32,7 @@ jobs:
             [ $count -ge 5 ] && break
           done
 
-      # ==== アーカイブ HTML を生成 ====
+          # ==== アーカイブ HTML を生成 ====
           {
             echo '---'
             echo 'layout: post'
