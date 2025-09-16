@@ -32,7 +32,7 @@ jobs:
             [ $count -ge 5 ] && break
           done
 
-          # ==== アーカイブ HTML を生成 ====
+      # ==== アーカイブ HTML を生成 ====
           {
             echo '---'
             echo 'layout: post'
@@ -48,7 +48,7 @@ jobs:
             echo '</head>'
             echo '<body>'
             echo "  <h1>うさTV</h1>"
-            cat index.html
+            sed -e '/<!-- remove:start -->/,/<!-- remove:end -->/d' index.html
             echo '  <footer class="post-footer">'
             echo '    <p><a href="/archive-site/archive.html">← アーカイブ一覧へ</a></p>'
             echo '    <div class="latest-posts">'
