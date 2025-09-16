@@ -21,3 +21,8 @@ kramdown:
 # 抜粋の区切り（archive.htmlで {{ post.excerpt }} を使うとここまで表示される）
 excerpt_separator: "<!-- more -->"
 
+
+- name: Extract excerpt block
+  run: |
+    sed -n '/<!-- excerpt:start -->/,/<!-- excerpt:end -->/p' top.html \
+      | sed '1d;$d' > archive/$(date +'%Y-%m-%d')-top-page.html
