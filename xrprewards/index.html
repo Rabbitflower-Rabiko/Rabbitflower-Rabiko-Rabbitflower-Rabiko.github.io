@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,57 +124,78 @@
    <div class="max-w-7xl mx-auto"><!-- Header -->
     <header class="bg-white rounded-2xl shadow-lg p-8 mb-6">
      <h1 class="text-4xl font-bold text-gray-800 mb-2">🎁 Reward Calculation System</h1>
-     <p class="text-gray-600">顧客リワード管理システム - GitHub Pages版（localStorage使用）</p>
-    </header><!-- Collection Tabs -->
-    <div class="bg-white rounded-2xl shadow-lg mb-6">
-     <div class="flex border-b overflow-x-auto" id="collectionTabs">
-      <div class="collection-tab active" data-collection="0"><span class="collection-name">Collection 1</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(0)">✏️</button>
+     <p class="text-gray-600">Customer Reward Management System</p>
+    </header><!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6"><!-- Left Side: Main Content (2/3) -->
+     <div class="lg:col-span-2 space-y-6"><!-- Collection Tabs -->
+      <div class="bg-white rounded-2xl shadow-lg mb-6">
+       <div class="flex border-b overflow-x-auto" id="collectionTabs">
+        <div class="collection-tab active" data-collection="0"><span class="collection-name">Collection 1</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(0)">✏️</button>
+        </div>
+        <div class="collection-tab" data-collection="1"><span class="collection-name">Collection 2</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(1)">✏️</button>
+        </div>
+        <div class="collection-tab" data-collection="2"><span class="collection-name">Collection 3</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(2)">✏️</button>
+        </div>
+        <div class="collection-tab" data-collection="3"><span class="collection-name">Collection 4</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(3)">✏️</button>
+        </div>
+        <div class="collection-tab" data-collection="4"><span class="collection-name">Collection 5</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(4)">✏️</button>
+        </div>
+       </div><!-- Controls -->
+       <div class="p-6 space-y-4"><!-- Search and Add Owner -->
+        <div class="flex gap-4 flex-wrap"><input type="text" id="searchInput" placeholder="🔍 Search (Name or Address)" class="flex-1 min-w-[200px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"> <button onclick="showAddOwnerModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> ➕ Add Owner </button>
+        </div><!-- Bulk Actions -->
+        <div class="flex gap-4 flex-wrap"><button onclick="showBulkRateModal()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 📊 Bulk Rate Change </button> <button onclick="exportSimpleCSV()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 💾 Simple CSV </button> <button onclick="exportFullBackup()" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 📦 Full Backup </button> <button onclick="showImportModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 📥 Import CSV </button> <button onclick="showBulkDeleteModal()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 🗑️ Bulk Delete </button>
+        </div>
+       </div>
+      </div><!-- Table -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+       <div class="overflow-x-auto" style="max-height: 600px; overflow-y: auto;">
+        <table class="w-full" id="ownerTable">
+         <thead>
+          <tr class="bg-gray-50 border-b-2 border-gray-200">
+           <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Owner Name</th>
+           <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Address</th>
+           <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">Quantity</th>
+           <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">Rate</th>
+           <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">Reward</th>
+           <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700">Actions</th>
+          </tr>
+         </thead>
+         <tbody id="tableBody"><!-- Rows will be inserted here -->
+         </tbody>
+         <tfoot id="tableFoot" class="bg-gray-50 border-t-2 border-gray-200 font-bold">
+          <tr>
+           <td colspan="2" class="px-6 py-4 text-left text-gray-700">Total</td>
+           <td class="px-6 py-4 text-right text-gray-700" id="totalQuantity">0</td>
+           <td class="px-6 py-4 text-right text-gray-700">-</td>
+           <td class="px-6 py-4 text-right text-blue-600" id="totalReward">0</td>
+           <td></td>
+          </tr>
+         </tfoot>
+        </table>
+       </div>
+      </div><!-- Footer Info -->
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+       <div class="flex justify-between items-center text-sm text-gray-600"><span id="recordCount">Total: 0 owners</span> <span>💾 Data is automatically saved to browser</span>
+       </div>
       </div>
-      <div class="collection-tab" data-collection="1"><span class="collection-name">Collection 2</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(1)">✏️</button>
+     </div><!-- Right Side: Owner Consolidated View (1/3) -->
+     <div class="lg:col-span-1">
+      <div class="bg-white rounded-2xl shadow-lg p-6 sticky" style="top: 20px;">
+       <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">👥 Owner Consolidated View</h2><button onclick="exportConsolidatedCSV()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors text-sm"> 💾 CSV </button>
+       </div><!-- Search for consolidated view -->
+       <div class="mb-4"><input type="text" id="consolidatedSearch" placeholder="🔍 Search Owner" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500">
+       </div><!-- Consolidated Owner List -->
+       <div class="space-y-3" style="max-height: 600px; overflow-y: auto;" id="consolidatedOwnerList"><!-- Consolidated owner cards will be inserted here -->
+       </div><!-- Total Summary -->
+       <div class="mt-6 pt-6 border-t border-gray-200">
+        <div class="flex justify-between items-center text-sm mb-2"><span class="text-gray-600">Unique Owners</span> <span class="font-bold text-gray-800" id="uniqueOwnerCount">0</span>
+        </div>
+        <div class="flex justify-between items-center text-sm"><span class="text-gray-600">Grand Total Reward</span> <span class="font-bold text-blue-600" id="grandTotalReward">0</span>
+        </div>
+       </div>
       </div>
-      <div class="collection-tab" data-collection="2"><span class="collection-name">Collection 3</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(2)">✏️</button>
-      </div>
-      <div class="collection-tab" data-collection="3"><span class="collection-name">Collection 4</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(3)">✏️</button>
-      </div>
-      <div class="collection-tab" data-collection="4"><span class="collection-name">Collection 5</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(4)">✏️</button>
-      </div>
-     </div><!-- Controls -->
-     <div class="p-6 space-y-4"><!-- Search and Add Owner -->
-      <div class="flex gap-4 flex-wrap"><input type="text" id="searchInput" placeholder="🔍 検索（名前またはアドレス）" class="flex-1 min-w-[200px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"> <button onclick="showAddOwnerModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> ➕ Ownerを追加 </button>
-      </div><!-- Bulk Actions -->
-      <div class="flex gap-4 flex-wrap"><button onclick="showBulkRateModal()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 📊 一括レート変更 </button> <button onclick="exportSimpleCSV()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 💾 Simple CSV </button> <button onclick="exportFullBackup()" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 📦 Full Backup </button> <button onclick="showImportModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 📥 Import CSV </button> <button onclick="showBulkDeleteModal()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md"> 🗑️ 一括削除 </button>
-      </div>
-     </div>
-    </div><!-- Table -->
-    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-     <div class="overflow-x-auto" style="max-height: 600px; overflow-y: auto;">
-      <table class="w-full" id="ownerTable">
-       <thead>
-        <tr class="bg-gray-50 border-b-2 border-gray-200">
-         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Owner Name</th>
-         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Address</th>
-         <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">数量</th>
-         <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">レート</th>
-         <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">Reward</th>
-         <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700">操作</th>
-        </tr>
-       </thead>
-       <tbody id="tableBody"><!-- Rows will be inserted here -->
-       </tbody>
-       <tfoot id="tableFoot" class="bg-gray-50 border-t-2 border-gray-200 font-bold">
-        <tr>
-         <td colspan="2" class="px-6 py-4 text-left text-gray-700">合計</td>
-         <td class="px-6 py-4 text-right text-gray-700" id="totalQuantity">0</td>
-         <td class="px-6 py-4 text-right text-gray-700">-</td>
-         <td class="px-6 py-4 text-right text-blue-600" id="totalReward">0</td>
-         <td></td>
-        </tr>
-       </tfoot>
-      </table>
-     </div>
-    </div><!-- Footer Info -->
-    <div class="mt-6 bg-white rounded-2xl shadow-lg p-6">
-     <div class="flex justify-between items-center text-sm text-gray-600"><span id="recordCount">Total: 0 owners</span> <span>💾 データはブラウザに自動保存されます</span>
      </div>
     </div>
    </div>
@@ -214,7 +235,7 @@
         }
       } catch (e) {
         console.error('Failed to load data:', e);
-        showToast('データの読み込みに失敗しました', true);
+        showToast('Failed to load data', true);
       }
     }
 
@@ -229,7 +250,7 @@
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       } catch (e) {
         console.error('Failed to save data:', e);
-        showToast('データの保存に失敗しました', true);
+        showToast('Failed to save data', true);
       }
     }
 
@@ -270,7 +291,7 @@
         tbody.innerHTML = `
           <tr>
             <td colspan="6" class="px-6 py-12 text-center text-gray-500">
-              ${searchQuery ? '検索結果が見つかりません' : 'Ownerを追加してください'}
+              ${searchQuery ? 'No search results found' : 'Please add owners'}
             </td>
           </tr>
         `;
@@ -284,6 +305,7 @@
       updateSummary(filtered);
       updateRecordCount();
       updateCollectionNames();
+      updateGlobalSummary();
     }
 
     function getFilteredOwners() {
@@ -311,7 +333,7 @@
           <div class="editable-cell" contenteditable="true" data-field="name">${escapeHtml(owner.name)}</div>
         </td>
         <td class="px-6 py-4">
-          <div class="editable-cell font-mono text-sm" contenteditable="true" data-field="address">${escapeHtml(owner.address)}</div>
+          <div class="font-mono text-sm text-gray-700 px-2 py-1">${escapeHtml(owner.address)}</div>
         </td>
         <td class="px-6 py-4 text-right">
           <div class="editable-cell" contenteditable="true" data-field="quantity">${owner.quantity}</div>
@@ -353,7 +375,7 @@
       if (field === 'quantity' || field === 'rate') {
         const num = parseFloat(value);
         if (isNaN(num) || num < 0) {
-          showToast('無効な数値です', true);
+          showToast('Invalid number', true);
           render();
           return;
         }
@@ -364,7 +386,7 @@
 
       saveToLocalStorage();
       render();
-      showToast('更新しました');
+      showToast('Updated');
     }
 
     function updateSummary(filtered) {
@@ -378,7 +400,7 @@
     function updateRecordCount() {
       const collectionOwners = owners.filter(o => o.collection === activeCollection);
       document.getElementById('recordCount').textContent = 
-        `Total: ${collectionOwners.length} owners (全体: ${owners.length})`;
+        `Total: ${collectionOwners.length} owners (Overall: ${owners.length})`;
     }
 
     function updateCollectionNames() {
@@ -387,36 +409,199 @@
       });
     }
 
+    let consolidatedSearchQuery = '';
+
+    function updateGlobalSummary() {
+      // Get consolidated owner data (grouped by name)
+      const consolidatedData = getConsolidatedOwnerData();
+      
+      // Filter by search query
+      let filtered = consolidatedData;
+      if (consolidatedSearchQuery) {
+        filtered = consolidatedData.filter(owner => 
+          owner.name.toLowerCase().includes(consolidatedSearchQuery) ||
+          owner.address.toLowerCase().includes(consolidatedSearchQuery)
+        );
+      }
+
+      // Update grand total
+      const grandTotal = consolidatedData.reduce((sum, owner) => sum + owner.totalReward, 0);
+      document.getElementById('grandTotalReward').textContent = grandTotal.toLocaleString();
+
+      // Update unique owner count
+      document.getElementById('uniqueOwnerCount').textContent = consolidatedData.length.toLocaleString();
+
+      // Update consolidated owner list
+      const listContainer = document.getElementById('consolidatedOwnerList');
+      listContainer.innerHTML = '';
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `
+          <div class="text-center text-gray-500 text-sm py-8">
+            ${consolidatedSearchQuery ? 'No search results found' : 'No owners yet'}
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(owner => {
+        const card = document.createElement('div');
+        card.className = 'border border-gray-200 rounded-lg p-3 hover:border-blue-300 transition-all';
+        
+        let collectionsHTML = '';
+        owner.collections.forEach(col => {
+          collectionsHTML += `
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-gray-600">${escapeHtml(col.collectionName)}</span>
+              <span class="font-semibold text-gray-800">${col.reward.toLocaleString()}</span>
+            </div>
+          `;
+        });
+        
+        card.innerHTML = `
+          <div class="font-semibold text-sm text-gray-800 mb-1">${escapeHtml(owner.name)}</div>
+          <div class="font-mono text-xs text-gray-500 mb-2 break-all">${escapeHtml(owner.address)}</div>
+          <div class="border-t border-gray-100 pt-2 mb-2">
+            ${collectionsHTML}
+          </div>
+          <div class="flex justify-between items-center pt-2 border-t border-gray-200">
+            <span class="text-xs font-semibold text-gray-600">Total</span>
+            <span class="text-sm font-bold text-blue-600">${owner.totalReward.toLocaleString()}</span>
+          </div>
+        `;
+        
+        listContainer.appendChild(card);
+      });
+
+      // Setup search listener (only once)
+      if (!window.consolidatedSearchSetup) {
+        document.getElementById('consolidatedSearch').addEventListener('input', (e) => {
+          consolidatedSearchQuery = e.target.value.toLowerCase();
+          updateGlobalSummary();
+        });
+        window.consolidatedSearchSetup = true;
+      }
+    }
+
+    function getConsolidatedOwnerData() {
+      // Group owners by name (case-insensitive)
+      const ownerMap = new Map();
+
+      owners.forEach(owner => {
+        const key = owner.name.toLowerCase();
+        
+        if (!ownerMap.has(key)) {
+          ownerMap.set(key, {
+            name: owner.name,
+            address: owner.address,
+            addresses: new Set(),
+            collections: [],
+            totalReward: 0
+          });
+        }
+
+        const consolidated = ownerMap.get(key);
+        const reward = owner.quantity * owner.rate;
+        
+        // Add address to the set
+        consolidated.addresses.add(owner.address);
+        
+        // Find if this collection already exists for this owner
+        const existingCol = consolidated.collections.find(c => c.collectionIndex === owner.collection);
+        
+        if (existingCol) {
+          // Add to existing collection entry
+          existingCol.quantity += owner.quantity;
+          existingCol.reward += reward;
+        } else {
+          // Create new collection entry
+          consolidated.collections.push({
+            collectionIndex: owner.collection,
+            collectionName: collections[owner.collection].name,
+            quantity: owner.quantity,
+            rate: owner.rate,
+            reward: reward
+          });
+        }
+        
+        consolidated.totalReward += reward;
+      });
+
+      // Convert map to array, format addresses, and sort by total reward (descending)
+      return Array.from(ownerMap.values()).map(owner => ({
+        ...owner,
+        address: owner.addresses.size > 1 
+          ? `${owner.addresses.size} addresses` 
+          : owner.address,
+        addressCount: owner.addresses.size
+      })).sort((a, b) => b.totalReward - a.totalReward);
+    }
+
+    function exportConsolidatedCSV() {
+      const consolidatedData = getConsolidatedOwnerData();
+      
+      if (consolidatedData.length === 0) {
+        showToast('No data to export', true);
+        return;
+      }
+
+      // Create CSV with owner, address, and all collection rewards
+      const headers = ['Owner Name', 'Address', ...collections.map(c => c.name), 'Total Reward'];
+      
+      const rows = consolidatedData.map(owner => {
+        const row = [owner.name, owner.address];
+        
+        // Add reward for each collection (0 if not present)
+        collections.forEach((col, idx) => {
+          const colData = owner.collections.find(c => c.collectionIndex === idx);
+          row.push(colData ? colData.reward : 0);
+        });
+        
+        // Add total
+        row.push(owner.totalReward);
+        
+        return row;
+      });
+
+      const csv = [headers, ...rows].map(row => 
+        row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')
+      ).join('\n');
+
+      downloadCSV(csv, `rewards_consolidated_${new Date().toISOString().split('T')[0]}.csv`);
+      showToast('Consolidated CSV exported');
+    }
+
     // Add Owner Modal
     function showAddOwnerModal() {
       const modal = document.createElement('div');
       modal.className = 'modal-backdrop';
       modal.innerHTML = `
         <div class="modal-content">
-          <h2 class="text-2xl font-bold mb-6 text-gray-800">➕ Ownerを追加</h2>
+          <h2 class="text-2xl font-bold mb-6 text-gray-800">➕ Add Owner</h2>
+          <p class="text-sm text-gray-600 mb-4">* At least one of Owner Name or Address is required</p>
           <form id="addOwnerForm" class="space-y-4">
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-2">Owner Name *</label>
-              <input type="text" id="ownerName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Owner Name</label>
+              <input type="text" id="ownerName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
             </div>
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-2">Address *</label>
-              <input type="text" id="ownerAddress" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Address</label>
+              <input type="text" id="ownerAddress" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
             </div>
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-2">数量 *</label>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Quantity *</label>
               <input type="number" id="ownerQuantity" required min="0" step="0.01" value="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
             </div>
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-2">レート *</label>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">Rate *</label>
               <input type="number" id="ownerRate" required min="0" step="0.01" value="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
             </div>
             <div class="flex gap-3 pt-4">
               <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                追加
+                Add
               </button>
               <button type="button" onclick="this.closest('.modal-backdrop').remove()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors">
-                キャンセル
+                Cancel
               </button>
             </div>
           </form>
@@ -427,14 +612,23 @@
         e.preventDefault();
         
         if (owners.length >= 999) {
-          showToast('最大999人まで登録できます', true);
+          showToast('Maximum 999 owners allowed', true);
+          return;
+        }
+
+        const nameValue = document.getElementById('ownerName').value.trim();
+        const addressValue = document.getElementById('ownerAddress').value.trim();
+
+        // At least one of name or address must be filled
+        if (!nameValue && !addressValue) {
+          showToast('Please enter either Owner Name or Address', true);
           return;
         }
 
         const newOwner = {
           id: 'owner_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
-          name: document.getElementById('ownerName').value,
-          address: document.getElementById('ownerAddress').value,
+          name: nameValue || '-',
+          address: addressValue || '-',
           quantity: parseFloat(document.getElementById('ownerQuantity').value),
           rate: parseFloat(document.getElementById('ownerRate').value),
           collection: activeCollection
@@ -444,7 +638,7 @@
         saveToLocalStorage();
         render();
         modal.remove();
-        showToast('Ownerを追加しました');
+        showToast('Owner added');
       });
 
       document.body.appendChild(modal);
@@ -457,14 +651,14 @@
       modal.className = 'modal-backdrop';
       modal.innerHTML = `
         <div class="modal-content">
-          <h2 class="text-2xl font-bold mb-4 text-gray-800">🗑️ 削除確認</h2>
-          <p class="text-gray-600 mb-6">このOwnerを削除してもよろしいですか？</p>
+          <h2 class="text-2xl font-bold mb-4 text-gray-800">🗑️ Delete Confirmation</h2>
+          <p class="text-gray-600 mb-6">Are you sure you want to delete this owner?</p>
           <div class="flex gap-3">
             <button onclick="confirmDelete('${ownerId}')" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-              削除
+              Delete
             </button>
             <button onclick="this.closest('.modal-backdrop').remove()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors">
-              キャンセル
+              Cancel
             </button>
           </div>
         </div>
@@ -477,7 +671,7 @@
       saveToLocalStorage();
       render();
       document.querySelector('.modal-backdrop').remove();
-      showToast('削除しました');
+      showToast('Deleted');
     }
 
     // Bulk Rate Change
@@ -486,19 +680,19 @@
       modal.className = 'modal-backdrop';
       modal.innerHTML = `
         <div class="modal-content">
-          <h2 class="text-2xl font-bold mb-6 text-gray-800">📊 一括レート変更</h2>
-          <p class="text-gray-600 mb-4">現在のコレクション内の全Ownerのレートを変更します</p>
+          <h2 class="text-2xl font-bold mb-6 text-gray-800">📊 Bulk Rate Change</h2>
+          <p class="text-gray-600 mb-4">Change rate for all owners in current collection</p>
           <form id="bulkRateForm" class="space-y-4">
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-2">新しいレート *</label>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">New Rate *</label>
               <input type="number" id="newRate" required min="0" step="0.01" value="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" />
             </div>
             <div class="flex gap-3 pt-4">
               <button type="submit" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                変更
+                Change
               </button>
               <button type="button" onclick="this.closest('.modal-backdrop').remove()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors">
-                キャンセル
+                Cancel
               </button>
             </div>
           </form>
@@ -520,7 +714,7 @@
         saveToLocalStorage();
         render();
         modal.remove();
-        showToast(`${count}人のレートを変更しました`);
+        showToast(`Rate changed for ${count} owners`);
       });
 
       document.body.appendChild(modal);
@@ -532,7 +726,7 @@
       const collectionOwners = owners.filter(o => o.collection === activeCollection);
       
       if (collectionOwners.length === 0) {
-        showToast('削除するOwnerがありません', true);
+        showToast('No owners to delete', true);
         return;
       }
 
@@ -540,14 +734,14 @@
       modal.className = 'modal-backdrop';
       modal.innerHTML = `
         <div class="modal-content">
-          <h2 class="text-2xl font-bold mb-4 text-red-600">⚠️ 一括削除確認</h2>
-          <p class="text-gray-600 mb-6">現在のコレクション内の<strong>${collectionOwners.length}人全員</strong>を削除してもよろしいですか？<br>この操作は取り消せません。</p>
+          <h2 class="text-2xl font-bold mb-4 text-red-600">⚠️ Bulk Delete Confirmation</h2>
+          <p class="text-gray-600 mb-6">Are you sure you want to delete <strong>all ${collectionOwners.length} owners</strong> in this collection?<br>This action cannot be undone.</p>
           <div class="flex gap-3">
             <button onclick="confirmBulkDelete()" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-              全員削除
+              Delete All
             </button>
             <button onclick="this.closest('.modal-backdrop').remove()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors">
-              キャンセル
+              Cancel
             </button>
           </div>
         </div>
@@ -561,7 +755,7 @@
       saveToLocalStorage();
       render();
       document.querySelector('.modal-backdrop').remove();
-      showToast(`${count}人を削除しました`);
+      showToast(`Deleted ${count} owners`);
     }
 
     // Rename Collection
@@ -571,18 +765,18 @@
       modal.className = 'modal-backdrop';
       modal.innerHTML = `
         <div class="modal-content">
-          <h2 class="text-2xl font-bold mb-6 text-gray-800">✏️ コレクション名変更</h2>
+          <h2 class="text-2xl font-bold mb-6 text-gray-800">✏️ Rename Collection</h2>
           <form id="renameForm" class="space-y-4">
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-2">新しい名前 *</label>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">New Name *</label>
               <input type="text" id="newCollectionName" required value="${escapeHtml(currentName)}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
             </div>
             <div class="flex gap-3 pt-4">
               <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                変更
+                Change
               </button>
               <button type="button" onclick="this.closest('.modal-backdrop').remove()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors">
-                キャンセル
+                Cancel
               </button>
             </div>
           </form>
@@ -596,7 +790,7 @@
         saveToLocalStorage();
         render();
         modal.remove();
-        showToast('コレクション名を変更しました');
+        showToast('Collection renamed');
       });
 
       document.body.appendChild(modal);
@@ -608,11 +802,11 @@
       const collectionOwners = owners.filter(o => o.collection === activeCollection);
       
       if (collectionOwners.length === 0) {
-        showToast('エクスポートするデータがありません', true);
+        showToast('No data to export', true);
         return;
       }
 
-      const headers = ['Owner Name', 'Address', '数量', 'レート', 'Reward'];
+      const headers = ['Owner Name', 'Address', 'Quantity', 'Rate', 'Reward'];
       const rows = collectionOwners.map(o => [
         o.name,
         o.address,
@@ -626,17 +820,17 @@
       ).join('\n');
 
       downloadCSV(csv, `rewards_${collections[activeCollection].name}_${new Date().toISOString().split('T')[0]}.csv`);
-      showToast('Simple CSVをエクスポートしました');
+      showToast('Simple CSV exported');
     }
 
     // CSV Export - Full Backup
     function exportFullBackup() {
       if (owners.length === 0) {
-        showToast('エクスポートするデータがありません', true);
+        showToast('No data to export', true);
         return;
       }
 
-      const headers = ['Owner Name', 'Address', '数量', 'レート', 'Collection', 'ID'];
+      const headers = ['Owner Name', 'Address', 'Quantity', 'Rate', 'Collection', 'ID'];
       const rows = owners.map(o => [
         o.name,
         o.address,
@@ -651,7 +845,7 @@
       ).join('\n');
 
       downloadCSV(csv, `rewards_full_backup_${new Date().toISOString().split('T')[0]}.csv`);
-      showToast('Full Backupをエクスポートしました');
+      showToast('Full Backup exported');
     }
 
     function downloadCSV(csvContent, filename) {
@@ -670,19 +864,19 @@
       modal.className = 'modal-backdrop';
       modal.innerHTML = `
         <div class="modal-content">
-          <h2 class="text-2xl font-bold mb-6 text-gray-800">📥 CSVインポート</h2>
-          <p class="text-sm text-gray-600 mb-4">Full Backup形式のCSVをアップロードしてください。<br>既存のデータは上書きされます。</p>
+          <h2 class="text-2xl font-bold mb-6 text-gray-800">📥 Import CSV</h2>
+          <p class="text-sm text-gray-600 mb-4">Upload a Full Backup format CSV.<br>Existing data will be overwritten.</p>
           <form id="importForm" class="space-y-4">
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-2">CSVファイル *</label>
+              <label class="block text-sm font-semibold text-gray-700 mb-2">CSV File *</label>
               <input type="file" id="csvFile" accept=".csv" required class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
             </div>
             <div class="flex gap-3 pt-4">
               <button type="submit" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                インポート
+                Import
               </button>
               <button type="button" onclick="this.closest('.modal-backdrop').remove()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors">
-                キャンセル
+                Cancel
               </button>
             </div>
           </form>
@@ -721,9 +915,9 @@
             saveToLocalStorage();
             render();
             modal.remove();
-            showToast(`${importedOwners.length}件のデータをインポートしました`);
+            showToast(`Imported ${importedOwners.length} records`);
           } catch (err) {
-            showToast('CSVの読み込みに失敗しました', true);
+            showToast('Failed to read CSV', true);
           }
         };
         reader.readAsText(file);
@@ -782,5 +976,5 @@
     // Initialize on load
     init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a30fab574889e27',t:'MTc2MzkwNDE4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3140dd76f2eb9a',t:'MTc2MzkwNzA2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
