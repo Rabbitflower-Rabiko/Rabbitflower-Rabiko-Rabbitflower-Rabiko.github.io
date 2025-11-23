@@ -88,6 +88,7 @@
       border-bottom: 3px solid transparent;
       transition: all 0.2s;
       font-weight: 500;
+      white-space: nowrap;
     }
     .collection-tab:hover {
       background: #f3f4f6;
@@ -126,12 +127,16 @@
      <p class="text-gray-600">顧客リワード管理システム - GitHub Pages版（localStorage使用）</p>
     </header><!-- Collection Tabs -->
     <div class="bg-white rounded-2xl shadow-lg mb-6">
-     <div class="flex border-b" id="collectionTabs">
+     <div class="flex border-b overflow-x-auto" id="collectionTabs">
       <div class="collection-tab active" data-collection="0"><span class="collection-name">Collection 1</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(0)">✏️</button>
       </div>
       <div class="collection-tab" data-collection="1"><span class="collection-name">Collection 2</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(1)">✏️</button>
       </div>
       <div class="collection-tab" data-collection="2"><span class="collection-name">Collection 3</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(2)">✏️</button>
+      </div>
+      <div class="collection-tab" data-collection="3"><span class="collection-name">Collection 4</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(3)">✏️</button>
+      </div>
+      <div class="collection-tab" data-collection="4"><span class="collection-name">Collection 5</span> <button class="ml-2 text-gray-400 hover:text-gray-600" onclick="renameCollection(4)">✏️</button>
       </div>
      </div><!-- Controls -->
      <div class="p-6 space-y-4"><!-- Search and Add Owner -->
@@ -183,7 +188,9 @@
     let collections = [
       { name: 'Collection 1' },
       { name: 'Collection 2' },
-      { name: 'Collection 3' }
+      { name: 'Collection 3' },
+      { name: 'Collection 4' },
+      { name: 'Collection 5' }
     ];
     let activeCollection = 0;
     let searchQuery = '';
@@ -775,5 +782,5 @@
     // Initialize on load
     init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a30d774a1c9a0ee',t:'MTc2MzkwMjc0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a30fab574889e27',t:'MTc2MzkwNDE4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
