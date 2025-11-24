@@ -476,17 +476,17 @@
     }
 
     function getConsolidatedOwnerData() {
-      // Group owners by name (case-insensitive)
+      // Group owners by name AND address combination
       const ownerMap = new Map();
 
       owners.forEach(owner => {
-        const key = owner.name.toLowerCase();
+        // Create unique key by combining name and address (case-insensitive)
+        const key = `${owner.name.toLowerCase()}|||${owner.address.toLowerCase()}`;
         
         if (!ownerMap.has(key)) {
           ownerMap.set(key, {
             name: owner.name,
             address: owner.address,
-            addresses: new Set(),
             collections: [],
             totalReward: 0
           });
@@ -494,9 +494,6 @@
 
         const consolidated = ownerMap.get(key);
         const reward = owner.quantity * owner.rate;
-        
-        // Add address to the set
-        consolidated.addresses.add(owner.address);
         
         // Find if this collection already exists for this owner
         const existingCol = consolidated.collections.find(c => c.collectionIndex === owner.collection);
@@ -519,14 +516,8 @@
         consolidated.totalReward += reward;
       });
 
-      // Convert map to array, format addresses, and sort by total reward (descending)
-      return Array.from(ownerMap.values()).map(owner => ({
-        ...owner,
-        address: owner.addresses.size > 1 
-          ? `${owner.addresses.size} addresses` 
-          : owner.address,
-        addressCount: owner.addresses.size
-      })).sort((a, b) => b.totalReward - a.totalReward);
+      // Convert map to array and sort by total reward (descending)
+      return Array.from(ownerMap.values()).sort((a, b) => b.totalReward - a.totalReward);
     }
 
     function exportConsolidatedCSV() {
@@ -984,5 +975,5 @@
     // Initialize on load
     init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a354f1a0388a0ee',t:'MTc2Mzk0OTU4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a382481a593d861',t:'MTc2Mzk3OTMwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
