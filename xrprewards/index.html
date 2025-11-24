@@ -157,9 +157,9 @@
           <tr class="bg-gray-50 border-b-2 border-gray-200">
            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Owner Name</th>
            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Address</th>
-           <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">Quantity</th>
+           <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-100 select-none" onclick="toggleSort('quantity')">Quantity <span id="sortIconQuantity"></span></th>
            <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">Rate</th>
-           <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">Reward</th>
+           <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-100 select-none" onclick="toggleSort('reward')">Reward <span id="sortIconReward"></span></th>
            <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700">Actions</th>
           </tr>
          </thead>
@@ -217,6 +217,8 @@
     ];
     let activeCollection = 0;
     let searchQuery = '';
+    let sortBy = null; // 'quantity' or 'reward'
+    let sortDirection = 'desc'; // 'asc' or 'desc'
 
     // Initialize
     function init() {
@@ -320,7 +322,55 @@
         );
       }
       
+      // Apply sorting if sortBy is set
+      if (sortBy) {
+        filtered.sort((a, b) => {
+          let valueA, valueB;
+          
+          if (sortBy === 'quantity') {
+            valueA = a.quantity;
+            valueB = b.quantity;
+          } else if (sortBy === 'reward') {
+            valueA = a.quantity * a.rate;
+            valueB = b.quantity * b.rate;
+          }
+          
+          if (sortDirection === 'asc') {
+            return valueA - valueB;
+          } else {
+            return valueB - valueA;
+          }
+        });
+      }
+      
       return filtered;
+    }
+
+    function toggleSort(column) {
+      if (sortBy === column) {
+        // Toggle direction if same column
+        sortDirection = sortDirection === 'desc' ? 'asc' : 'desc';
+      } else {
+        // New column, default to descending
+        sortBy = column;
+        sortDirection = 'desc';
+      }
+      
+      updateSortIcons();
+      render();
+    }
+
+    function updateSortIcons() {
+      // Clear all icons
+      document.getElementById('sortIconQuantity').textContent = '';
+      document.getElementById('sortIconReward').textContent = '';
+      
+      // Set active icon
+      if (sortBy === 'quantity') {
+        document.getElementById('sortIconQuantity').textContent = sortDirection === 'desc' ? '▼' : '▲';
+      } else if (sortBy === 'reward') {
+        document.getElementById('sortIconReward').textContent = sortDirection === 'desc' ? '▼' : '▲';
+      }
     }
 
     function createOwnerRow(owner) {
@@ -847,7 +897,7 @@
       modal.className = 'modal-backdrop';
       modal.innerHTML = `
         <div class="modal-content">
-          <h2 class="text-2xl font-bold mb-6 text-gray-800">📥 Import CSV</h2>
+          <h2 class="text-2xl font-bold mb-6 text-gray-800">���� Import CSV</h2>
           
           <div class="text-sm mb-4 bg-blue-50 p-4 rounded-lg border border-blue-200">
             <strong class="text-gray-800 block mb-2">📋 Required CSV Format (in this order):</strong>
@@ -975,5 +1025,5 @@
     // Initialize on load
     init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a382481a593d861',t:'MTc2Mzk3OTMwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a38d6046211aff3',t:'MTc2Mzk4NjU3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
