@@ -18,10 +18,8 @@ layout: none
       <link>{{ site.url }}{{ post.url }}</link>
       <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
       <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-      <description>{{ post.excerpt | strip_html | normalize_whitespace | escape }}</description>
-      <content:encoded><![CDATA[
-        {{ post.content }}
-      ]]></content:encoded>
+      <description><![CDATA[{{ post.excerpt | strip_html | normalize_whitespace }}]]></description>
+      <content:encoded><![CDATA[{{ post.content }}]]></content:encoded>
       {% if post.image %}
       <media:thumbnail url="{{ site.url }}{{ post.image }}" />
       {% endif %}
