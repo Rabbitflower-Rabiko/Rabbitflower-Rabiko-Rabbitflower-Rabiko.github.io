@@ -4,11 +4,10 @@ import json
 
 # 環境変数からスプレッドシートIDを取得
 SHEET_ID = os.environ.get("SPREADSHEET_ID")
-# 上書き対象のファイルパス（Jekyllのトップページ）
+# 上書き対象のファイルパス
 TARGET_FILE = "index.html"
 
-# Jekyllでヘッダー/フッター等の共通レイアウトを適用したい場合に使用
-# 不要（完全なHTMLコード）の場合は空文字 "" にしてください
+# 不要なヘッダー（Front Matter）がつかないよう空文字に設定
 JEKYLL_FRONT_MATTER = ""
 
 def fetch_html_from_sheet(sheet_id):
@@ -26,6 +25,14 @@ def fetch_html_from_sheet(sheet_id):
     # A1セル（0行目0列目）の値を取得
     try:
         html_content = data['table']['rows'][0]['c'][0]['v']
+        
+        # 文字列として取得された場合、先頭と末尾のダブルクォーテーションを除去
+        if isinstance(html_content, str):
+            html_content = html_content.strip()
+            # 前後がダブルクォーテーションで囲まれている場合は削除
+            if html_content.startswith('"') and html_content.endswith('"'):
+                html_content = html_content[1:-1]
+                
         return html_content
     except (KeyError, IndexError, TypeError) as e:
         print(f"Error extracting data from spreadsheet: {e}")
@@ -40,7 +47,6 @@ def main():
     html_content = fetch_html_from_sheet(SHEET_ID)
 
     if html_content:
-        # JekyllのFront Matterを付与して書き込み
         full_content = JEKYLL_FRONT_MATTER + html_content
         
         with open(TARGET_FILE, "w", encoding="utf-8") as f:
