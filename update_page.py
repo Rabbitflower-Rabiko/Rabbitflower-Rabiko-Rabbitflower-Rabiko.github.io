@@ -9,10 +9,7 @@ TARGET_FILE = "index.html"
 
 # Jekyllでヘッダー/フッター等の共通レイアウトを適用したい場合に使用
 # 不要（完全なHTMLコード）の場合は空文字 "" にしてください
-JEKYLL_FRONT_MATTER = """---
-layout: default
----
-"""
+JEKYLL_FRONT_MATTER = ""
 
 def fetch_html_from_sheet(sheet_id):
     # Google Visualisation APIを利用してJSONで取得
