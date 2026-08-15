@@ -2,7 +2,7 @@ name: Auto Archive Top Page
 
 on:
   schedule:
-    - cron: '0 16 * * *'  # 毎日0時に実行（日本時間の午前1時）
+    - cron: '0 18 * * *'  # 毎日2時に実行（日本時間の午前3時）
   workflow_dispatch:      # 手動トリガーも可能
 
 permissions:
